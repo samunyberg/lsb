@@ -1,0 +1,12 @@
+{
+  "crons": [
+    {
+      "path": "/api/cron/populate-database",
+      "schedule": "00 01 * * *"
+    },
+    {
+      "path": "/api/cron/update-passed-appointments",
+      "schedule": "00 02 * * *"
+    }
+  ]
+}

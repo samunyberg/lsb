@@ -1,0 +1,40 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  @apply bg-bgMain font-medium text-primary;
+}
+
+@media (min-width: 1024px) {
+  ::-webkit-scrollbar {
+    @apply w-2;
+  }
+
+  *::-webkit-scrollbar-track {
+    @apply bg-white/50;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    @apply rounded-sm bg-black/20;
+  }
+
+  *::-webkit-scrollbar-thumb:hover {
+    @apply rounded-full bg-primary;
+  }
+}
+
+@media (max-width: 430px) {
+  .toastContainer {
+    width: 100% !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    margin-top: 10px !important;
+  }
+
+  .customToast {
+    width: 70% !important;
+    border-radius: 5px !important;
+  }
+}
