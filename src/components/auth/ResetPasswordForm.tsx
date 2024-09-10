@@ -69,13 +69,15 @@ const ResetPasswordForm = () => {
 
   return (
     <AuthFormContainer>
-      <AuthFormHeader subtitle={<Label labelId='auth.reset_password_form.title' />} />
+      <AuthFormHeader
+        subtitle={<Label labelId='reset_password_form.title' />}
+      />
       <FormError className='mb-4'>{error}</FormError>
       <form className='mb-8 mt-5 flex flex-col gap-6' onSubmit={handleSubmit}>
         <FormGroup error={inputErrors.password?.at(0)}>
           <PasswordInput
             name='password'
-            placeholder={getLabel('password')}
+            placeholder={getLabel('reset_password_form.password')}
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
@@ -84,13 +86,13 @@ const ResetPasswordForm = () => {
         <FormGroup error={inputErrors.confirmPassword?.at(0)}>
           <PasswordInput
             name='confirmPassword'
-            placeholder={getLabel('confirm_password')}
+            placeholder={getLabel('reset_password_form.confirm_password')}
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
           />
         </FormGroup>
         <Button variant='accent' isLoading={isSubmitting}>
-          <Label labelId='send' />
+          <Label labelId='reset_password_form.submit' />
         </Button>
       </form>
     </AuthFormContainer>

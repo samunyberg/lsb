@@ -259,6 +259,11 @@
   "forgotten_password_form.email": "Email",
   "forgotten_password_form.send_button": "Send email",
 
+  "reset_password_form.title": "Reset Password",
+  "reset_password_form.password": "Choose new password",
+  "reset_password_form.confirm_password": "Confirm your new password",
+  "reset_password_form.submit": "Reset password",
+
   "style_form.name": "Name",
   "style_form.description_en": "English description",
   "style_form.description_fi": "Finnish description",
