@@ -5,7 +5,7 @@
   "navigation.about": "Tietoja",
   "navigation.contact": "Yhteystiedot",
 
-  "sidebar.change_language": "Change language",
+  "sidebar.change_language": "Vaihda kieli",
 
   "not_found.title": "404",
   "not_found.content": "Pahoittelut, tätä sivua ei ole olemassa.",
@@ -164,7 +164,7 @@
   "about.location.address_line_2": "Sisäänkäynti Subway-ravintolan vierestä",
   "about.location.address_line_3": "5. kerros, asunto 10 (rakennuksessa on hissi)",
 
-  "about.legal_information.title": "Oikeudelliset tiedot",
+  "about.legal_information.title": "Tietoa yrityksestä",
   "about.legal.registered_name": "Rekisteröity nimi",
   "about.legal.business_id": "Y-tunnus",
 

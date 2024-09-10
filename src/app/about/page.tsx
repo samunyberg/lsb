@@ -17,7 +17,7 @@ const AboutPage = async () => {
       {subtitle('about.location.title')}
       <div className='flex flex-col gap-6 lg:flex-row lg:gap-8'>
         <div className='px-2 py-4'>
-          <ul className='flex flex-col text-sm  lg:mt-8'>
+          <ul className='flex flex-col lg:mt-8'>
             <li>
               <Label labelId='about.location.address_line_1' />
             </li>
