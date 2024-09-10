@@ -43,7 +43,7 @@ const ConfirmationTemplateFi = ({
             </Text>
 
             {/* Booking Details */}
-            <Container className='mb-6 rounded-sm bg-gray-50 px-5 py-2'>
+            <Container className='mb-6 rounded-sm bg-gray-100 px-5 py-2'>
               <Text className='mb-2 text-lg font-semibold text-gray-700'>
                 Ajanvarauksesi:
               </Text>
@@ -98,7 +98,7 @@ const ConfirmationTemplateFi = ({
             </Text>
 
             {/* Footer Section */}
-            <Container className='flex flex-col items-center rounded-sm pb-4'>
+            <Container className='flex flex-col items-center rounded-sm bg-gray-100 pb-4'>
               <Link
                 href='https://lashesstudiobyboochita.com'
                 target='_blank'
@@ -110,17 +110,6 @@ const ConfirmationTemplateFi = ({
                 </Text>
               </Link>
               <Container className='flex items-center justify-center'>
-                <Link
-                  href='https://facebook.com/yourpage'
-                  target='_blank'
-                  rel='noopener noreferrer'
-                >
-                  <Img
-                    src='https://cdn1.iconfinder.com/data/icons/social-media-circle-7/512/Circled_Facebook_svg-512.png'
-                    alt='Facebook'
-                    className='mr-4 inline-block h-8 w-8'
-                  />
-                </Link>
                 <Link
                   href='https://instagram.com/yourprofile'
                   target='_blank'

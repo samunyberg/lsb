@@ -39,7 +39,7 @@ const ConfirmationTemplateFi = ({ resetUrl }: Props) => {
             <Hr className='my-6 border-t border-gray-200' />
 
             {/* Footer Section */}
-            <Container className='flex flex-col items-center rounded-sm pb-4'>
+            <Container className='flex flex-col items-center rounded-sm bg-gray-100 pb-4'>
               <Link
                 href='https://lashesstudiobyboochita.com'
                 target='_blank'
@@ -51,17 +51,6 @@ const ConfirmationTemplateFi = ({ resetUrl }: Props) => {
                 </Text>
               </Link>
               <Container className='flex items-center justify-center'>
-                <Link
-                  href='https://facebook.com/yourpage'
-                  target='_blank'
-                  rel='noopener noreferrer'
-                >
-                  <Img
-                    src='https://cdn1.iconfinder.com/data/icons/social-media-circle-7/512/Circled_Facebook_svg-512.png'
-                    alt='Facebook'
-                    className='mr-4 inline-block h-8 w-8'
-                  />
-                </Link>
                 <Link
                   href='https://instagram.com/yourprofile'
                   target='_blank'

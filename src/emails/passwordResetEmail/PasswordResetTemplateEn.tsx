@@ -39,7 +39,7 @@ const ConfirmationTemplateEn = ({ resetUrl }: Props) => {
             <Hr className='my-6 border-t border-gray-200' />
 
             {/* Footer Section */}
-            <Container className='flex flex-col items-center rounded-sm pb-4'>
+            <Container className='flex flex-col items-center rounded-sm bg-gray-100 pb-4'>
               <Link
                 href='https://lashesstudiobyboochita.com'
                 target='_blank'

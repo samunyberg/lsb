@@ -43,7 +43,7 @@ const ConfirmationTemplate = ({
               </Text>
 
               {/* Booking Details */}
-              <Container className='mb-6 rounded-sm bg-gray-50 px-5 py-2'>
+              <Container className='mb-6 rounded-sm bg-gray-100 px-5 py-2'>
                 <Text className='mb-2 text-lg font-semibold text-gray-700'>
                   Ajanvarauksesi:
                 </Text>
@@ -86,17 +86,17 @@ const ConfirmationTemplate = ({
                 Jos sinulla on kysymyksiä varaustasi koskien, otathan minuun
                 yhteyttä, niin autan mielelläni!
               </Text>
+
+              <Hr className='my-6 border-t border-gray-200' />
+
+              {/* Cancellation Policy */}
+              <Text className='text-sm text-gray-500'>
+                Jos haluat muuttaa tai peruuttaa ajan, ota minuun yhteyttä
+                sähköpostilla boochitamat@gmail.com tai sosiaalisen mediani
+                kautta. Huomioi, että peruutukset tulee tehdä vähintään 24
+                tuntia etukäteen.
+              </Text>
             </Container>
-
-            <Hr className='my-6 border-t border-gray-200' />
-
-            {/* Cancellation Policy */}
-            <Text className='text-sm text-gray-500'>
-              Jos haluat muuttaa tai peruuttaa ajan, ota minuun yhteyttä
-              sähköpostilla boochitamat@gmail.com tai sosiaalisen mediani
-              kautta. Huomioi, että peruutukset tulee tehdä vähintään 24 tuntia
-              etukäteen.
-            </Text>
           </Container>
 
           <Hr className='my-8 border-t border-gray-200' />
@@ -117,7 +117,7 @@ const ConfirmationTemplate = ({
               </Text>
 
               {/* Booking Details */}
-              <Container className='mb-6 rounded-sm bg-gray-50 px-5 py-2'>
+              <Container className='mb-6 rounded-sm bg-gray-100 px-5 py-2'>
                 <Text className='mb-2 text-lg font-semibold text-gray-700'>
                   Appointment:
                 </Text>
@@ -160,16 +160,16 @@ const ConfirmationTemplate = ({
                 If you have any questions, feel free to reach out to me.
                 I&apos;m happy to help!
               </Text>
+
+              <Hr className='my-6 border-t border-gray-200' />
+
+              {/* Cancellation Policy */}
+              <Text className='mb-6 text-sm text-gray-500'>
+                To reschedule or cancel your appointment, contact me at
+                boochitamat@gmail.com or via my social media. Please note that
+                cancellations must be made at least 24 hours in advance.
+              </Text>
             </Container>
-
-            <Hr className='my-6 border-t border-gray-200' />
-
-            {/* Cancellation Policy */}
-            <Text className='mb-6 text-sm text-gray-500'>
-              To reschedule or cancel your appointment, contact me at
-              boochitamat@gmail.com or via my social media. Please note that
-              cancellations must be made at least 24 hours in advance.
-            </Text>
 
             <Hr className='my-6 border-t border-gray-200' />
 
@@ -187,18 +187,7 @@ const ConfirmationTemplate = ({
               </Link>
               <Container className='flex items-center justify-center'>
                 <Link
-                  href='https://facebook.com/yourpage'
-                  target='_blank'
-                  rel='noopener noreferrer'
-                >
-                  <Img
-                    src='https://cdn1.iconfinder.com/data/icons/social-media-circle-7/512/Circled_Facebook_svg-512.png'
-                    alt='Facebook'
-                    className='mr-4 inline-block h-8 w-8'
-                  />
-                </Link>
-                <Link
-                  href='https://instagram.com/yourprofile'
+                  href='https://instagram.com/lashesstudiobyboochita'
                   target='_blank'
                   rel='noopener noreferrer'
                 >
