@@ -98,7 +98,7 @@ const ConfirmationTemplateFi = ({
             </Text>
 
             {/* Footer Section */}
-            <Container className='flex flex-col items-center rounded-sm bg-gray-100 pb-4'>
+            <Container className='flex flex-col items-center rounded-sm bg-gray-100 p-4'>
               <Link
                 href='https://lashesstudiobyboochita.com'
                 target='_blank'
@@ -111,7 +111,7 @@ const ConfirmationTemplateFi = ({
               </Link>
               <Container className='flex items-center justify-center'>
                 <Link
-                  href='https://instagram.com/yourprofile'
+                  href='https://instagram.com/lashesstudiobyboochita'
                   target='_blank'
                   rel='noopener noreferrer'
                 >

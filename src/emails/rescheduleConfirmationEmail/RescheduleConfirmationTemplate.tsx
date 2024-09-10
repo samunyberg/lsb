@@ -174,7 +174,7 @@ const ConfirmationTemplate = ({
             <Hr className='my-6 border-t border-gray-200' />
 
             {/* Footer Section */}
-            <Container className='flex flex-col items-center rounded-sm pb-4'>
+            <Container className='flex flex-col items-center rounded-sm p-4'>
               <Link
                 href='https://lashesstudiobyboochita.com'
                 target='_blank'

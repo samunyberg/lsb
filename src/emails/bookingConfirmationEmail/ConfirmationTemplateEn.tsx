@@ -96,7 +96,7 @@ const ConfirmationTemplateEn = ({
             </Text>
 
             {/* Footer Section */}
-            <Container className='flex flex-col items-center rounded-sm bg-gray-100 pb-4'>
+            <Container className='flex flex-col items-center rounded-sm bg-gray-100 p-4'>
               <Link
                 href='https://lashesstudiobyboochita.com'
                 target='_blank'
