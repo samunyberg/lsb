@@ -101,29 +101,30 @@ const ServiceSelect = ({
       className={cn(
         'relative cursor-pointer rounded-sm bg-white/30 px-4 py-3 shadow transition-all',
         {
-          'bg-bgSoft': selectedStyle?.id === style.id,
+          'border border-accent bg-bgSoft':
+            selectedStyle?.id === style.id && selectedService,
         }
       )}
       onClick={handleStyleSelect}
     >
       <div className='flex items-center justify-between'>
-        <div className='flex items-center gap-3'>
+        <div className='flex flex-col gap-1'>
           <p className=' uppercase tracking-wide'>{style.name}</p>
-          {selectedStyle?.id === style.id && (
-            <span className='flex items-center gap-3'>
-              {selectedService && (
-                <span className='rounded-full border border-primary px-2 text-sm '>
-                  {currentLanguage === 'en'
-                    ? selectedService.name_en
-                    : selectedService.name_fi}
-                </span>
-              )}
-              <FaCheck size={16} />
+          {selectedStyle?.id === style.id && selectedService && (
+            <span className='flex items-center gap-2'>
+              <FaCheck size={13} />
+              <span className='text-sm '>
+                {currentLanguage === 'en'
+                  ? selectedService.name_en
+                  : selectedService.name_fi}
+              </span>
             </span>
           )}
         </div>
         <span
-          className={cn('transition-transform', { 'rotate-180': showServices })}
+          className={cn('transition-transform', {
+            'rotate-180': showServices,
+          })}
         >
           <FaChevronDown size={12} />
         </span>

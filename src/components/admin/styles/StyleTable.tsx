@@ -1,7 +1,6 @@
 'use client';
 
 import useLanguage from '@/hooks/useLanguage';
-import { clipText } from '@/lib/utils/stringUtils';
 import { Style } from '@prisma/client';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
@@ -17,7 +16,7 @@ interface Props {
 }
 
 const StyleTable = ({ styles, itemsCount }: Props) => {
-  const { getLabel, currentLanguage } = useLanguage();
+  const { getLabel } = useLanguage();
   const router = useRouter();
 
   const config: Config<Style> = {
@@ -32,20 +31,6 @@ const StyleTable = ({ styles, itemsCount }: Props) => {
             {style.name}
           </Link>
         ),
-      },
-      {
-        label: getLabel(
-          currentLanguage === 'en'
-            ? 'style.description_en'
-            : 'style.description_fi'
-        ),
-        render: (style) => {
-          return currentLanguage === 'en' ? (
-            <span>{clipText(style.description_en!, 20)}</span>
-          ) : (
-            <span>{clipText(style.description_fi!, 20)}</span>
-          );
-        },
       },
     ],
   };

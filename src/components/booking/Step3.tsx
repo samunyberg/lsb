@@ -82,7 +82,7 @@ const Step3 = () => {
       <Panel className='px-4 py-6'>
         <Label labelId='book.step3.check_information' />
         <span className='font-semibold'> {session?.user.email}.</span>
-        <table className='mt-6 w-full border-collapse rounded-sm border border-black/20 shadow'>
+        <table className='mt-6 w-full border-t border-black/20'>
           <tbody>
             {items.map((item) => (
               <tr key={item.label} className='border-b border-black/20'>

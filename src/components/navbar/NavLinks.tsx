@@ -6,7 +6,7 @@ import Label from '../common/Label';
 const links = [
   { href: '/', label: <Label labelId='navigation.home' /> },
   { href: '/book', label: <Label labelId='navigation.book' /> },
-  { href: '/services', label: <Label labelId='navigation.styles' /> },
+  { href: '/styles', label: <Label labelId='navigation.styles' /> },
   { href: '/about', label: <Label labelId='navigation.about' /> },
   { href: '/contact', label: <Label labelId='navigation.contact' /> },
 ];
