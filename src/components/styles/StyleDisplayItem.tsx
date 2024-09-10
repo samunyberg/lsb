@@ -25,7 +25,11 @@ const StyleDisplayItem = ({ style }: Props) => {
       },
       {
         label: getLabel('appointment.price'),
-        render: (service) => service.price + '€',
+        render: (service) =>
+          new Intl.NumberFormat('fi-FI', {
+            style: 'currency',
+            currency: 'EUR',
+          }).format(service.price),
       },
     ],
   };

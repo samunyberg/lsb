@@ -30,7 +30,11 @@ const ServiceTable = ({ styleId, services }: Props) => {
       },
       {
         label: getLabel('service.price'),
-        render: (service) => service.price + '€',
+        render: (service) =>
+          new Intl.NumberFormat('fi-FI', {
+            style: 'currency',
+            currency: 'EUR',
+          }).format(service.price),
       },
     ],
   };
