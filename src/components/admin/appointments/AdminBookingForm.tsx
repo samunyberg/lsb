@@ -151,7 +151,7 @@ const AdminBookingForm = ({ appointment, styles, clients }: Props) => {
   return (
     <ManagementPage
       title={<Label labelId='admin.appointments.book_for_client' />}
-      className='pb-10'
+      className='max-w-xl pb-10'
     >
       <h2 className='mb-2 '>Appointment time:</h2>
       <AppointmentPanel appointment={appointment} showDate showTime />

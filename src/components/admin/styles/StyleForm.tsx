@@ -62,7 +62,9 @@ const StyleForm = ({ style }: Props) => {
     }
 
     const sendRequest = async () => {
-      const endpoint = style ? `/api/styles/${style.id}` : '/api/styles';
+      const endpoint = style
+        ? `/api/admin/styles/${style.id}`
+        : '/api/admin/styles';
 
       style
         ? await axios.patch(endpoint, formData)
