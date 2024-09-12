@@ -49,7 +49,9 @@ const ServiceSelect = ({
   };
 
   const handleServiceSelect = (
-    event: React.MouseEvent<HTMLSpanElement>,
+    event:
+      | React.MouseEvent<HTMLSpanElement>
+      | React.KeyboardEvent<HTMLSpanElement>,
     service: Service
   ) => {
     event.stopPropagation();
@@ -61,8 +63,12 @@ const ServiceSelect = ({
   const service = (service: Service) => (
     <span
       key={service.id}
+      tabIndex={0}
       className='cursor-pointer rounded-sm border-b border-black/10 px-6 py-2 transition-all last:border-none'
-      onClick={(e) => handleServiceSelect(e, service)}
+      onClick={(event) => handleServiceSelect(event, service)}
+      onKeyDown={(event) => {
+        if (event.key === 'Enter') handleServiceSelect(event, service);
+      }}
     >
       <div className='flex flex-col gap-1'>
         <div className='flex items-center justify-between'>
@@ -96,8 +102,10 @@ const ServiceSelect = ({
   return (
     <div
       role='combobox'
+      tabIndex={0}
       aria-controls='options'
       aria-expanded={showServices}
+      aria-haspopup='listbox'
       className={cn(
         'relative cursor-pointer rounded-sm bg-white/30 px-4 py-3 shadow transition-all',
         {
@@ -106,6 +114,9 @@ const ServiceSelect = ({
         }
       )}
       onClick={handleStyleSelect}
+      onKeyDown={(event) => {
+        if (event.key === 'Enter') handleStyleSelect();
+      }}
     >
       <div className='flex items-center justify-between'>
         <div className='flex flex-col gap-1'>

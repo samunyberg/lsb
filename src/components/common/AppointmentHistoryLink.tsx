@@ -12,7 +12,11 @@ const AppointmentHistoryLink = ({ clientId }: Props) => {
   const router = useRouter();
 
   return (
-    <div className='flex items-center gap-2'>
+    <div
+      className='flex cursor-pointer items-center gap-2'
+      role='link'
+      aria-label='View appointment history'
+    >
       <FaHistory />
       <span
         className='transition-all hover:text-accent active:text-accent'

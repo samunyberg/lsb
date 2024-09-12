@@ -2,11 +2,11 @@
 
 import useClickOutside from '@/hooks/useClickOutside';
 import { AnimatePresence, motion } from 'framer-motion';
-import { useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { MdClose } from 'react-icons/md';
+import Label from '../common/Label';
 import LanguageSwitcher from './LanguageSwitcher';
 import NavLinks from './NavLinks';
-import Label from '../common/Label';
 
 interface Props {
   isOpen: boolean;
@@ -14,8 +14,25 @@ interface Props {
 }
 
 const Sidebar = ({ isOpen, onClose }: Props) => {
-  const sidebarRef = useRef(null);
+  const sidebarRef = useRef<HTMLElement | null>(null);
+  const closeButtonRef = useRef<HTMLDivElement | null>(null);
+
   useClickOutside(sidebarRef, () => onClose());
+
+  useEffect(() => {
+    if (closeButtonRef.current) closeButtonRef.current.focus();
+  }, [isOpen]);
+
+  useEffect(() => {
+    if (isOpen) {
+      const handleEscape = (event: KeyboardEvent) => {
+        if (event.key === 'Escape') onClose();
+      };
+
+      document.addEventListener('keydown', handleEscape);
+      return () => document.removeEventListener('keydown', handleEscape);
+    }
+  }, [isOpen, onClose]);
 
   return (
     <AnimatePresence>
@@ -31,7 +48,18 @@ const Sidebar = ({ isOpen, onClose }: Props) => {
           className='fixed left-0 z-[999] flex h-screen w-[50%] flex-col bg-bgSoft px-5 py-4 shadow-md backdrop-blur-md'
         >
           <div className='flex flex-col gap-8'>
-            <MdClose size={30} onClick={() => onClose()} />
+            <div
+              ref={closeButtonRef}
+              role='button'
+              tabIndex={0}
+              className='w-fit'
+              onClick={() => onClose()}
+              onKeyDown={(event) => {
+                if (event.key === 'Enter') onClose();
+              }}
+            >
+              <MdClose size={30} />
+            </div>
             <div className='flex flex-col gap-2'>
               <p className='text-sm'>
                 <Label labelId='sidebar.change_language' />

@@ -18,7 +18,7 @@ const DaySchedule = ({ appointments }: Props) => {
 
   if (appointments.length === 0)
     return (
-      <Panel className='px-4 py-5'>
+      <Panel className='px-4 py-12'>
         <Label labelId='admin.dashboard.today.no_appointments' />
       </Panel>
     );

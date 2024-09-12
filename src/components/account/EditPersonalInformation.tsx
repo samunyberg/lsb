@@ -93,6 +93,7 @@ const EditPersonalInformation = ({ user }: Props) => {
           <Input
             id='firstName'
             value={formData.firstName}
+            aria-label='First name'
             onChange={handleInputChange}
           />
         </FormGroup>
@@ -103,6 +104,7 @@ const EditPersonalInformation = ({ user }: Props) => {
           <Input
             id='lastName'
             value={formData.lastName}
+            aria-label='Last name'
             onChange={handleInputChange}
           />
         </FormGroup>
@@ -113,6 +115,7 @@ const EditPersonalInformation = ({ user }: Props) => {
           <Input
             id='email'
             value={formData.email}
+            aria-label='Email'
             onChange={handleInputChange}
           />
         </FormGroup>
@@ -123,6 +126,7 @@ const EditPersonalInformation = ({ user }: Props) => {
           <Input
             id='phone'
             value={formData.phone}
+            aria-label='Phone number'
             onChange={handleInputChange}
           />
         </FormGroup>
@@ -136,6 +140,8 @@ const EditPersonalInformation = ({ user }: Props) => {
         </Button>
         <Button
           type='button'
+          role='link'
+          aria-label='Change password'
           onClick={() => router.push('/auth/change-password')}
         >
           <Label labelId='edit_personal_information.change_password_button' />

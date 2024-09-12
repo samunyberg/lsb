@@ -2,13 +2,10 @@
 
 import { motion } from 'framer-motion';
 import Image from 'next/image';
-import { useRouter } from 'next/navigation';
-import Button from './common/Button';
+import Link from 'next/link';
 import Label from './common/Label';
 
 const Intro = () => {
-  const router = useRouter();
-
   return (
     <div className='flex h-[calc(100vh-55px)] flex-col items-center justify-center'>
       <div className='flex flex-col items-center gap-8 pb-24 md:gap-12'>
@@ -34,13 +31,12 @@ const Intro = () => {
             }}
             className='flex w-full items-center justify-center px-5'
           >
-            <Button
-              variant='accent'
-              className='w-fit px-5 py-4 text-[18px]'
-              onClick={() => router.push('/book')}
+            <Link
+              href='/book'
+              className='rounded-sm border-2 border-primary bg-accent px-6 py-3 text-[18px] uppercase tracking-wide text-white transition-all hover:bg-accentButtonHover active:bg-accentButtonHover'
             >
               <Label labelId='intro.book_button' />
-            </Button>
+            </Link>
           </motion.div>
         </div>
       </div>

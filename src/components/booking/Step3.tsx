@@ -20,7 +20,11 @@ const Step3 = () => {
   const locale = useLocale();
   const [showTerms, setShowTerms] = useState(false);
 
-  const handleTermsLinkClick = (event: React.MouseEvent<HTMLSpanElement>) => {
+  const handleTermsLinkClick = (
+    event:
+      | React.MouseEvent<HTMLSpanElement>
+      | React.KeyboardEvent<HTMLSpanElement>
+  ) => {
     event.stopPropagation();
     setShowTerms(true);
   };
@@ -42,7 +46,13 @@ const Step3 = () => {
         <div className='flex flex-col px-2 '>
           <Label labelId='terms_of_service.content' />
           <Spacer className='my-8' />
-          <Button variant='accent' onClick={handleTermsModalOKClick}>
+          <Button
+            variant='accent'
+            onClick={handleTermsModalOKClick}
+            onKeyDown={(event) => {
+              if (event.key === 'Enter') handleTermsModalOKClick();
+            }}
+          >
             OK
           </Button>
         </div>
@@ -77,6 +87,32 @@ const Step3 = () => {
     },
   ];
 
+  const acceptTerms = (
+    <Panel
+      tabIndex={0}
+      className='flex cursor-pointer items-center gap-2 p-4'
+      onClick={() => setTermsAccepted(!termsAccepted)}
+      onKeyDown={(event) => {
+        if (event.key === 'Enter') setTermsAccepted(!termsAccepted);
+      }}
+    >
+      <CheckBox isChecked={termsAccepted} />
+      <p>
+        <Label labelId='book.step3.i_accept' />{' '}
+        <span
+          tabIndex={0}
+          className='cursor-pointer underline'
+          onClick={handleTermsLinkClick}
+          onKeyDown={(event) => {
+            if (event.key === 'Enter') handleTermsLinkClick(event);
+          }}
+        >
+          <Label labelId='terms_of_service.title' />
+        </span>
+      </p>
+    </Panel>
+  );
+
   return (
     <div className='flex flex-col gap-4'>
       <Panel className='px-4 py-6'>
@@ -98,21 +134,7 @@ const Step3 = () => {
           </tbody>
         </table>
       </Panel>
-      <Panel
-        className='flex cursor-pointer items-center gap-2 p-4'
-        onClick={() => setTermsAccepted(!termsAccepted)}
-      >
-        <CheckBox isChecked={termsAccepted} />
-        <p>
-          <Label labelId='book.step3.i_accept' />{' '}
-          <span
-            className='cursor-pointer underline'
-            onClick={handleTermsLinkClick}
-          >
-            <Label labelId='terms_of_service.title' />
-          </span>
-        </p>
-      </Panel>
+      {acceptTerms}
       <FormError className='text-left'>{bookingError}</FormError>
       {termsModal}
     </div>

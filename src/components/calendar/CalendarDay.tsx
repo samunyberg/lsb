@@ -44,6 +44,8 @@ const CalendarDay = ({
   return (
     <div
       key={index}
+      role='button'
+      tabIndex={isPassedDay ? -1 : 0}
       className={cn(
         'flex h-[70px] cursor-pointer flex-col items-center justify-between rounded-sm border border-black/5 bg-bgSoft p-4 text-sm  transition-all active:bg-bgSofter lg:h-full lg:flex-row lg:justify-center lg:gap-4 lg:hover:bg-bgSofter',
         {
@@ -54,6 +56,12 @@ const CalendarDay = ({
       onClick={() => {
         onSelectDate(new Date(currentYear, selectedMonth, index));
         onShowExpandedDay();
+      }}
+      onKeyDown={(event) => {
+        if (event.key === 'Enter' && !isPassedDay) {
+          onSelectDate(new Date(currentYear, selectedMonth, index));
+          onShowExpandedDay();
+        }
       }}
     >
       <span>{index}</span>

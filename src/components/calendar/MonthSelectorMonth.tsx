@@ -21,7 +21,14 @@ const MonthSelectorMonth = ({
       className={cn('mx-2 h-full cursor-pointer text-sm  transition-all', {
         'font-bold': isSelected,
       })}
+      tabIndex={0}
       onClick={() => onSelect(currentMonth)}
+      onKeyDown={(event) => {
+        if (event.key === 'Enter') {
+          event.preventDefault();
+          onSelect(currentMonth);
+        }
+      }}
     >
       {month}
     </span>

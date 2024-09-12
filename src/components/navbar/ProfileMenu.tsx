@@ -44,21 +44,29 @@ const ProfileMenu = ({ user, onClose }: Props) => {
         {user.isAdmin && (
           <div className='mb-4 flex items-center gap-1'>
             <GrUserAdmin size={15} />
-            <Link href={'/admin'} onClick={() => onClose()}>
+            <Link
+              href={'/admin'}
+              onClick={() => onClose()}
+              aria-label='Go to the admin area'
+            >
               <Label labelId='profile_menu.admin_area' />
             </Link>
           </div>
         )}
         <div className='flex items-center gap-1'>
           <IoPerson size={15} />
-          <Link href={`/account/${user.id}`} onClick={() => onClose()}>
+          <Link
+            href={`/account/${user.id}`}
+            aria-label='View my information'
+            onClick={() => onClose()}
+          >
             <Label labelId='profile_menu.my_account' />
           </Link>
         </div>
         <Spacer className='my-0' />
         <div className='flex items-center gap-1'>
           <MdLogout size={20} />
-          <button onClick={handleSignOut}>
+          <button onClick={handleSignOut} aria-label='Log out'>
             <Label labelId='profile_menu.logout' />
           </button>
         </div>
