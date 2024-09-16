@@ -36,6 +36,9 @@
   "validation.password_min_length": "Password must be at least 8 characters long.",
   "validation.password_requirements": "Password must contain at least one uppercase letter, one lowercase letter, and one digit.",
   "validation.passwords_do_not_match": "Passwords do not match.",
+  "validation.name_too_short": "Name must be at least 3 characters long.",
+  "validation.name_too_long": "Name cannot be over 50 characters long.",
+  "validation.message_too_long": "Message cannot be over 500 characters long.",
 
   "password_strength.title": "Strength",
   "password_strength.weak": "Weak",
@@ -176,6 +179,9 @@
   "about.privacy_policy.list_password": "Password - Your password is securely stored in an encrypted form to ensure the safety of your account",
   "about.privacy_policy.section_2": "Your personal information is used solely for the purpose of managing your appointments and providing you with the best service possible. Your information is never shared with any third parties.",
 
+  "contact.title": "Contact",
+  "contact.contact_header.text": "Any questions? Please contact me via the form below, or send me a message in Instagram, and I will be happy to help you!",
+  
   "admin_navigation.dashboard": "Dashboard",
   "admin_navigation.appointments": "Appointments",
   "admin_navigation.clients": "Clients",

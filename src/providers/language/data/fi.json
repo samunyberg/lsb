@@ -3,7 +3,7 @@
   "navigation.book": "Varaa",
   "navigation.styles": "Tyylit",
   "navigation.about": "Tietoja",
-  "navigation.contact": "Yhteystiedot",
+  "navigation.contact": "Ota yhteyttä",
 
   "sidebar.change_language": "Vaihda kieli",
 
@@ -36,6 +36,9 @@
   "validation.password_min_length": "Salasanan on oltava vähintään 8 merkkiä pitkä.",
   "validation.password_requirements": "Salasanan on sisällettävä vähintään yksi iso kirjain, yksi pieni kirjain ja yksi numero.",
   "validation.passwords_do_not_match": "Salasanat eivät täsmää.",
+  "validation.name_too_short": "Nimen on oltava vähintään 3 merkkiä pitkä.",
+  "validation.name_too_long": "Nimi ei voi olla yli 50 merkkiä pitkä",
+  "validation.message_too_long": "Viesti ei voi olla yli 500 merkkiä pitkä",
 
   "password_strength.title": "Vahvuus",
   "password_strength.weak": "Heikko",
@@ -68,7 +71,7 @@
   "appointment.style": "Tyyli",
   "appointment.service": "Palvelu",
   "appointment.price": "Hinta",
-  "appointment.discount": "Mahdollista alennusta ei huimioitu.",
+  "appointment.discount": "Mahdollista alennusta ei huomioitu.",
 
   "style.name": "Nimi",
   "style.description_en": "Kuvaus",
@@ -175,6 +178,9 @@
   "about.privacy_policy.list_email": "Sähköpostiosoite - Lähettääksemme sinulle vahvistusviestejä, muistutuksia ja tärkeitä päivityksiä.",
   "about.privacy_policy.list_password": "Salasana - Salasanasi tallennetaan turvallisesti salattuna varmistaaksemme tilisi turvallisuuden",
   "about.privacy_policy.section_2": "Henkilötietojasi käytetään yksinomaan varausten hallintaan ja parhaan palvelun tarjoamiseen sinulle. Tietojasi ei koskaan jaeta kolmansille osapuolille.",
+
+  "contact.title": "Ota Yhteyttä",
+  "contact.contact_header.text": "Onko sinulla kysymyksiä? Ota minuun yhteyttä alla olevalla lomakkeella, tai lähetä viesti Instagramissa, niin autan sinua mielelläni!",
 
   "admin_navigation.dashboard": "Hallintapaneeli",
   "admin_navigation.appointments": "Varaukset",
