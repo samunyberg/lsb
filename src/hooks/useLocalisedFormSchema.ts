@@ -118,6 +118,22 @@ const useLocalisedFormSchema = () => {
     phone: z.string().regex(validPhone, getLabel('validation.invalid_phone')),
   });
 
+  const contactFormSchema = z.object({
+    name: z
+      .string()
+      .min(1, getLabel('validation.required'))
+      .min(3, getLabel('validation.name_too_short'))
+      .max(50, getLabel('validation.name_too_long')),
+    email: z
+      .string()
+      .min(1, getLabel('validation.required'))
+      .email(getLabel('validation.invalid_email')),
+    message: z
+      .string()
+      .min(1, getLabel('validation.required'))
+      .max(500, getLabel('validation.name_too_long')),
+  });
+
   return {
     registerFormSchema,
     editAccountSchema,
@@ -128,6 +144,7 @@ const useLocalisedFormSchema = () => {
     styleSchema,
     serviceSchema,
     adminBookingFormSchema,
+    contactFormSchema,
   };
 };
 

@@ -1,6 +1,7 @@
 import Button from '@/components/common/Button';
 import FormError from '@/components/common/forms/FormError';
 import FormGroup from '@/components/common/forms/FormGroup';
+import TextArea from '@/components/common/forms/TextArea';
 import Label from '@/components/common/Label';
 import useLanguage from '@/hooks/useLanguage';
 import { ReactNode } from 'react';
@@ -33,9 +34,8 @@ const NoteForm = ({
     <form className='flex flex-col gap-2' onSubmit={onSubmit}>
       <FormError>{error}</FormError>
       <FormGroup error={validationError}>
-        <textarea
+        <TextArea
           id='adminNote'
-          className='h-36 resize-none rounded-sm border border-black/20 p-2  shadow transition-all focus:outline-accent'
           value={formData.adminNote}
           placeholder={getLabel('admin.appointments.note_form_placeholder')}
           onChange={onInputChange}
