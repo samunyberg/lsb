@@ -17,7 +17,7 @@ const RecentlyBooked = ({ initialData }: Props) => {
     queryKey: ['recently-booked'],
     queryFn: () =>
       axios
-        .get<AppointmentWithData[]>('/api/appointments/recent')
+        .get<AppointmentWithData[]>('/api/admin/appointments/recent')
         .then((res) => res.data),
     refetchInterval: 5 * 60 * 1000,
     initialData: initialData,

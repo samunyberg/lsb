@@ -81,7 +81,7 @@ const EditPersonalInformation = ({ user }: Props) => {
 
   return (
     <>
-      <h2 className='mb-5 text-xl font-semibold'>
+      <h2 className='mb-5 text-lg uppercase tracking-wide'>
         <Label labelId='edit_information_form.title' />
       </h2>
       <form onSubmit={handleSubmit} className='flex flex-col gap-4'>

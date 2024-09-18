@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { FiMenu } from 'react-icons/fi';
 import LanguageSwitcher from './LanguageSwitcher';
 import NavAuth from './NavAuth';
-import NavLinks from './NavLinks';
+import NavbarLinks from './NavbarLinks';
 import NavLogo from './NavLogo';
 import Sidebar from './Sidebar';
 
@@ -32,9 +32,7 @@ const Navbar = () => {
           />
           <NavLogo />
           <div className='flex flex-row items-center gap-5'>
-            <div className='hidden lg:inline'>
-              <NavLinks />
-            </div>
+            <NavbarLinks />
             <div className='hidden lg:inline lg:w-[90px]'>
               <LanguageSwitcher />
             </div>

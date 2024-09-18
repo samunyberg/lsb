@@ -29,7 +29,7 @@ const PasswordStrength = ({ password }: { password: string }) => {
           {<Label labelId={passwdStrengthLabels[strength]} />}
         </span>
       </p>
-      <div className='w-full'>
+      <div className='w-full rounded-full bg-bgSoft shadow'>
         <div
           className={cn('h-2 w-full rounded-full transition-all', {
             'w-[15%] bg-red-400': strength === 0,

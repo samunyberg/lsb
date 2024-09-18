@@ -116,16 +116,19 @@ const Step3 = () => {
   return (
     <div className='flex flex-col gap-4'>
       <Panel className='px-4 py-6'>
-        <Label labelId='book.step3.check_information' />
-        <span className='font-semibold'> {session?.user.email}.</span>
+        <p className='text-center'>
+          <Label labelId='book.step3.check_information' />
+          <span className='font-semibold'> {session?.user.email}.</span>
+        </p>
+        <Spacer />
         <table className='mt-6 w-full'>
           <tbody>
             {items.map((item) => (
               <tr
                 key={item.label}
-                className='border-b border-black/20 last:border-none'
+                className='border-b border-black/10 last:border-none'
               >
-                <td className='border-r border-black/20 p-2 text-sm font-semibold'>
+                <td className='border-r border-black/10 p-2 text-sm font-semibold'>
                   {item.label}
                 </td>
                 <td className='p-2'>{item.content}</td>

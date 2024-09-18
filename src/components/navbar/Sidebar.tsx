@@ -6,7 +6,7 @@ import { useEffect, useRef } from 'react';
 import { MdClose } from 'react-icons/md';
 import Label from '../common/Label';
 import LanguageSwitcher from './LanguageSwitcher';
-import NavLinks from './NavLinks';
+import SidebarLinks from './SidebarLinks';
 
 interface Props {
   isOpen: boolean;
@@ -66,7 +66,7 @@ const Sidebar = ({ isOpen, onClose }: Props) => {
               </p>
               <LanguageSwitcher />
             </div>
-            <NavLinks onLinkClick={() => onClose()} />
+            <SidebarLinks onLinkClick={() => onClose()} />
           </div>
         </motion.aside>
       )}

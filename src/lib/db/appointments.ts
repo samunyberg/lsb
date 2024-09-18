@@ -1,11 +1,11 @@
 import { AppointmentSearchQuery } from '@/app/admin/appointments/search/page';
 import { PaginationData } from '@/components/Pagination';
+import prisma from '@/prisma/client';
 import { AppointmentWithData } from '../types';
 import {
   formatDate,
   getFirstAndLastDateOfMonth,
 } from '../utils/dateAndTimeUtils';
-import prisma from '@/prisma/client';
 
 const clientSelectClause = {
   id: true,
@@ -62,6 +62,23 @@ export async function getPaginatedAppointmentsBySearchTerm(
               { client: { firstName: { contains: term } } },
               { client: { lastName: { contains: term } } },
               { client: { email: { contains: term } } },
+              {
+                AND:
+                  term.split(' ').length > 1
+                    ? [
+                        {
+                          client: {
+                            firstName: { contains: term.split(' ')[0] },
+                          },
+                        },
+                        {
+                          client: {
+                            lastName: { contains: term.split(' ')[1] },
+                          },
+                        },
+                      ]
+                    : {},
+              },
             ],
           }
         : {},

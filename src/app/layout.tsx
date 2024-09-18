@@ -24,7 +24,9 @@ export default function RootLayout({
       <body className={raleway.className}>
         <Providers>
           <Navbar />
-          <div className='container mx-auto px-4 md:px-0'>{children}</div>
+          <div className='container mx-auto px-4 md:px-6 lg:px-8 xl:px-0'>
+            {children}
+          </div>
         </Providers>
         <div id='portal-root'></div>
         <ToastContainer

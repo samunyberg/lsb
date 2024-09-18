@@ -135,16 +135,19 @@ const Reschedule = ({ oldAppointment, upcomingAppointments }: Props) => {
   );
 
   return (
-    <ManagementPage title={getLabel('admin.appointments.reschedule.title')}>
+    <ManagementPage
+      title={getLabel('admin.appointments.reschedule.title')}
+      className='pb-10'
+    >
       <div className='mt-8 flex flex-col gap-8 lg:flex-row'>
         <div className='lg:w-1/3'>
-          <p className='mb-3'>
+          <p className='mb-3 font-semibold'>
             <Label labelId='admin.appointments.reschedule.original_appointment_time' />
           </p>
           <AppointmentPanel appointment={oldAppointment} showClient showStyle />
         </div>
         <div className='flex-1'>
-          <p className='rounded-sm bg-bgSoft p-2 shadow'>
+          <p className='mb-3 font-semibold'>
             <Label labelId='admin.appointments.reschedule.select_new_appointment_time' />
           </p>
           <Calendar

@@ -48,7 +48,10 @@ const AdminNoteForm = ({ isVisible, appointment, onClose }: Props) => {
 
     try {
       setIsSubmitting(true);
-      await axios.patch(`/api/appointments/${appointment.id}/update`, formData);
+      await axios.patch(
+        `/api/admin/appointments/${appointment.id}/update`,
+        formData
+      );
       handleSubmitSuccess();
     } catch (error: unknown) {
       if (error instanceof AxiosError) setError(error.response?.data.error);

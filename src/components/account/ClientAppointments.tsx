@@ -12,7 +12,7 @@ interface Props {
 const ClientAppointments = ({ appointments }: Props) => {
   return (
     <div>
-      <h2 className='mb-5 text-xl font-semibold'>
+      <h2 className='mb-5 text-lg uppercase tracking-wide'>
         <Label labelId='account.client_appointments.title' />
       </h2>
       {appointments.length === 0 ? (

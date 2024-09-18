@@ -57,7 +57,7 @@ const ClientOverview = ({ client }: Props) => {
   return (
     <>
       <ManagementPage title={formatName(client)} actions={actions}>
-        <div className='mt-6 flex flex-col lg:flex-row lg:gap-8'>
+        <div className='mt-6 flex flex-col pb-10 lg:flex-row lg:gap-8'>
           <div className='lg:w-3/5'>
             <Panel>
               <table className='w-full border-collapse rounded-sm border border-black/20 shadow'>
