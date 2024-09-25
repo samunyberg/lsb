@@ -34,7 +34,7 @@ const Intro = () => {
             <Link
               aria-label='Book an appointment'
               href='/book'
-              className='rounded-sm border-2 border-primary bg-accent px-6 py-3 text-[18px] uppercase tracking-wide text-black transition-all hover:bg-accentButtonHover active:bg-accentButtonHover'
+              className='rounded-sm border-2 border-primary bg-accent px-6 py-3 text-[18px] uppercase tracking-wide text-white transition-all hover:bg-accentButtonHover active:bg-accentButtonHover'
             >
               <Label labelId='intro.book_button' />
             </Link>
