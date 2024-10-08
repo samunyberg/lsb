@@ -1,11 +1,10 @@
 'use client';
 
+import Button from '@/components/common/Button';
 import useLanguage from '@/hooks/useLanguage';
+import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import ManagementPage from '../ManagementPage';
-import { useRouter } from 'next/navigation';
-import Button from '@/components/common/Button';
-import SearchInput from '@/components/common/forms/SearchInput';
 
 const SearchAppointments = () => {
   const router = useRouter();
