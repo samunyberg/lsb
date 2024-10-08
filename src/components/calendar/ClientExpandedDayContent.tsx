@@ -37,7 +37,7 @@ const ClientExpandedDayContent = ({
           />
         </div>
       ) : (
-        <div className='flex h-36 items-center justify-center '>
+        <div className='flex h-48 items-center justify-center '>
           <Label labelId='calendar.expanded_day.no_appointments' />
         </div>
       )}

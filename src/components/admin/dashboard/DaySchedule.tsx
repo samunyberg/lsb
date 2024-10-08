@@ -1,6 +1,5 @@
 import AppointmentStatusBadge from '@/components/common/appointments/AppointmentStatusBadge';
 import Label from '@/components/common/Label';
-import Panel from '@/components/common/Panel';
 import useLanguage from '@/hooks/useLanguage';
 import useLocale from '@/hooks/useLocale';
 import { formatTime } from '@/lib/utils/dateAndTimeUtils';
@@ -18,9 +17,9 @@ const DaySchedule = ({ appointments }: Props) => {
 
   if (appointments.length === 0)
     return (
-      <Panel className='px-4 py-12'>
-        <Label labelId='admin.dashboard.today.no_appointments' />
-      </Panel>
+      <div className='flex h-48 items-center justify-center px-4 text-center'>
+        <Label labelId='calendar.expanded_day.no_appointments' />
+      </div>
     );
 
   return (
