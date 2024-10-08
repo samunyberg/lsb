@@ -60,7 +60,7 @@ const ClientOverview = ({ client }: Props) => {
         <div className='mt-6 flex flex-col pb-10 lg:flex-row lg:gap-8'>
           <div className='lg:w-3/5'>
             <Panel>
-              <table className='w-full border-collapse rounded-sm border border-black/20 shadow'>
+              <table className='w-full border-collapse rounded-sm shadow'>
                 <tbody>
                   {items.map((item) => (
                     <tr key={item.label} className='border-b border-black/20'>

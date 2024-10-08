@@ -1,4 +1,6 @@
+import ClientSearchBar from '@/components/admin/clients/ClientSearchBar';
 import ClientTable from '@/components/admin/clients/ClientTable';
+import ManagementPage from '@/components/admin/ManagementPage';
 import { PaginationData } from '@/components/Pagination';
 import { getPaginatedClients } from '@/lib/db/clients';
 
@@ -16,7 +18,12 @@ const AdminClientsPage = async ({
 
   const { clients, count } = await getPaginatedClients(pagination);
 
-  return <ClientTable clients={clients} itemsCount={count} />;
+  return (
+    <ManagementPage title='Clients'>
+      <ClientSearchBar />
+      <ClientTable clients={clients} itemsCount={count} />
+    </ManagementPage>
+  );
 };
 
 export const dynamic = 'force-dynamic';

@@ -1,13 +1,10 @@
 'use client';
 
 import AppointmentStatusBadge from '@/components/common/appointments/AppointmentStatusBadge';
-import SearchDate from '@/components/common/forms/SearchDate';
-import SearchInput from '@/components/common/forms/SearchInput';
 import useLanguage from '@/hooks/useLanguage';
 import { AppointmentWithData } from '@/lib/types';
 import { formatDate, formatTime } from '@/lib/utils/dateAndTimeUtils';
 import Link from 'next/link';
-import ManagementPage from '../ManagementPage';
 import PaginatedTable from '../PaginatedTable';
 import { Config } from '../Table';
 
@@ -72,26 +69,12 @@ const AppointmentTable = ({ appointments, itemsCount }: Props) => {
   const keyFn = (app: AppointmentWithData) => app.id;
 
   return (
-    <ManagementPage
-      title={getLabel('admin.appointments.title')}
-      className='pb-10'
-    >
-      <div className='flex flex-col gap-5'>
-        <div className='flex flex-col gap-3 md:flex-row md:p-2 lg:w-[50%] lg:self-end'>
-          <SearchDate id='date-input' type='date' />
-          <SearchInput
-            id='term'
-            placeholder={getLabel('admin.appointments.search_placeholder')}
-          />
-        </div>
-        <PaginatedTable
-          data={appointments}
-          itemsCount={itemsCount}
-          config={config}
-          keyFn={keyFn}
-        />
-      </div>
-    </ManagementPage>
+    <PaginatedTable
+      data={appointments}
+      itemsCount={itemsCount}
+      config={config}
+      keyFn={keyFn}
+    />
   );
 };
 

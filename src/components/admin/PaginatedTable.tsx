@@ -1,5 +1,6 @@
 'use client';
 
+import Panel from '../common/Panel';
 import Pagination from '../Pagination';
 import Table, { Config } from './Table';
 
@@ -16,7 +17,13 @@ interface Props<T> {
 
 const PaginatedTable = <T,>({ data, itemsCount, config, keyFn }: Props<T>) => {
   if (!data || data.length === 0)
-    return <div className='p-2 '>No data to display</div>;
+    return (
+      <div className='flex w-full items-center justify-center pt-12'>
+        <Panel className='flex items-center justify-center p-5'>
+          <p>No results with this search.</p>
+        </Panel>
+      </div>
+    );
 
   return (
     <div className='w-full overflow-x-auto'>

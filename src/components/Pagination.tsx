@@ -23,15 +23,22 @@ const Pagination = ({ className = '', itemsCount }: Props) => {
   const pageSize = parseInt(searchParams.get('pageSize') || '10');
   const totalPages = Math.ceil(itemsCount / pageSize);
 
+  const params = new URLSearchParams(searchParams.toString());
+
   const handlePreviousPage = () => {
     if (currentPage > 1) {
-      router.replace(`${pathName}?pageNumber=${currentPage - 1}`);
+      params.set('pageNumber', (currentPage - 1).toString());
+      params.set('pageSize', pageSize.toString());
+      router.replace(`${pathName}?${params.toString()}`);
     }
   };
 
   const handleNextPage = () => {
-    if (currentPage < totalPages)
-      router.replace(`${pathName}?pageNumber=${currentPage + 1}`);
+    if (currentPage < totalPages) {
+      params.set('pageNumber', (currentPage + 1).toString());
+      params.set('pageSize', pageSize.toString());
+      router.replace(`${pathName}?${params.toString()}`);
+    }
   };
 
   if (itemsCount <= pageSize) return null;
@@ -39,19 +46,19 @@ const Pagination = ({ className = '', itemsCount }: Props) => {
   return (
     <div className={`flex items-center justify-between ${className}`}>
       <Button
-        className='!h-fit !w-fit !px-2 !py-1 !text-xs'
+        className='w-fit'
         onClick={handlePreviousPage}
         disabled={currentPage === 1}
       >
         <Label labelId='general.previous' />
       </Button>
-      <div className='flex gap-2 text-xs '>
+      <div className='flex gap-2 text-sm '>
         <span>{`${getLabel('pagination.results')}: ${itemsCount}`}</span>
         <span>|</span>
         <span>{`${getLabel('pagination.page')} ${currentPage} / ${totalPages}`}</span>
       </div>
       <Button
-        className='!h-fit !w-fit !px-2 !py-1 !text-xs'
+        className='w-fit'
         onClick={handleNextPage}
         disabled={currentPage === totalPages}
       >

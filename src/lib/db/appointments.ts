@@ -27,64 +27,23 @@ todayStart.setHours(0, 0, 0, 0);
 const todayEnd = new Date();
 todayEnd.setHours(23, 59, 59, 999);
 
-export async function getAdminInitialAppointments({
-  pageNumber,
-  pageSize,
-}: PaginationData): Promise<{
-  appointments: AppointmentWithData[];
-  count: number;
-}> {
-  const [appointments, count] = await Promise.all([
-    prisma.appointment.findMany({
-      skip: (pageNumber - 1) * pageSize,
-      take: pageSize,
-      include: appointmentIncludeOptions,
-      where: { dateTime: { gte: todayStart } },
-    }),
-    prisma.appointment.count(),
-  ]);
-
-  return { appointments, count };
-}
-
 export async function getPaginatedAppointmentsBySearchTerm(
-  { term, date }: AppointmentSearchQuery,
+  { clientName, startDate, endDate }: AppointmentSearchQuery,
   { pageNumber, pageSize }: PaginationData
 ): Promise<{ appointments: AppointmentWithData[]; count: number }> {
-  const startOfDay = date ? new Date(date + 'T00:00:00Z') : undefined;
-  const endOfDay = date ? new Date(date + 'T23:59:59Z') : undefined;
-
-  const whereClause = {
-    AND: [
-      term
-        ? {
-            OR: [
-              { client: { firstName: { contains: term } } },
-              { client: { lastName: { contains: term } } },
-              { client: { email: { contains: term } } },
-              {
-                AND:
-                  term.split(' ').length > 1
-                    ? [
-                        {
-                          client: {
-                            firstName: { contains: term.split(' ')[0] },
-                          },
-                        },
-                        {
-                          client: {
-                            lastName: { contains: term.split(' ')[1] },
-                          },
-                        },
-                      ]
-                    : {},
-              },
-            ],
-          }
-        : {},
-
-      date ? { dateTime: { gte: startOfDay, lte: endOfDay } } : {},
-    ],
+  const where = {
+    dateTime: {
+      gte: new Date(startDate! + 'T00:00:00Z'),
+      lte: new Date(endDate! + 'T23:59:59Z'),
+    },
+    client: clientName
+      ? {
+          OR: [
+            { firstName: { contains: clientName } },
+            { lastName: { contains: clientName } },
+          ],
+        }
+      : undefined,
   };
 
   const [appointments, count] = await Promise.all([
@@ -92,9 +51,11 @@ export async function getPaginatedAppointmentsBySearchTerm(
       skip: (pageNumber - 1) * pageSize,
       take: pageSize,
       include: appointmentIncludeOptions,
-      where: whereClause,
+      where,
     }),
-    prisma.appointment.count({ where: whereClause }),
+    prisma.appointment.count({
+      where,
+    }),
   ]);
 
   return { appointments, count };

@@ -1,23 +1,19 @@
-import AppointmentTable from '@/components/admin/appointments/AppointmentTable';
-import { PaginationData } from '@/components/Pagination';
-import { getAdminInitialAppointments } from '@/lib/db/appointments';
+import AppointmentSearchBar from '@/components/admin/appointments/AppointmentSearchBar';
+import ManagementPage from '@/components/admin/ManagementPage';
+import Panel from '@/components/common/Panel';
+import { FaSearch } from 'react-icons/fa';
 
-interface Props {
-  searchParams: { pageSize: string; pageNumber: string };
-}
-
-const AdminAppointmentsPage = async ({
-  searchParams: { pageNumber, pageSize },
-}: Props) => {
-  const pagination: PaginationData = {
-    pageNumber: parseInt(pageNumber) || 1,
-    pageSize: parseInt(pageSize) || 10,
-  };
-
-  const { appointments, count } = await getAdminInitialAppointments(pagination);
-
+const AdminAppointmentsPage = async () => {
   return (
-      <AppointmentTable appointments={appointments} itemsCount={count} />
+    <ManagementPage title='Appointments'>
+      <AppointmentSearchBar />
+      <div className='flex w-full items-center justify-center pt-12'>
+        <Panel className='flex flex-col items-center justify-center gap-5 p-5'>
+          <FaSearch size={30} />
+          <p>Search appointments by date range and/or client name.</p>
+        </Panel>
+      </div>
+    </ManagementPage>
   );
 };
 
