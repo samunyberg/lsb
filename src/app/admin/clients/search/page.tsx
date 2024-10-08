@@ -1,4 +1,6 @@
+import ClientSearchBar from '@/components/admin/clients/ClientSearchBar';
 import ClientTable from '@/components/admin/clients/ClientTable';
+import ManagementPage from '@/components/admin/ManagementPage';
 import { PaginationData } from '@/components/Pagination';
 import { getClientsBySearchTerm } from '@/lib/db/clients';
 
@@ -16,7 +18,15 @@ const AdminSearchClientsPage = async ({
 
   const { clients, count } = await getClientsBySearchTerm(term, pagination);
 
-  return <ClientTable clients={clients} itemsCount={count} />;
+  const getTitle = () =>
+    `${count} ${count === 1 ? 'result' : 'results'} for '${term}'`;
+
+  return (
+    <ManagementPage title={getTitle()} className='pb-10'>
+      <ClientSearchBar />
+      <ClientTable clients={clients} itemsCount={count} />
+    </ManagementPage>
+  );
 };
 
 export const dynamic = 'force-dynamic';

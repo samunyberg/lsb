@@ -55,6 +55,12 @@ const StyleForm = ({ style }: Props) => {
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
+    // Prevent submission if form data hasn't changed
+    if (JSON.stringify(formData) === JSON.stringify(initialData)) {
+      toast.info('No changes detected');
+      return;
+    }
+
     const validationResult = styleSchema.safeParse(formData);
     if (!validationResult.success) {
       setValidationErrors(validationResult.error.flatten().fieldErrors);
@@ -148,7 +154,7 @@ const StyleForm = ({ style }: Props) => {
           <Label labelId='style_form.image_preview' />
         </p>
         <Spacer className='my-2' />
-        <div className='relative mb-5 h-[200px] w-full self-center overflow-hidden rounded-sm border-2 border-transparent shadow-2xl'>
+        <div className='relative mb-5 h-[200px] w-[80%] self-center overflow-hidden rounded-sm border-2 border-transparent shadow'>
           <CldImage
             key={formData.imageId}
             src={formData.imageId || 'fallback-image_mllokb'}

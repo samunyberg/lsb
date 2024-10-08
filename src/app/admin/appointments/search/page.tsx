@@ -1,18 +1,22 @@
+import AppointmentSearchBar from '@/components/admin/appointments/AppointmentSearchBar';
 import AppointmentTable from '@/components/admin/appointments/AppointmentTable';
+import ManagementPage from '@/components/admin/ManagementPage';
 import { PaginationData } from '@/components/Pagination';
 import { getPaginatedAppointmentsBySearchTerm } from '@/lib/db/appointments';
 
 export interface AppointmentSearchQuery {
-  term: string | null;
-  date: string | null;
+  clientName: string | null;
+  startDate: string | null;
+  endDate: string | null;
 }
 
 interface Props {
   searchParams: {
     pageNumber: string;
     pageSize: string;
-    term: string | null;
-    date: string | null;
+    clientName: string | null;
+    startDate: string | null;
+    endDate: string | null;
   };
 }
 
@@ -23,8 +27,9 @@ const AdminSearchAppointmentsPage = async ({ searchParams }: Props) => {
   };
 
   const query: AppointmentSearchQuery = {
-    term: searchParams.term,
-    date: searchParams.date,
+    clientName: searchParams.clientName,
+    startDate: searchParams.startDate,
+    endDate: searchParams.endDate,
   };
 
   const { appointments, count } = await getPaginatedAppointmentsBySearchTerm(
@@ -32,7 +37,14 @@ const AdminSearchAppointmentsPage = async ({ searchParams }: Props) => {
     pagination
   );
 
-  return <AppointmentTable appointments={appointments} itemsCount={count} />;
+  const getTitle = () => `${count} results`;
+
+  return (
+    <ManagementPage title={getTitle()} className='pb-10'>
+      <AppointmentSearchBar />
+      <AppointmentTable appointments={appointments} itemsCount={count} />
+    </ManagementPage>
+  );
 };
 
 export default AdminSearchAppointmentsPage;

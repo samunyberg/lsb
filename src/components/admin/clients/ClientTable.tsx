@@ -1,10 +1,8 @@
 'use client';
 
-import SearchInput from '@/components/common/forms/SearchInput';
 import useLanguage from '@/hooks/useLanguage';
 import { Client } from '@/lib/types';
 import Link from 'next/link';
-import ManagementPage from '../ManagementPage';
 import PaginatedTable from '../PaginatedTable';
 import { Config } from '../Table';
 
@@ -43,22 +41,12 @@ const ClientTable = ({ clients, itemsCount }: Props) => {
   const keyFn = (client: Client) => client.id;
 
   return (
-    <ManagementPage title={getLabel('admin.clients.title')}>
-      <div className='flex flex-col gap-5'>
-        <div className='flex md:w-[50%] md:self-end md:p-2 lg:w-[35%]'>
-          <SearchInput
-            id='client-search'
-            placeholder={getLabel('admin.clients.search_placeholder')}
-          />
-        </div>
-        <PaginatedTable
-          data={clients}
-          config={config}
-          keyFn={keyFn}
-          itemsCount={itemsCount}
-        />
-      </div>
-    </ManagementPage>
+    <PaginatedTable
+      data={clients}
+      config={config}
+      keyFn={keyFn}
+      itemsCount={itemsCount}
+    />
   );
 };
 
