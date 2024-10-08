@@ -10,7 +10,7 @@ const AppointmentDatePicker = ({ selectedDate, onSelectDate }: Props) => {
         type='date'
         value={selectedDate}
         onChange={(event) => onSelectDate(event.target.value)}
-        className='h-full w-full cursor-text rounded-sm p-2 text-sm text-primary shadow focus:outline-accent'
+        className='h-full w-full cursor-text rounded-sm bg-white/80 p-2 text-sm text-primary shadow focus:outline-accent'
       />
     </div>
   );

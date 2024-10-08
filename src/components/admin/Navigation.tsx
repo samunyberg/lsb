@@ -15,6 +15,13 @@ const links = [
 const Navigation = () => {
   const pathName = usePathname();
 
+  const isActive = (link: { href: string; label: string }) => {
+    const subroute = pathName.split('/')[2];
+    if (!subroute && pathName === link.href) return true;
+
+    return subroute === link.href.split('/')[2];
+  };
+
   return (
     <div className='flex h-[55px] items-center justify-evenly gap-1 lg:justify-start lg:gap-4'>
       {links.map((link) => (
@@ -24,7 +31,8 @@ const Navigation = () => {
           className={cn(
             'transition-all active:text-accent lg:hover:text-accent',
             {
-              'font-bold uppercase': link.href === pathName,
+              'font-bold uppercase hover:cursor-default lg:hover:text-primary':
+                isActive(link),
             }
           )}
         >
