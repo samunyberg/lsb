@@ -49,29 +49,22 @@ const StyleDisplayItem = ({ style }: Props) => {
           />
           <p
             className={cn(
-              'absolute -left-5 -top-5 rounded-sm border border-primary bg-white/30 p-2 text-xl  uppercase tracking-wide backdrop-blur-sm lg:text-[20px]'
+              'absolute -left-5 -top-5 rounded-sm border border-primary bg-white/30 p-2 text-xl uppercase tracking-wide backdrop-blur-sm lg:text-[20px]'
             )}
           >
             {style.name}
           </p>
         </div>
-        <div className='mx-auto w-[90%]'>
-          <p className='mb-5 break-words  tracking-wide'>
-            {currentLanguage === 'en'
-              ? style.description_en
-              : style.description_fi}
-          </p>
-          <div
-            className='flex cursor-pointer items-center justify-center gap-2 text-[16px]  tracking-wide'
-            onClick={() => setShowPrices(!showPrices)}
-          >
-            {showPrices ? (
-              <Label labelId='styles.hide_pricing' />
-            ) : (
-              <Label labelId='styles.show_pricing' />
-            )}
-            {showPrices ? <FaChevronUp /> : <FaChevronDown />}
-          </div>
+        <div
+          className='flex cursor-pointer items-center justify-center gap-2 text-[16px] tracking-wide'
+          onClick={() => setShowPrices(!showPrices)}
+        >
+          {showPrices ? (
+            <Label labelId='styles.hide_pricing' />
+          ) : (
+            <Label labelId='styles.show_pricing' />
+          )}
+          {showPrices ? <FaChevronUp /> : <FaChevronDown />}
         </div>
       </div>
       <div

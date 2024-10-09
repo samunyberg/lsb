@@ -92,7 +92,7 @@ export async function PATCH(request: NextRequest, { params }: Props) {
             styleId: body.styleId,
             styleName: style.name,
             serviceId: body.serviceId,
-            serviceNameEn: service.description_en,
+            serviceNameEn: service.name_en,
             serviceNameFi: service.name_fi,
             servicePrice: service.price,
           },

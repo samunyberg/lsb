@@ -26,7 +26,7 @@ const Table = <T,>({ data, config, keyFn }: Props<T>) => {
 
   if (data.length === 0)
     return (
-      <div className=''>
+      <div className='p-5'>
         <Label labelId='table.no_data' />
       </div>
     );
@@ -40,7 +40,7 @@ const Table = <T,>({ data, config, keyFn }: Props<T>) => {
               {config.columns.map((column) => (
                 <th
                   key={column.label}
-                  className='border-b border-black/10 py-2 pl-3 text-start  uppercase tracking-wide'
+                  className='border-b border-black/10 py-2 pl-3 text-start uppercase tracking-wide'
                 >
                   {column.label}
                 </th>

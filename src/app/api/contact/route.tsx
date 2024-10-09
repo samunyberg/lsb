@@ -28,7 +28,7 @@ export async function POST(req: NextRequest) {
   try {
     await resend.emails.send({
       from: 'no-reply@lashesstudiobyboochita.com',
-      to: 'samu.nyberg@gmail.com',
+      to: process.env.ADMIN_EMAIL!,
       subject: `Contact form submission from ${trimmedData.name}`,
       html: `<p>You have a new contact form submission:</p>
               <p><strong>Name:</strong> ${trimmedData.name}</p>

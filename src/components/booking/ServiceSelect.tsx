@@ -70,31 +70,24 @@ const ServiceSelect = ({
         if (event.key === 'Enter') handleServiceSelect(event, service);
       }}
     >
-      <div className='flex flex-col gap-1'>
-        <div className='flex items-center justify-between'>
-          <p className='text-[15px]  uppercase tracking-wide'>
-            {currentLanguage === 'en' ? service.name_en : service.name_fi}
-          </p>
-          {selectedService?.id === service.id && (
-            <motion.span
-              initial={{ scale: 0 }}
-              animate={{ scale: 1 }}
-              transition={{
-                type: 'spring',
-                stiffness: 260,
-                damping: 15,
-              }}
-              className='pr-5'
-            >
-              <FaCheck size={16} />
-            </motion.span>
-          )}
-        </div>
-        <p className='text-sm '>
-          {currentLanguage === 'en'
-            ? service.description_en
-            : service.description_fi}
+      <div className='flex items-center justify-between'>
+        <p className='text-[15px] uppercase tracking-wide'>
+          {currentLanguage === 'en' ? service.name_en : service.name_fi}
         </p>
+        {selectedService?.id === service.id && (
+          <motion.span
+            initial={{ scale: 0 }}
+            animate={{ scale: 1 }}
+            transition={{
+              type: 'spring',
+              stiffness: 260,
+              damping: 15,
+            }}
+            className='pr-5'
+          >
+            <FaCheck size={16} />
+          </motion.span>
+        )}
       </div>
     </span>
   );
