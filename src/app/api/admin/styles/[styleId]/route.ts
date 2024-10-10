@@ -22,8 +22,6 @@ export async function PATCH(req: NextRequest, { params: { styleId } }: Props) {
       where: { id },
       data: {
         name: body.name,
-        description_en: body.description_en,
-        description_fi: body.description_fi,
         imageUrl: body.imageId,
       },
     });

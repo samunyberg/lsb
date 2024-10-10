@@ -19,15 +19,11 @@ import UploadImage from './UploadImage';
 
 export interface StyleFormData {
   name: string;
-  description_en: string;
-  description_fi: string;
   imageId: string;
 }
 
 export interface StyleFormValidationErrors {
   name?: string[];
-  description_en?: string[];
-  description_fi?: string[];
 }
 
 interface Props {
@@ -41,8 +37,6 @@ const StyleForm = ({ style }: Props) => {
 
   const initialData: StyleFormData = {
     name: style?.name || '',
-    description_en: style?.description_en || '',
-    description_fi: style?.description_fi || '',
     imageId: style?.imageUrl || '',
   };
 
@@ -122,30 +116,6 @@ const StyleForm = ({ style }: Props) => {
           value={formData.name}
           type='text'
           placeholder={getLabel('style_form.name')}
-          onChange={handleInputChange}
-        />
-      </FormGroup>
-      <FormGroup
-        label={getLabel('style_form.description_en')}
-        error={validationErrors?.description_en?.at(0)}
-      >
-        <Input
-          id='description_en'
-          value={formData.description_en}
-          type='text'
-          placeholder={getLabel('style_form.description_en')}
-          onChange={handleInputChange}
-        />
-      </FormGroup>
-      <FormGroup
-        label={getLabel('style_form.description_fi')}
-        error={validationErrors?.description_fi?.at(0)}
-      >
-        <Input
-          id='description_fi'
-          value={formData.description_fi}
-          type='text'
-          placeholder={getLabel('style_form.description_fi')}
           onChange={handleInputChange}
         />
       </FormGroup>

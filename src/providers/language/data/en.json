@@ -271,8 +271,6 @@
   "reset_password_form.submit": "Reset password",
 
   "style_form.name": "Name",
-  "style_form.description_en": "English description",
-  "style_form.description_fi": "Finnish description",
   "style_form.image_preview": "Image preview",
   "style_form.change_image": "Change image",
   "style_form.upload_image": "Upload image",

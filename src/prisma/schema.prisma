@@ -45,13 +45,11 @@ enum Status {
 }
 
 model Style {
-  id             Int           @id @default(autoincrement())
-  name           String        @db.VarChar(255)
-  description_en String
-  description_fi String
-  imageUrl       String
-  services       Service[]
-  appointments   Appointment[]
+  id           Int           @id @default(autoincrement())
+  name         String        @db.VarChar(255)
+  imageUrl     String
+  services     Service[]
+  appointments Appointment[]
 }
 
 model Service {

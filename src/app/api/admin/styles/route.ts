@@ -18,8 +18,6 @@ export async function POST(req: NextRequest) {
     const style = await prisma.style.create({
       data: {
         name: body.name,
-        description_en: body.description_en,
-        description_fi: body.description_fi,
         imageUrl: body.imageId,
       },
     });

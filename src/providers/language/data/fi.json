@@ -271,8 +271,6 @@
   "reset_password_form.submit": "Vaihda salasana",
 
   "style_form.name": "Nimi",
-  "style_form.description_en": "Eng. kuvaus",
-  "style_form.description_fi": "Suom. kuvaus",
   "style_form.image_preview": "Kuvan esikatselu",
   "style_form.change_image": "Vaihda kuva",
   "style_form.upload_image": "Lataa kuva",
