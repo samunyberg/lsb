@@ -24,6 +24,19 @@ html {
   }
 }
 
+input[type='date'] {
+  width: 100%;
+  height: 100%;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+textarea:focus {
+  appearance: none;
+  -webkit-appearance: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
 @media (max-width: 430px) {
   .toastContainer {
     width: 100% !important;

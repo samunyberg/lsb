@@ -1,4 +1,3 @@
-import MapComponent from '@/components/about/Map';
 import Container from '@/components/common/Container';
 import Hero from '@/components/common/Hero';
 import Label from '@/components/common/Label';
@@ -16,24 +15,17 @@ const AboutPage = async () => {
     <div>
       {subtitle('about.location.title')}
       <div className='flex flex-col gap-6 lg:flex-row lg:gap-8'>
-        <div className='px-2 py-4'>
-          <ul className='flex flex-col lg:mt-8'>
-            <li>
-              <Label labelId='about.location.address_line_1' />
-            </li>
-            <Spacer className='my-0' />
-            <li>
-              <Label labelId='about.location.address_line_2' />
-            </li>
-            <Spacer className='my-0' />
-            <li>
-              <Label labelId='about.location.address_line_3' />
-            </li>
-          </ul>
-        </div>
-        <div className='h-[350px] w-full overflow-hidden border border-black/10 shadow-xl lg:w-[600px]'>
-          <MapComponent />
-        </div>
+        <ul className='flex flex-col gap-3 lg:mt-8'>
+          <li>
+            <Label labelId='about.location.address_line_1' />
+          </li>
+          <li>
+            <Label labelId='about.location.address_line_2' />
+          </li>
+          <li>
+            <Label labelId='about.location.address_line_3' />
+          </li>
+        </ul>
       </div>
     </div>
   );
