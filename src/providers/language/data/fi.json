@@ -4,6 +4,7 @@
   "navigation.styles": "Tyylit",
   "navigation.about": "Tietoja",
   "navigation.contact": "Ota yhteyttä",
+  "navigation.reviews": "Arvostelut",
 
   "sidebar.change_language": "Vaihda kieli",
 
@@ -181,6 +182,8 @@
 
   "contact.title": "Ota Yhteyttä",
   "contact.contact_header.text": "Onko sinulla kysymyksiä? Ota minuun yhteyttä alla olevalla lomakkeella, tai lähetä viesti Instagramissa, niin autan sinua mielelläni!",
+
+  "reviews.title": "Arvostelut",
 
   "admin_navigation.dashboard": "Etusivu",
   "admin_navigation.appointments": "Varaukset",

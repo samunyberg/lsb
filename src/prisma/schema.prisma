@@ -76,6 +76,20 @@ model User {
   appointments   Appointment[]
 }
 
+model Review {
+  id        Int          @id @default(autoincrement())
+  createdAt DateTime     @default(now())
+  stars     Int
+  name      String       @db.VarChar(255)
+  text      String       @db.VarChar(1000)
+  status    ReviewStatus
+}
+
+enum ReviewStatus {
+  PENDING
+  APPROVED
+}
+
 model VerificationToken {
   identifier String
   token      String   @unique

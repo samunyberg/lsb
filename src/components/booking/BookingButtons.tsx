@@ -25,7 +25,7 @@ const BookingButtons = ({
         variant='accent'
         className='lg:w-fit lg:min-w-[200px]'
         onClick={onNextClick}
-        disabled={isNextDisabled}
+        disabled={isNextDisabled || isSubmitting}
         isLoading={isSubmitting}
       >
         {currentStep === steps.length ? (

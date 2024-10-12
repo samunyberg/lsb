@@ -4,6 +4,7 @@
   "navigation.styles": "Styles",
   "navigation.about": "About",
   "navigation.contact": "Contact",
+  "navigation.reviews": "Reviews",
 
   "sidebar.change_language": "Change language",
 
@@ -182,6 +183,8 @@
   "contact.title": "Contact",
   "contact.contact_header.text": "Any questions? Please contact me via the form below, or send me a message in Instagram, and I will be happy to help you!",
   
+  "reviews.title": "Reviews",
+
   "admin_navigation.dashboard": "Dashboard",
   "admin_navigation.appointments": "Appointments",
   "admin_navigation.clients": "Clients",

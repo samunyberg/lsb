@@ -1,36 +1,14 @@
 import { cn } from 'clsx-tailwind-merge';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import Label from '../common/Label';
-
-const links = [
-  {
-    href: '/',
-    label: <Label labelId='navigation.home' />,
-  },
-  {
-    href: '/book',
-    label: <Label labelId='navigation.book' />,
-  },
-  {
-    href: '/styles',
-    label: <Label labelId='navigation.styles' />,
-  },
-  {
-    href: '/about',
-    label: <Label labelId='navigation.about' />,
-  },
-  {
-    href: '/contact',
-    label: <Label labelId='navigation.contact' />,
-  },
-];
+import { NavigationLink } from './Navbar';
 
 interface Props {
+  links: NavigationLink[];
   onLinkClick?: () => void;
 }
 
-const SidebarLinks = ({ onLinkClick }: Props) => {
+const SidebarLinks = ({ links, onLinkClick }: Props) => {
   const pathName = usePathname();
 
   return (
