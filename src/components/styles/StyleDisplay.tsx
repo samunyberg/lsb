@@ -12,7 +12,7 @@ interface Props {
 
 const StyleDisplay = ({ styles }: Props) => {
   return (
-    <Container className='flex flex-col gap-2 py-10 md:max-w-xl lg:max-w-2xl 2xl:max-w-2xl'>
+    <Container className='flex flex-col gap-2 pb-16 pt-10 md:max-w-xl'>
       {styles.map((style, index) => (
         <Fragment key={style.id}>
           <StyleDisplayItem style={style} />

@@ -38,8 +38,11 @@ const StyleDisplayItem = ({ style }: Props) => {
 
   return (
     <>
-      <div key={style.id} className='flex flex-col gap-5'>
-        <div className='relative mx-auto h-[200px] w-[90%] rounded-sm border-2 border-transparent shadow-2xl'>
+      <div key={style.id}>
+        <h2 className='mb-2 text-[18px] uppercase tracking-wide lg:text-[20px]'>
+          {style.name}
+        </h2>
+        <div className='relative mx-auto mb-5 h-[200px] rounded-sm border-2 border-transparent shadow-2xl md:w-[80%]'>
           <CldImage
             src={style.imageUrl || 'fallback-image_mllokb'}
             alt='style image'
@@ -47,16 +50,9 @@ const StyleDisplayItem = ({ style }: Props) => {
             priority
             className='object-cover'
           />
-          <p
-            className={cn(
-              'absolute -left-5 -top-5 rounded-sm border border-primary bg-white/30 p-2 text-xl uppercase tracking-wide backdrop-blur-sm lg:text-[20px]'
-            )}
-          >
-            {style.name}
-          </p>
         </div>
         <div
-          className='flex cursor-pointer items-center justify-center gap-2 text-[16px] tracking-wide'
+          className='flex w-fit cursor-pointer items-center justify-center gap-2 rounded-sm border border-primary p-2 text-[16px] tracking-wide'
           onClick={() => setShowPrices(!showPrices)}
         >
           {showPrices ? (
@@ -69,7 +65,7 @@ const StyleDisplayItem = ({ style }: Props) => {
       </div>
       <div
         className={cn(
-          'mt-3 max-h-0 w-full overflow-hidden rounded-sm bg-white/40 opacity-0 shadow-lg transition-all duration-500',
+          'mt-3 max-h-0 w-full overflow-hidden rounded-sm bg-white/60 opacity-0 shadow-lg transition-all duration-500',
           {
             'max-h-[500px] opacity-100': showPrices,
           }
