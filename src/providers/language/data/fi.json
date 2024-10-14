@@ -184,11 +184,25 @@
   "contact.contact_header.text": "Onko sinulla kysymyksiä? Ota minuun yhteyttä alla olevalla lomakkeella, tai lähetä viesti Instagramissa, niin autan sinua mielelläni!",
 
   "reviews.title": "Arvostelut",
+  "reviews.header": "Mitä mieltä olet kokemuksestasi paikassa Lashes Studio by Boochita? Arvostaisin suuresti, jos voisit kirjoittaa arvostelun, jotta...",
+  "reviews.li1": "Muut asiakkaat kuulevat mielipiteesi",
+  "reviews.li2": "Voin parantaa palveluani",
+  "reviews.please_give_rating": "Anna arviosi, kiitos",
+  "reviews.name_placeholder": "Nimi (muut käyttäjät näkevät tämän)",
+  "reviews.text_placeholder": "Arvostelun teksti",
+  "reviews.star_selector.rating": "Arviosi",
+  "reviews.submit_button": "Lähetä",
+  "reviews.reviewList.average_rating.header_singlular": "Arvostelu",
+  "reviews.reviewList.average_rating.header_plural": "Arvostelua",
+  "reviews.reviewList.average_rating.average_rating": "Keskiarvo",
+  "reviews.reviewList.show_older_button": "Näytä vanhemmat",
+  "reviews.reviewList.no_reviews": "Ei arvosteluja. Voinko pyytää sinulta palvelusta? Kirjoita minulle arvostelu ylläolevalla lomakkeella. Kiitos!",
 
   "admin_navigation.dashboard": "Etusivu",
   "admin_navigation.appointments": "Varaukset",
   "admin_navigation.clients": "Asiakkaat",
   "admin_navigation.styles": "Palvelut",
+  "admin_navigation.reviews": "Arvostelut",
 
   "admin.appointments.title": "Varaukset",
   "admin.appointments.search_placeholder": "Hae asiakastiedon perusteella",
@@ -224,6 +238,10 @@
   "admin.services.new_service.style": "Tyylille:",
   "admin.services.manage.title": "Hallitse palvelua",
   "admin.services.service_overview.for": "Tämä palvelu on tyylille:",
+
+  "admin.pending_reviews.no_reviews": "Ei hyväksyttäviä arvosteluja",
+  "admin.pending_reviews.delete_button": "Poista",
+  "admin.pending_reviews.approve_button": "Hyväksy",
 
   "admin.dashboard.today.title": "Tänään",
   "admin.dashboard.today.show_all_button": "Näytä kaikki",

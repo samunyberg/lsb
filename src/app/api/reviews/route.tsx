@@ -29,7 +29,7 @@ export async function POST(req: NextRequest) {
       subject: 'New Review Pending Approval',
       html: `<p>A new review has been submitted by ${name}:</p>
              <p>${text}</p>
-             <p><a href="https://yourapp.com/admin/approve-review?id=${review.id}">Click here to approve the review</a></p>`,
+             <p><a href="https://yourapp.com/admin/approve-review?id=${review.id}">Click here to approve or delete the review</a></p>`,
     });
 
     return NextResponse.json(

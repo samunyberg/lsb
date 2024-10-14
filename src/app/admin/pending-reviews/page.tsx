@@ -1,17 +1,10 @@
-import ManagementPage from '@/components/admin/ManagementPage';
 import PendingReviewList from '@/components/admin/pendingReviews/PendingReviewList';
-import prisma from '@/prisma/client';
+import { getPendingReviews } from '@/lib/db/reviews';
 
 const AdminPendingReviewsPage = async () => {
-  const reviews = await prisma.review.findMany({
-    where: { status: 'PENDING' },
-  });
+  const reviews = await getPendingReviews();
 
-  return (
-    <ManagementPage title='Pending Reviews' className='pb-12'>
-      <PendingReviewList reviews={reviews} />
-    </ManagementPage>
-  );
+  return <PendingReviewList reviews={reviews} />;
 };
 
 export default AdminPendingReviewsPage;

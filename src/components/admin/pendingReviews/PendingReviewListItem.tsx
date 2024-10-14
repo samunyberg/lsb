@@ -1,4 +1,5 @@
 import Button from '@/components/common/Button';
+import Label from '@/components/common/Label';
 import ReviewListItem from '@/components/reviews/ReviewListItem';
 import { Review } from '@prisma/client';
 import axios from 'axios';
@@ -54,7 +55,7 @@ const PendingReviewListItem = ({ review }: Props) => {
           isLoading={isDeleting}
           disabled={isDeleting || isApproving}
         >
-          Delete
+          <Label labelId='admin.pending_reviews.delete_button' />
         </Button>
         <Button
           variant='primary'
@@ -63,7 +64,7 @@ const PendingReviewListItem = ({ review }: Props) => {
           isLoading={isApproving}
           disabled={isDeleting || isApproving}
         >
-          Approve
+          <Label labelId='admin.pending_reviews.approve_button' />
         </Button>
       </div>
     </div>

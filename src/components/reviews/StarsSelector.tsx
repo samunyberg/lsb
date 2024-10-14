@@ -1,6 +1,7 @@
 import { cn } from 'clsx-tailwind-merge';
 import { FaRegStar, FaStar } from 'react-icons/fa';
 import Panel from '../common/Panel';
+import Label from '../common/Label';
 
 interface Props {
   selected: number;
@@ -19,7 +20,9 @@ const StarsSelector = ({ selected, onSelect }: Props) => {
 
   return (
     <Panel className='flex flex-col gap-4 px-3 py-4'>
-      <p className='text-center text-lg uppercase'>Your rating</p>
+      <p className='text-center text-lg uppercase'>
+        <Label labelId='reviews.star_selector.rating' />
+      </p>
       <div className='flex justify-around'>
         {stars.map((star) => (
           <div

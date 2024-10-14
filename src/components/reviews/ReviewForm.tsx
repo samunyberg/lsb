@@ -1,5 +1,6 @@
 'use client';
 
+import useLanguage from '@/hooks/useLanguage';
 import useLocalisedFormSchema from '@/hooks/useLocalisedFormSchema';
 import axios, { AxiosError } from 'axios';
 import { useState } from 'react';
@@ -7,9 +8,12 @@ import { toast } from 'react-toastify';
 import Button from '../common/Button';
 import FormError from '../common/forms/FormError';
 import FormGroup from '../common/forms/FormGroup';
-import Input from '../common/forms/Input';
 import TextArea from '../common/forms/TextArea';
+import Label from '../common/Label';
+import Spacer from '../common/Spacer';
+import CustomInput from './CustomInput';
 import StarsSelector from './StarsSelector';
+import { FaSearch } from 'react-icons/fa';
 
 interface FormData {
   stars: number;
@@ -24,6 +28,7 @@ interface FieldErrors {
 }
 
 const ReviewForm = () => {
+  const { getLabel } = useLanguage();
   const { reviewFormSchema } = useLocalisedFormSchema();
   const [formData, setFormData] = useState<FormData>({
     stars: 0,
@@ -64,43 +69,62 @@ const ReviewForm = () => {
   };
 
   return (
-    <form className='my-5 flex flex-col gap-5' onSubmit={handleSubmit}>
-      <div className='relative mx-auto mb-2 w-[70%]'>
-        {validationErrors.stars?.at(0) && (
-          <span className='absolute -right-4 -top-5 rounded-sm bg-red-300 px-2 py-1 text-white shadow'>
-            Please give your rating
-          </span>
-        )}
-        <StarsSelector selected={formData.stars} onSelect={handleStarsSelect} />
-      </div>
-      <FormGroup
-        error={validationErrors.name?.at(0)}
-        label='Name (this will be visible to other users)'
-      >
-        <Input
+    <div>
+      <h2 className='mt-8'>
+        <Label labelId='reviews.header' />
+      </h2>
+      <ul className='mt-6 flex list-disc flex-col gap-2 px-8'>
+        <li>
+          <Label labelId='reviews.li1' />
+        </li>
+        <li>
+          <Label labelId='reviews.li2' />
+        </li>
+      </ul>
+      <Spacer className='!my-8' />
+      <form className='my-5 flex flex-col gap-5' onSubmit={handleSubmit}>
+        <div className='relative mx-auto mb-2 w-[70%]'>
+          {validationErrors.stars?.at(0) && (
+            <span className='absolute -right-4 -top-5 rounded-sm bg-red-300 px-2 py-1 text-white shadow'>
+              Please give your rating
+            </span>
+          )}
+          <StarsSelector
+            selected={formData.stars}
+            onSelect={handleStarsSelect}
+          />
+        </div>
+        <CustomInput
           id='name'
+          isRequired
           value={formData.name}
-          placeholder='Your name'
+          label={getLabel('reviews.name_placeholder')}
           onChange={(event) =>
             setFormData({ ...formData, name: event.target.value })
           }
+          error={validationErrors.name?.at(0)}
         />
-      </FormGroup>
-      <FormGroup error={validationErrors.text?.at(0)} label='Review text'>
-        <TextArea
+        <CustomInput
+          as='textarea'
           id='text'
+          isRequired
           value={formData.text}
-          placeholder='You can write your review here!'
+          label={getLabel('reviews.text_placeholder')}
           onChange={(event) =>
             setFormData({ ...formData, text: event.target.value })
           }
+          error={validationErrors.text?.at(0)}
         />
-      </FormGroup>
-      <FormError>{error}</FormError>
-      <Button variant='accent' isLoading={isSubmitting} disabled={isSubmitting}>
-        Submit your review
-      </Button>
-    </form>
+        <FormError>{error}</FormError>
+        <Button
+          variant='accent'
+          isLoading={isSubmitting}
+          disabled={isSubmitting}
+        >
+          <Label labelId='reviews.submit_button' />
+        </Button>
+      </form>
+    </div>
   );
 };
 

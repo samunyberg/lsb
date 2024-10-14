@@ -6,6 +6,7 @@ import Panel from '../common/Panel';
 import AverageRating from './AverageRating';
 import ReviewListItem from './ReviewListItem';
 import { useState } from 'react';
+import Label from '../common/Label';
 
 interface Props {
   reviews: Review[];
@@ -26,8 +27,7 @@ const ReviewList = ({ reviews }: Props) => {
       <AverageRating reviews={reviews} />
       {reviews.length === 0 ? (
         <Panel className='p-5'>
-          No reviews yet. Can I ask you a favour? Write me a review using the
-          above form. Thank you!
+          <Label labelId='reviews.reviewList.no_reviews' />
         </Panel>
       ) : (
         <div className='my-6 flex flex-col gap-5'>
@@ -41,7 +41,7 @@ const ReviewList = ({ reviews }: Props) => {
         onClick={() => setPage(page + 1)}
         disabled={page === totalPages - 1}
       >
-        Show Older
+        <Label labelId='reviews.reviewList.show_older_button' />
       </Button>
     </div>
   );

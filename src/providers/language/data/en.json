@@ -182,13 +182,28 @@
 
   "contact.title": "Contact",
   "contact.contact_header.text": "Any questions? Please contact me via the form below, or send me a message in Instagram, and I will be happy to help you!",
-  
+
   "reviews.title": "Reviews",
+  "reviews.header": "How was your experience with me? I would appreciate if you could write a review to...",
+  "reviews.li1": "Let other people know your thoughts",
+  "reviews.li2": "Help me to improve my service",
+  "reviews.please_give_rating": "Please give your rating",
+  "reviews.name_placeholder": "Name (this will be visible to other users)",
+  "reviews.text_placeholder": "Review text",
+  "reviews.star_selector.rating": "Your rating",
+  "reviews.submit_button": "Submit",
+  "reviews.reviewList.average_rating.header_singlular": "Reviews",
+  "reviews.reviewList.average_rating.header_plural": "Reviews",
+  "reviews.reviewList.average_rating.average_rating": "Reviews",
+  "reviews.reviewList.show_older_button": "Show older",
+  "reviews.reviewList.no_reviews": "No reviews yet. Can I ask you a favour? Write me a review using the form above. Thank you!",
+
 
   "admin_navigation.dashboard": "Dashboard",
   "admin_navigation.appointments": "Appointments",
   "admin_navigation.clients": "Clients",
   "admin_navigation.styles": "Styles",
+  "admin_navigation.reviews": "Reviews",
 
   "admin.appointments.title": "Appointments",
   "admin.appointments.search_placeholder": "Search by client name",
@@ -218,12 +233,16 @@
   "admin.style_table.add_button": "Add style",
   "admin.styles.new_style.title": "Add New Style",
   "admin.styles.manage.title": "Manage style",
-  
+
   "admin.services.title": "Services",
   "admin.services.new_service.title": "Add New Service",
   "admin.services.new_service.style": "For style:",
   "admin.services.manage.title": "Manage service",
   "admin.services.service_overview.for": "This service is for:",
+
+  "admin.pending_reviews.no_reviews": "No pending reviews",
+  "admin.pending_reviews.delete_button": "Delete",
+  "admin.pending_reviews.approve_button": "Approve",
 
   "admin.dashboard.today.title": "Today",
   "admin.dashboard.today.show_all_button": "Show all",
