@@ -1,12 +1,12 @@
 'use client';
 
 import { Review } from '@prisma/client';
+import { useState } from 'react';
 import Button from '../common/Button';
+import Label from '../common/Label';
 import Panel from '../common/Panel';
 import AverageRating from './AverageRating';
 import ReviewListItem from './ReviewListItem';
-import { useState } from 'react';
-import Label from '../common/Label';
 
 interface Props {
   reviews: Review[];
@@ -36,13 +36,15 @@ const ReviewList = ({ reviews }: Props) => {
           ))}
         </div>
       )}
-      <Button
-        variant='primary'
-        onClick={() => setPage(page + 1)}
-        disabled={page === totalPages - 1}
-      >
-        <Label labelId='reviews.reviewList.show_older_button' />
-      </Button>
+      {reviews.length > visibleItems && (
+        <Button
+          variant='primary'
+          onClick={() => setPage(page + 1)}
+          disabled={page === totalPages - 1}
+        >
+          <Label labelId='reviews.reviewList.show_older_button' />
+        </Button>
+      )}
     </div>
   );
 };
