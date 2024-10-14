@@ -7,4 +7,6 @@ const AdminPendingReviewsPage = async () => {
   return <PendingReviewList reviews={reviews} />;
 };
 
+export const dynamic = 'force-dynamic';
+
 export default AdminPendingReviewsPage;

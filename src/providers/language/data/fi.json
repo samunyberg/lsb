@@ -192,9 +192,9 @@
   "reviews.text_placeholder": "Arvostelun teksti",
   "reviews.star_selector.rating": "Arviosi",
   "reviews.submit_button": "Lähetä",
-  "reviews.reviewList.average_rating.header_singlular": "Arvostelu",
+  "reviews.reviewList.average_rating.header_singular": "Arvostelu",
   "reviews.reviewList.average_rating.header_plural": "Arvostelua",
-  "reviews.reviewList.average_rating.average_rating": "Keskiarvo",
+  "reviews.reviewList.average_rating.average_rating": "Keskiarvo:",
   "reviews.reviewList.show_older_button": "Näytä vanhemmat",
   "reviews.reviewList.no_reviews": "Ei arvosteluja. Voinko pyytää sinulta palvelusta? Kirjoita minulle arvostelu ylläolevalla lomakkeella. Kiitos!",
 

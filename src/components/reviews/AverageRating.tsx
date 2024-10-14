@@ -18,7 +18,7 @@ const AverageRating = ({ reviews }: Props) => {
 
   const title =
     reviews.length === 1
-      ? getLabel('reviews.reviewList.average_rating.header_singlular')
+      ? getLabel('reviews.reviewList.average_rating.header_singular')
       : getLabel('reviews.reviewList.average_rating.header_plural');
 
   if (reviews.length === 0) return null;

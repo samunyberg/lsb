@@ -192,12 +192,11 @@
   "reviews.text_placeholder": "Review text",
   "reviews.star_selector.rating": "Your rating",
   "reviews.submit_button": "Submit",
-  "reviews.reviewList.average_rating.header_singlular": "Reviews",
+  "reviews.reviewList.average_rating.header_singular": "Review",
   "reviews.reviewList.average_rating.header_plural": "Reviews",
-  "reviews.reviewList.average_rating.average_rating": "Reviews",
+  "reviews.reviewList.average_rating.average_rating": "Average:",
   "reviews.reviewList.show_older_button": "Show older",
   "reviews.reviewList.no_reviews": "No reviews yet. Can I ask you a favour? Write me a review using the form above. Thank you!",
-
 
   "admin_navigation.dashboard": "Dashboard",
   "admin_navigation.appointments": "Appointments",
