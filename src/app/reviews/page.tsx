@@ -10,7 +10,7 @@ const ReviewsPage = async () => {
   const reviews = await getApprovedReviews();
 
   return (
-    <Container className='max-w-lg pb-12'>
+    <Container className='max-w-lg pb-16'>
       <Hero title='reviews.title' imgData={heroImg} imgAlt='lashes image' />
       <ReviewForm />
       <Spacer className='!my-10' />
