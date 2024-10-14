@@ -10,6 +10,7 @@ const links = [
   { href: '/admin/appointments', label: 'admin_navigation.appointments' },
   { href: '/admin/clients', label: 'admin_navigation.clients' },
   { href: '/admin/styles', label: 'admin_navigation.styles' },
+  { href: '/admin/pending-reviews', label: 'admin_navigation.reviews' },
 ];
 
 const Navigation = () => {
@@ -23,7 +24,7 @@ const Navigation = () => {
   };
 
   return (
-    <div className='flex h-[55px] items-center justify-evenly gap-1 lg:justify-start lg:gap-4'>
+    <div className='flex h-[55px] items-center justify-evenly gap-5 overflow-x-scroll md:justify-start md:overflow-x-hidden'>
       {links.map((link) => (
         <Link
           key={link.href}

@@ -110,6 +110,7 @@ const ContactForm = ({ name, email }: Props) => {
         variant='accent'
         className='mt-3 flex items-center gap-2'
         isLoading={isSending}
+        disabled={isSending}
       >
         <Label labelId='general.send' />
         <IoSend size={15} />

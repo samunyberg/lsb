@@ -6,14 +6,16 @@ import { useEffect, useRef } from 'react';
 import { MdClose } from 'react-icons/md';
 import Label from '../common/Label';
 import LanguageSwitcher from './LanguageSwitcher';
+import { NavigationLink } from './Navbar';
 import SidebarLinks from './SidebarLinks';
 
 interface Props {
+  links: NavigationLink[];
   isOpen: boolean;
   onClose: () => void;
 }
 
-const Sidebar = ({ isOpen, onClose }: Props) => {
+const Sidebar = ({ links, isOpen, onClose }: Props) => {
   const sidebarRef = useRef<HTMLElement | null>(null);
   const closeButtonRef = useRef<HTMLDivElement | null>(null);
 
@@ -66,7 +68,7 @@ const Sidebar = ({ isOpen, onClose }: Props) => {
               </p>
               <LanguageSwitcher />
             </div>
-            <SidebarLinks onLinkClick={() => onClose()} />
+            <SidebarLinks links={links} onLinkClick={() => onClose()} />
           </div>
         </motion.aside>
       )}

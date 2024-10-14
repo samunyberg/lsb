@@ -131,7 +131,20 @@ const useLocalisedFormSchema = () => {
     message: z
       .string()
       .min(1, getLabel('validation.required'))
-      .max(500, getLabel('validation.name_too_long')),
+      .max(500, getLabel('validation.message_too_long')),
+  });
+
+  const reviewFormSchema = z.object({
+    name: z
+      .string()
+      .min(1, getLabel('validation.required'))
+      .min(3, getLabel('validation.name_too_short'))
+      .max(50, getLabel('validation.name_too_long')),
+    stars: z.number().min(1).max(5),
+    text: z
+      .string()
+      .min(1, getLabel('validation.required'))
+      .max(1000, getLabel('validation.message_too_long')),
   });
 
   return {
@@ -145,6 +158,7 @@ const useLocalisedFormSchema = () => {
     serviceSchema,
     adminBookingFormSchema,
     contactFormSchema,
+    reviewFormSchema,
   };
 };
 

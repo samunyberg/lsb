@@ -32,7 +32,15 @@ const Button = ({
       )}
       {...rest}
     >
-      {isLoading ? <ThreeDots color='#fff' height={30} width={30} /> : children}
+      {isLoading ? (
+        <ThreeDots
+          color={variant === 'primary' ? '#524237' : '#fff'}
+          height={30}
+          width={30}
+        />
+      ) : (
+        children
+      )}
     </button>
   );
 };
