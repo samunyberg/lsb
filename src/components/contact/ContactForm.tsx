@@ -94,6 +94,7 @@ const ContactForm = ({ name, email }: Props) => {
         error={validationErrors.email?.at(0)}
       />
       <CustomInput
+        as='textarea'
         id='message'
         aria-label='Message'
         label='Message'
