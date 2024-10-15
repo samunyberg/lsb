@@ -55,7 +55,6 @@
   "confirmation_dialog.header": "Varoitus!",
   "confirmation_dialog.content": "Oletko varma?",
   "confirmation_dialog.confirm": "Kirjoita Delete vahvistaaksesi",
-  "confirmation_dialog.placeholder": "Kirjoita tähän...",
 
   "appointment_status.booked": "Varattu",
   "appointment_status.available": "Vapaa",

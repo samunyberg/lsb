@@ -1,12 +1,9 @@
 'use client';
 
 import Button from '@/components/common/Button';
+import CustomInput from '@/components/common/forms/CustomInput';
 import FormError from '@/components/common/forms/FormError';
-import FormGroup from '@/components/common/forms/FormGroup';
-import Input from '@/components/common/forms/Input';
 import Label from '@/components/common/Label';
-import Panel from '@/components/common/Panel';
-import Spacer from '@/components/common/Spacer';
 import useLanguage from '@/hooks/useLanguage';
 import useLocalisedFormSchema from '@/hooks/useLocalisedFormSchema';
 import { Style } from '@prisma/client';
@@ -107,24 +104,18 @@ const StyleForm = ({ style }: Props) => {
   return (
     <form className='flex flex-col gap-5' onSubmit={handleSubmit}>
       <FormError>{error}</FormError>
-      <FormGroup
+      <CustomInput
+        id='name'
         label={getLabel('style_form.name')}
+        value={formData.name}
+        onChange={handleInputChange}
         error={validationErrors?.name?.at(0)}
-      >
-        <Input
-          id='name'
-          value={formData.name}
-          type='text'
-          placeholder={getLabel('style_form.name')}
-          onChange={handleInputChange}
-        />
-      </FormGroup>
-      <Panel className='mt-2 flex flex-col px-2 pb-6 pt-3 lg:px-5'>
-        <p className='text-[16px] '>
+      />
+      <div className='flex flex-col'>
+        <p className='mb-2 text-lg font-semibold'>
           <Label labelId='style_form.image_preview' />
         </p>
-        <Spacer className='my-2' />
-        <div className='relative mb-5 h-[200px] w-[80%] self-center overflow-hidden rounded-sm border-2 border-transparent shadow'>
+        <div className='relative mb-5 h-[200px] w-full self-center overflow-hidden rounded-sm'>
           <CldImage
             key={formData.imageId}
             src={formData.imageId || 'fallback-image_mllokb'}
@@ -144,7 +135,7 @@ const StyleForm = ({ style }: Props) => {
             )
           }
         />
-      </Panel>
+      </div>
       <Button
         type='submit'
         variant='accent'

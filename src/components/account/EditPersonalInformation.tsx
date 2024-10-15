@@ -7,9 +7,8 @@ import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { toast } from 'react-toastify';
 import Button from '../common/Button';
+import CustomInput from '../common/forms/CustomInput';
 import FormError from '../common/forms/FormError';
-import FormGroup from '../common/forms/FormGroup';
-import Input from '../common/forms/Input';
 import Label from '../common/Label';
 
 interface FieldErrors {
@@ -86,50 +85,38 @@ const EditPersonalInformation = ({ user }: Props) => {
       </h2>
       <form onSubmit={handleSubmit} className='flex flex-col gap-4'>
         <FormError>{serverError}</FormError>
-        <FormGroup
-          error={errors.firstName?.at(0)}
+        <CustomInput
+          id='firstName'
           label={<Label labelId='edit_information_form.first_name' />}
-        >
-          <Input
-            id='firstName'
-            value={formData.firstName}
-            aria-label='First name'
-            onChange={handleInputChange}
-          />
-        </FormGroup>
-        <FormGroup
-          error={errors.lastName?.at(0)}
+          aria-label='First name'
+          value={formData.firstName}
+          onChange={handleInputChange}
+          error={errors.firstName?.at(0)}
+        />
+        <CustomInput
+          id='lastName'
           label={<Label labelId='edit_information_form.last_name' />}
-        >
-          <Input
-            id='lastName'
-            value={formData.lastName}
-            aria-label='Last name'
-            onChange={handleInputChange}
-          />
-        </FormGroup>
-        <FormGroup
-          error={errors.email?.at(0)}
+          aria-label='Last name'
+          value={formData.lastName}
+          onChange={handleInputChange}
+          error={errors.lastName?.at(0)}
+        />
+        <CustomInput
+          id='email'
           label={<Label labelId='edit_information_form.email' />}
-        >
-          <Input
-            id='email'
-            value={formData.email}
-            aria-label='Email'
-            onChange={handleInputChange}
-          />
-        </FormGroup>
-        <FormGroup
-          error={errors.phone?.at(0)}
+          aria-label='Email'
+          value={formData.email}
+          onChange={handleInputChange}
+          error={errors.email?.at(0)}
+        />
+        <CustomInput
+          id='phone'
           label={<Label labelId='edit_information_form.phone' />}
-        >
-          <Input
-            id='phone'
-            value={formData.phone}
-            aria-label='Phone number'
-            onChange={handleInputChange}
-          />
-        </FormGroup>
+          aria-label='Phone number'
+          value={formData.phone}
+          onChange={handleInputChange}
+          error={errors.phone?.at(0)}
+        />
         <Button
           type='submit'
           variant='accent'

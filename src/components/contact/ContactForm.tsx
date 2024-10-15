@@ -6,10 +6,8 @@ import { useState } from 'react';
 import { IoSend } from 'react-icons/io5';
 import { toast } from 'react-toastify';
 import Button from '../common/Button';
+import CustomInput from '../common/forms/CustomInput';
 import FormError from '../common/forms/FormError';
-import FormGroup from '../common/forms/FormGroup';
-import Input from '../common/forms/Input';
-import TextArea from '../common/forms/TextArea';
 import Label from '../common/Label';
 
 interface FormData {
@@ -79,33 +77,30 @@ const ContactForm = ({ name, email }: Props) => {
       onSubmit={handleSubmit}
     >
       <FormError>{error}</FormError>
-      <FormGroup error={validationErrors.name?.at(0)}>
-        <Input
-          id='name'
-          aria-label='Name'
-          placeholder='Your name'
-          value={formData.name}
-          onChange={handleInputChange}
-        />
-      </FormGroup>
-      <FormGroup error={validationErrors.email?.at(0)}>
-        <Input
-          id='email'
-          aria-label='Email'
-          placeholder='Your email'
-          value={formData.email}
-          onChange={handleInputChange}
-        />
-      </FormGroup>
-      <FormGroup error={validationErrors.message?.at(0)}>
-        <TextArea
-          id='message'
-          aria-label='Message'
-          placeholder='Message'
-          value={formData.message}
-          onChange={handleInputChange}
-        />
-      </FormGroup>
+      <CustomInput
+        id='name'
+        aria-label='Name'
+        label='Your name'
+        value={formData.name}
+        onChange={handleInputChange}
+        error={validationErrors.name?.at(0)}
+      />
+      <CustomInput
+        id='email'
+        aria-label='Email'
+        label='Your email'
+        value={formData.email}
+        onChange={handleInputChange}
+        error={validationErrors.email?.at(0)}
+      />
+      <CustomInput
+        id='message'
+        aria-label='Message'
+        label='Message'
+        value={formData.message}
+        onChange={handleInputChange}
+        error={validationErrors.message?.at(0)}
+      />
       <Button
         variant='accent'
         className='mt-3 flex items-center gap-2'

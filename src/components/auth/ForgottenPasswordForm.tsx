@@ -7,9 +7,8 @@ import Link from 'next/link';
 import { useState } from 'react';
 import { toast } from 'react-toastify';
 import Button from '../common/Button';
+import CustomInput from '../common/forms/CustomInput';
 import FormError from '../common/forms/FormError';
-import FormGroup from '../common/forms/FormGroup';
-import Input from '../common/forms/Input';
 import Label from '../common/Label';
 import Spacer from '../common/Spacer';
 import AuthFormContainer from './AuthFormContainer';
@@ -63,21 +62,20 @@ const ForgottenPasswordForm = () => {
         <Label labelId='forgotten_password_form.content' />
       </p>
       <form className='mb-8 mt-5 flex flex-col gap-6' onSubmit={handleSubmit}>
-        <FormGroup error={validationError}>
-          <Input
-            id='email'
-            type='text'
-            value={email}
-            placeholder={getLabel('forgotten_password_form.email')}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-        </FormGroup>
+        <CustomInput
+          id='email'
+          type='text'
+          value={email}
+          label={getLabel('forgotten_password_form.email')}
+          onChange={(e) => setEmail(e.target.value)}
+          error={validationError}
+        />
         <Button variant='accent' className='!w-full' isLoading={isSubmitting}>
           <Label labelId='forgotten_password_form.send_button' />
         </Button>
       </form>
       <Spacer />
-      <Link href='/auth/login' className='text-link px-2'>
+      <Link href='/auth/login' className='px-2 text-link'>
         <Label labelId='general.back' />
       </Link>
     </AuthFormContainer>

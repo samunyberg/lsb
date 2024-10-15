@@ -9,9 +9,8 @@ import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 import Button from '../common/Button';
+import CustomInput from '../common/forms/CustomInput';
 import FormError from '../common/forms/FormError';
-import FormGroup from '../common/forms/FormGroup';
-import Input from '../common/forms/Input';
 import PasswordInput from '../common/forms/PasswordInput';
 import Label from '../common/Label';
 import Spacer from '../common/Spacer';
@@ -106,65 +105,59 @@ const RegisterForm = () => {
       <AuthFormHeader subtitle={<Label labelId='register_form.title' />} />
       <FormError className='mb-4'>{error}</FormError>
       <form className='mb-8 flex flex-col gap-6' onSubmit={handleSubmit}>
-        <FormGroup error={validationErrors.firstName?.at(0)}>
-          <Input
-            id='firstName'
-            autoComplete='given-name'
-            value={formData.firstName}
-            type='text'
-            placeholder={getLabel('register_form.first_name')}
-            onChange={handleInputChange}
-          />
-        </FormGroup>
-        <FormGroup error={validationErrors.lastName?.at(0)}>
-          <Input
-            id='lastName'
-            autoComplete='family-name'
-            value={formData.lastName}
-            type='text'
-            placeholder={getLabel('register_form.last_name')}
-            onChange={handleInputChange}
-          />
-        </FormGroup>
-        <FormGroup error={validationErrors.registerEmail?.at(0)}>
-          <Input
-            id='registerEmail'
-            autoComplete='email'
-            type='text'
-            value={formData.registerEmail}
-            placeholder={getLabel('register_form.email')}
-            onChange={handleInputChange}
-          />
-        </FormGroup>
-        <FormGroup error={validationErrors.registerPassword?.at(0)}>
-          <PasswordInput
-            id='registerPassword'
-            autoComplete='new-password'
-            value={formData.registerPassword}
-            placeholder={getLabel('register_form.password')}
-            onChange={handleInputChange}
-          />
-        </FormGroup>
+        <CustomInput
+          id='firstName'
+          autoComplete='given-name'
+          value={formData.firstName}
+          type='text'
+          label={getLabel('register_form.first_name')}
+          onChange={handleInputChange}
+          error={validationErrors.firstName?.at(0)}
+        />
+        <CustomInput
+          id='lastName'
+          autoComplete='family-name'
+          value={formData.lastName}
+          type='text'
+          label={getLabel('register_form.last_name')}
+          onChange={handleInputChange}
+          error={validationErrors.lastName?.at(0)}
+        />
+        <CustomInput
+          id='registerEmail'
+          autoComplete='email'
+          type='text'
+          value={formData.registerEmail}
+          label={getLabel('register_form.email')}
+          onChange={handleInputChange}
+          error={validationErrors.registerEmail?.at(0)}
+        />
+        <PasswordInput
+          id='registerPassword'
+          autoComplete='new-password'
+          value={formData.registerPassword}
+          label={getLabel('register_form.password')}
+          onChange={handleInputChange}
+          error={validationErrors.registerPassword?.at(0)}
+        />
         <PasswordStrength password={formData.registerPassword} />
-        <FormGroup error={validationErrors.confirmPassword?.at(0)}>
-          <PasswordInput
-            id='confirmPassword'
-            autoComplete='new-password'
-            value={formData.confirmPassword}
-            placeholder={getLabel('register_form.confirm_password')}
-            onChange={handleInputChange}
-          />
-        </FormGroup>
-        <FormGroup error={validationErrors.phone?.at(0)}>
-          <Input
-            id='phone'
-            autoComplete='tel-national'
-            value={formData.phone}
-            type='text'
-            placeholder={getLabel('register_form.phone')}
-            onChange={handleInputChange}
-          />
-        </FormGroup>
+        <PasswordInput
+          id='confirmPassword'
+          autoComplete='new-password'
+          value={formData.confirmPassword}
+          label={getLabel('register_form.confirm_password')}
+          onChange={handleInputChange}
+          error={validationErrors.confirmPassword?.at(0)}
+        />
+        <CustomInput
+          id='phone'
+          autoComplete='tel-national'
+          value={formData.phone}
+          type='text'
+          label={getLabel('register_form.phone')}
+          onChange={handleInputChange}
+          error={validationErrors.phone?.at(0)}
+        />
         <Button variant='accent' type='submit' isLoading={isSubmitting}>
           <Label labelId='register_form.submit_button' />
         </Button>

@@ -1,7 +1,5 @@
 import Button from '@/components/common/Button';
 import FormError from '@/components/common/forms/FormError';
-import FormGroup from '@/components/common/forms/FormGroup';
-import Input from '@/components/common/forms/Input';
 import Modal from '@/components/common/Modal';
 import useLanguage from '@/hooks/useLanguage';
 import axios, { AxiosError } from 'axios';
@@ -9,6 +7,7 @@ import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { RiErrorWarningLine } from 'react-icons/ri';
 import { toast } from 'react-toastify';
+import CustomInput from '../common/forms/CustomInput';
 import Label from '../common/Label';
 
 interface Props {
@@ -60,7 +59,7 @@ const DeleteConfirmation = ({
       }
       content={
         <div className='flex flex-col gap-5'>
-          <div className='flex flex-col gap-4 rounded-sm border-2 border-red-400 px-4 py-3'>
+          <div className='flex flex-col gap-4 rounded-sm border-2 border-accentRed px-4 py-3'>
             <div className='flex items-center gap-1'>
               <RiErrorWarningLine size={25} />
               <p className='text-lg font-semibold'>
@@ -71,15 +70,12 @@ const DeleteConfirmation = ({
               <Label labelId='confirmation_dialog.content' />
             </p>
           </div>
-          <FormGroup label={getLabel('confirmation_dialog.confirm')}>
-            <Input
-              id='name'
-              type='text'
-              placeholder={getLabel('confirmation_dialog.placeholder')}
-              value={text}
-              onChange={(event) => setText(event.target.value)}
-            />
-          </FormGroup>
+          <CustomInput
+            id='name'
+            label={getLabel('confirmation_dialog.confirm')}
+            value={text}
+            onChange={(event) => setText(event.target.value)}
+          />
           <FormError>{error}</FormError>
           <div className='mt-5 flex flex-col gap-4'>
             <Button

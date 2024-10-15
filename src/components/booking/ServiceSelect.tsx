@@ -100,9 +100,9 @@ const ServiceSelect = ({
       aria-expanded={showServices}
       aria-haspopup='listbox'
       className={cn(
-        'relative cursor-pointer rounded-sm bg-white/30 px-4 py-3 shadow transition-all',
+        'relative cursor-pointer rounded-sm border-2 border-transparent bg-bgSofter px-4 py-3 shadow transition-all duration-300',
         {
-          'border border-accent bg-bgSoft':
+          'border-accent bg-bgSoft':
             selectedStyle?.id === style.id && selectedService,
         }
       )}
@@ -145,7 +145,7 @@ const ServiceSelect = ({
             damping: 22,
           }}
           className={cn(
-            'absolute inset-x-6 z-40 flex flex-col gap-3 rounded-lg bg-white/70 py-2 shadow-xl backdrop-blur-lg',
+            'absolute inset-x-6 z-40 flex flex-col gap-3 rounded-lg bg-bgSoft py-2 shadow-xl backdrop-blur-lg',
             {
               '-top-8': !isAbove,
               '-bottom-8': isAbove,

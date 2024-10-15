@@ -8,7 +8,6 @@ import { useState } from 'react';
 import { toast } from 'react-toastify';
 import Button from '../common/Button';
 import FormError from '../common/forms/FormError';
-import FormGroup from '../common/forms/FormGroup';
 import PasswordInput from '../common/forms/PasswordInput';
 import GoBackLink from '../common/GoBackLink';
 import Label from '../common/Label';
@@ -82,40 +81,28 @@ const ChangePasswordForm = () => {
       />
       <form className='flex w-full flex-col gap-4' onSubmit={handleSubmit}>
         <FormError className='mb-4'>{error}</FormError>
-        <FormGroup
-          error={validationErrors.oldPassword?.at(0)}
+        <PasswordInput
+          id='oldPassword'
           label={getLabel('change_password_form.old_password')}
-        >
-          <PasswordInput
-            id='oldPassword'
-            placeholder={getLabel('change_password_form.old_password')}
-            value={formData.oldPassword}
-            onChange={handleInputChange}
-          />
-        </FormGroup>
-        <FormGroup
-          error={validationErrors.newPassword?.at(0)}
+          value={formData.oldPassword}
+          onChange={handleInputChange}
+          error={validationErrors.oldPassword?.at(0)}
+        />
+        <PasswordInput
+          id='newPassword'
           label={getLabel('change_password_form.new_password')}
-        >
-          <PasswordInput
-            id='newPassword'
-            placeholder={getLabel('change_password_form.new_password')}
-            value={formData.newPassword}
-            onChange={handleInputChange}
-          />
-        </FormGroup>
+          value={formData.newPassword}
+          onChange={handleInputChange}
+          error={validationErrors.newPassword?.at(0)}
+        />
         <PasswordStrength password={formData.newPassword} />
-        <FormGroup
-          error={validationErrors.confirmNewPassword?.at(0)}
+        <PasswordInput
+          id='confirmNewPassword'
           label={getLabel('change_password_form.confirm_new_password')}
-        >
-          <PasswordInput
-            id='confirmNewPassword'
-            placeholder={getLabel('change_password_form.confirm_new_password')}
-            value={formData.confirmNewPassword}
-            onChange={handleInputChange}
-          />
-        </FormGroup>
+          value={formData.confirmNewPassword}
+          onChange={handleInputChange}
+          error={validationErrors.confirmNewPassword?.at(0)}
+        />
         <Button
           type='submit'
           variant='accent'

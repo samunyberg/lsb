@@ -1,6 +1,6 @@
 'use client';
 
-import Input from '@/components/common/forms/Input';
+import CustomInput from '@/components/common/forms/CustomInput';
 import { Client } from '@/lib/types';
 import { formatName } from '@/lib/utils/stringUtils';
 import { useMemo, useState } from 'react';
@@ -25,9 +25,9 @@ const ClientSelector = ({ clients, onSelect }: Props) => {
 
   return (
     <div>
-      <Input
+      <CustomInput
         id='clientEmail'
-        placeholder='Search by email...'
+        label='Search by email...'
         value={email}
         onChange={handleChange}
       />

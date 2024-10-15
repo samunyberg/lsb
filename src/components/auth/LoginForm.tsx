@@ -7,8 +7,8 @@ import { useRouter, useSearchParams } from 'next/navigation';
 import { useState } from 'react';
 import { toast } from 'react-toastify';
 import Button from '../common/Button';
+import CustomInput from '../common/forms/CustomInput';
 import FormError from '../common/forms/FormError';
-import Input from '../common/forms/Input';
 import PasswordInput from '../common/forms/PasswordInput';
 import Label from '../common/Label';
 import Spacer from '../common/Spacer';
@@ -57,19 +57,18 @@ const LoginForm = () => {
       <AuthFormHeader subtitle={<Label labelId='login_form.title' />} />
       <FormError className='mb-4'>{error}</FormError>
       <form className='mb-8 flex flex-col gap-6' onSubmit={login}>
-        <Input
+        <CustomInput
           id='email'
           autoComplete='email'
-          type='text'
           value={credentials.email}
-          placeholder={getLabel('login_form.email')}
+          label={getLabel('login_form.email')}
           onChange={handleInputChange}
         />
         <PasswordInput
           id='password'
           autoComplete='current-password'
           value={credentials.password}
-          placeholder={getLabel('login_form.password')}
+          label={getLabel('login_form.password')}
           onChange={handleInputChange}
         />
         <Button variant='accent' type='submit' isLoading={isSubmitting}>

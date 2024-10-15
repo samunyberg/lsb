@@ -27,12 +27,12 @@ const StyleOverview = ({ style }: Props) => {
 
   return (
     <>
-      <ManagementPage title={style.name} actions={actions} className='pb-10'>
+      <ManagementPage title={style.name} actions={actions} className='pb-14'>
         <div className='flex flex-col lg:flex-row lg:gap-8'>
           <div className='lg:w-2/5'>
             <StyleForm style={style} />
           </div>
-          <Spacer className='my-10 lg:hidden' />
+          <Spacer className='!my-10 lg:hidden' />
           <div className='rounded-sm bg-bgSoft p-3 shadow lg:h-fit lg:flex-1'>
             <ServiceTable styleId={style.id} services={style.services} />
           </div>

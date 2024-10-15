@@ -1,9 +1,8 @@
 'use client';
 
 import Button from '@/components/common/Button';
+import CustomInput from '@/components/common/forms/CustomInput';
 import FormError from '@/components/common/forms/FormError';
-import FormGroup from '@/components/common/forms/FormGroup';
-import Input from '@/components/common/forms/Input';
 import Label from '@/components/common/Label';
 import useLanguage from '@/hooks/useLanguage';
 import useLocalisedFormSchema from '@/hooks/useLocalisedFormSchema';
@@ -116,69 +115,45 @@ const ServiceForm = ({ service, styleId }: Props) => {
   return (
     <form className='flex flex-col gap-5' onSubmit={handleSubmit}>
       <FormError>{error}</FormError>
-      <FormGroup
+      <CustomInput
+        id='name_en'
         label={getLabel('service_form.name_en')}
+        value={formData.name_en}
+        onChange={handleInputChange}
         error={validationErrors.name_en?.at(0)}
-      >
-        <Input
-          id='name_en'
-          value={formData.name_en}
-          type='text'
-          placeholder={getLabel('service_form.name_en')}
-          onChange={handleInputChange}
-        />
-      </FormGroup>
-      <FormGroup
+      />
+      <CustomInput
+        id='name_fi'
         label={getLabel('service_form.name_fi')}
+        value={formData.name_fi}
+        onChange={handleInputChange}
         error={validationErrors.name_fi?.at(0)}
-      >
-        <Input
-          id='name_fi'
-          value={formData.name_fi}
-          type='text'
-          placeholder={getLabel('service_form.name_fi')}
-          onChange={handleInputChange}
-        />
-      </FormGroup>
-      <FormGroup
+      />
+      <CustomInput
+        id='description_en'
         label={getLabel('service_form.description_en')}
+        value={formData.description_en}
+        onChange={handleInputChange}
         error={validationErrors.description_en?.at(0)}
-      >
-        <Input
-          id='description_en'
-          value={formData.description_en}
-          type='text'
-          placeholder={getLabel('service_form.description_en')}
-          onChange={handleInputChange}
-        />
-      </FormGroup>
-      <FormGroup
+      />
+      <CustomInput
+        id='description_fi'
         label={getLabel('service_form.description_fi')}
+        value={formData.description_fi}
+        onChange={handleInputChange}
         error={validationErrors.description_fi?.at(0)}
-      >
-        <Input
-          id='description_fi'
-          value={formData.description_fi}
-          type='text'
-          placeholder={getLabel('service_form.description_fi')}
-          onChange={handleInputChange}
-        />
-      </FormGroup>
-      <FormGroup
+      />
+      <CustomInput
+        id='price'
         label={getLabel('service_form.price')}
+        type='number'
+        inputMode='decimal'
+        min='0'
+        step='0.01'
+        value={formData.price}
+        onChange={handlePriceChange}
         error={validationErrors.price?.at(0)}
-      >
-        <Input
-          id='price'
-          value={formData.price}
-          type='number'
-          inputMode='decimal'
-          min='0'
-          step='0.01'
-          placeholder={getLabel('service_form.price')}
-          onChange={handlePriceChange}
-        />
-      </FormGroup>
+      />
       <Button
         type='submit'
         variant='accent'

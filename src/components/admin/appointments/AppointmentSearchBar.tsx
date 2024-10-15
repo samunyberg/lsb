@@ -1,8 +1,7 @@
 'use client';
 
 import Button from '@/components/common/Button';
-import FormGroup from '@/components/common/forms/FormGroup';
-import Input from '@/components/common/forms/Input';
+import CustomInput from '@/components/common/forms/CustomInput';
 import useLanguage from '@/hooks/useLanguage';
 import { format } from 'date-fns';
 import { useRouter } from 'next/navigation';
@@ -63,16 +62,14 @@ const AppointmentSearchBar = () => {
         />
       </div>
       <div className='flex flex-col gap-4 md:flex-row lg:w-full'>
-        <FormGroup>
-          <Input
-            type='text'
-            placeholder={getLabel('admin.appointments.search_placeholder')}
-            value={search.clientName}
-            onChange={(event) =>
-              setSearch({ ...search, clientName: event.target.value })
-            }
-          />
-        </FormGroup>
+        <CustomInput
+          id='search-appointments'
+          label={getLabel('admin.appointments.search_placeholder')}
+          value={search.clientName}
+          onChange={(event) =>
+            setSearch({ ...search, clientName: event.target.value })
+          }
+        />
         <Button
           variant='accent'
           className='flex gap-2 self-end text-sm md:max-w-[110px]'

@@ -6,9 +6,8 @@ import Label from '@/components/common/Label';
 import Panel from '@/components/common/Panel';
 import Spacer from '@/components/common/Spacer';
 import AppointmentPanel from '@/components/common/appointments/AppointmentPanel';
+import CustomInput from '@/components/common/forms/CustomInput';
 import FormError from '@/components/common/forms/FormError';
-import FormGroup from '@/components/common/forms/FormGroup';
-import Input from '@/components/common/forms/Input';
 import useLanguage from '@/hooks/useLanguage';
 import useLocalisedFormSchema from '@/hooks/useLocalisedFormSchema';
 import type {
@@ -164,44 +163,34 @@ const AdminBookingForm = ({ appointment, styles, clients }: Props) => {
       <form onSubmit={handleSubmit}>
         {mode === 'unregisteredClient' ? (
           <div className='flex flex-col gap-4'>
-            <FormGroup
+            <CustomInput
+              id='firstName'
               label='First name'
+              value={formData.firstName}
+              onChange={handleInputChange}
               error={validationErrors.firstName?.at(0)}
-            >
-              <Input
-                id='firstName'
-                placeholder='First name'
-                value={formData.firstName}
-                onChange={handleInputChange}
-              />
-            </FormGroup>
-            <FormGroup
+            />
+            <CustomInput
+              id='lastName'
               label='Last name'
+              value={formData.lastName}
+              onChange={handleInputChange}
               error={validationErrors.lastName?.at(0)}
-            >
-              <Input
-                id='lastName'
-                placeholder='Last name'
-                value={formData.lastName}
-                onChange={handleInputChange}
-              />
-            </FormGroup>
-            <FormGroup label='Email' error={validationErrors.email?.at(0)}>
-              <Input
-                id='email'
-                placeholder='Email'
-                value={formData.email}
-                onChange={handleInputChange}
-              />
-            </FormGroup>
-            <FormGroup label='Phone' error={validationErrors.phone?.at(0)}>
-              <Input
-                id='phone'
-                placeholder='Phone'
-                value={formData.phone}
-                onChange={handleInputChange}
-              />
-            </FormGroup>
+            />
+            <CustomInput
+              id='email'
+              label='Email'
+              value={formData.email}
+              onChange={handleInputChange}
+              error={validationErrors.email?.at(0)}
+            />
+            <CustomInput
+              id='phone'
+              label='Phone'
+              value={formData.phone}
+              onChange={handleInputChange}
+              error={validationErrors.phone?.at(0)}
+            />
           </div>
         ) : (
           <div>
@@ -232,14 +221,14 @@ const AdminBookingForm = ({ appointment, styles, clients }: Props) => {
         </div>
         <Spacer className='my-8' />
         <h4 className='mb-4 text-lg font-semibold'>Note</h4>
-        <textarea
+        <CustomInput
+          as='textarea'
           id='note'
+          label={getLabel('admin.appointments.note_form_placeholder')}
           value={formData.note}
           onChange={handleInputChange}
-          className='mb-5 h-36 w-full resize-none rounded-sm border border-black/20 bg-bgSoft p-2  transition-all placeholder:text-sm focus:outline-accent'
-          placeholder={getLabel('admin.appointments.note_form_placeholder')}
         />
-        <div className='mb-10'>
+        <div className='my-10'>
           <p className='mb-2 '>Send confirmation email in:</p>
           <LanguageSelector onChange={handleClientLanguageChange} />
         </div>

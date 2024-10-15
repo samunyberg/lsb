@@ -8,7 +8,6 @@ import { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 import Button from '../common/Button';
 import FormError from '../common/forms/FormError';
-import FormGroup from '../common/forms/FormGroup';
 import PasswordInput from '../common/forms/PasswordInput';
 import Label from '../common/Label';
 import AuthFormContainer from './AuthFormContainer';
@@ -74,23 +73,21 @@ const ResetPasswordForm = () => {
       />
       <FormError className='mb-4'>{error}</FormError>
       <form className='mb-8 mt-5 flex flex-col gap-6' onSubmit={handleSubmit}>
-        <FormGroup error={inputErrors.password?.at(0)}>
-          <PasswordInput
-            name='password'
-            placeholder={getLabel('reset_password_form.password')}
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </FormGroup>
+        <PasswordInput
+          name='password'
+          label={getLabel('reset_password_form.password')}
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          error={inputErrors.password?.at(0)}
+        />
         <PasswordStrength password={password} />
-        <FormGroup error={inputErrors.confirmPassword?.at(0)}>
-          <PasswordInput
-            name='confirmPassword'
-            placeholder={getLabel('reset_password_form.confirm_password')}
-            value={confirmPassword}
-            onChange={(e) => setConfirmPassword(e.target.value)}
-          />
-        </FormGroup>
+        <PasswordInput
+          name='confirmPassword'
+          label={getLabel('reset_password_form.confirm_password')}
+          value={confirmPassword}
+          onChange={(e) => setConfirmPassword(e.target.value)}
+          error={inputErrors.confirmPassword?.at(0)}
+        />
         <Button variant='accent' isLoading={isSubmitting}>
           <Label labelId='reset_password_form.submit' />
         </Button>

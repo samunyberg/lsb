@@ -1,8 +1,7 @@
 'use client';
 
 import Button from '@/components/common/Button';
-import FormGroup from '@/components/common/forms/FormGroup';
-import Input from '@/components/common/forms/Input';
+import CustomInput from '@/components/common/forms/CustomInput';
 import useLanguage from '@/hooks/useLanguage';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
@@ -28,14 +27,12 @@ const ClientSearchBar = () => {
       className='my-8 flex flex-col gap-4 md:flex-row'
       onSubmit={handleSearch}
     >
-      <FormGroup>
-        <Input
-          type='text'
-          placeholder={getLabel('admin.appointments.search_placeholder')}
-          value={term}
-          onChange={(event) => setTerm(event.target.value)}
-        />
-      </FormGroup>
+      <CustomInput
+        id='search-clients'
+        label={getLabel('admin.appointments.search_placeholder')}
+        value={term}
+        onChange={(event) => setTerm(event.target.value)}
+      />
       <Button
         variant='accent'
         className='flex gap-2 self-end text-sm md:max-w-[110px]'

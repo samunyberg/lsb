@@ -40,7 +40,7 @@ const AppointmentHistory = ({ appointments, onAppointmentClick }: Props) => {
 
   const renderGroupAppointments = (month: string) => {
     return (
-      <div className='mb-8 mt-2 flex flex-col gap-2'>
+      <div className='mb-8 mt-2 flex flex-col gap-4'>
         {groupedAppointments[month].map((app) => (
           <div
             key={app.id}

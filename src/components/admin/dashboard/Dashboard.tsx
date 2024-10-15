@@ -27,7 +27,7 @@ const Dashboard = ({
   const router = useRouter();
 
   return (
-    <div className='flex flex-col pb-10 pt-5 lg:grid lg:h-[calc(100vh-135px)] lg:grid-cols-5 lg:grid-rows-8 lg:gap-6 lg:overflow-hidden lg:pb-0 lg:pt-0'>
+    <div className='flex flex-col pb-14 pt-5 lg:grid lg:h-[calc(100vh-135px)] lg:grid-cols-5 lg:grid-rows-8 lg:gap-6 lg:overflow-hidden lg:pb-0 lg:pt-0'>
       <div className='order-2 lg:col-span-3 lg:col-start-1 lg:row-span-5 lg:row-start-1'>
         <Calendar
           admin

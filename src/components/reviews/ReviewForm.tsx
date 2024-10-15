@@ -4,16 +4,14 @@ import useLanguage from '@/hooks/useLanguage';
 import useLocalisedFormSchema from '@/hooks/useLocalisedFormSchema';
 import axios, { AxiosError } from 'axios';
 import { useState } from 'react';
+import { GiClawSlashes } from 'react-icons/gi';
 import { toast } from 'react-toastify';
 import Button from '../common/Button';
+import CustomInput from '../common/forms/CustomInput';
 import FormError from '../common/forms/FormError';
-import FormGroup from '../common/forms/FormGroup';
-import TextArea from '../common/forms/TextArea';
 import Label from '../common/Label';
 import Spacer from '../common/Spacer';
-import CustomInput from './CustomInput';
 import StarsSelector from './StarsSelector';
-import { FaSearch } from 'react-icons/fa';
 
 interface FormData {
   stars: number;
@@ -73,11 +71,13 @@ const ReviewForm = () => {
       <h2 className='mt-8'>
         <Label labelId='reviews.header' />
       </h2>
-      <ul className='mt-6 flex list-disc flex-col gap-2 px-8'>
-        <li>
+      <ul className='mt-6 flex flex-col gap-2 px-4'>
+        <li className='flex items-center gap-2'>
+          <GiClawSlashes size={15} />
           <Label labelId='reviews.li1' />
         </li>
-        <li>
+        <li className='flex items-center gap-2'>
+          <GiClawSlashes size={15} />
           <Label labelId='reviews.li2' />
         </li>
       </ul>
@@ -96,7 +96,6 @@ const ReviewForm = () => {
         </div>
         <CustomInput
           id='name'
-          isRequired
           value={formData.name}
           label={getLabel('reviews.name_placeholder')}
           onChange={(event) =>
@@ -107,7 +106,6 @@ const ReviewForm = () => {
         <CustomInput
           as='textarea'
           id='text'
-          isRequired
           value={formData.text}
           label={getLabel('reviews.text_placeholder')}
           onChange={(event) =>

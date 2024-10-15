@@ -1,24 +1,16 @@
 import { cn } from 'clsx-tailwind-merge';
 import React, { ReactNode, useState } from 'react';
-import InputError from '../common/forms/InputError';
+import InputError from './InputError';
 
 interface Props
   extends React.InputHTMLAttributes<HTMLInputElement | HTMLTextAreaElement> {
   as?: 'input' | 'textarea';
-  isRequired?: boolean;
-  label?: string;
+  label?: string | ReactNode;
   error?: string;
   icon?: ReactNode;
 }
 
-const CustomInput = ({
-  as = 'input',
-  isRequired = true,
-  label,
-  error,
-  icon,
-  ...rest
-}: Props) => {
+const CustomInput = ({ as = 'input', label, error, icon, ...rest }: Props) => {
   const [isFocused, setIsFocused] = useState(false);
 
   const Component = as;
@@ -46,7 +38,6 @@ const CustomInput = ({
             'pointer-events-none absolute left-2 top-3 text-sm text-gray-400 transition-all duration-300',
             {
               '-top-5 text-xs text-primary': isFocused || rest.value,
-              'after:content-["*"]': isRequired,
             }
           )}
         >

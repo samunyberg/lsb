@@ -91,8 +91,6 @@ const useLocalisedFormSchema = () => {
 
   const styleSchema = z.object({
     name: z.string().min(3).max(50),
-    description_en: z.string().min(3).max(255),
-    description_fi: z.string().min(3).max(255),
   });
 
   const serviceSchema = z.object({

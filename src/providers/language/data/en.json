@@ -55,7 +55,6 @@
   "confirmation_dialog.header": "Warning!",
   "confirmation_dialog.content": "Are you sure?",
   "confirmation_dialog.confirm": "Type Delete to confirm",
-  "confirmation_dialog.placeholder": "Type here...",
 
   "appointment_status.booked": "Booked",
   "appointment_status.available": "Available",

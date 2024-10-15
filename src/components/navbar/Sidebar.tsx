@@ -47,7 +47,7 @@ const Sidebar = ({ links, isOpen, onClose }: Props) => {
             duration: 0.3,
           }}
           ref={sidebarRef}
-          className='fixed left-0 z-[999] flex h-screen w-[50%] flex-col bg-bgSoft px-5 py-4 shadow-md backdrop-blur-md'
+          className='fixed left-0 z-[999] flex h-screen w-[50%] flex-col bg-bgSofter px-5 py-4 shadow-md backdrop-blur-md'
         >
           <div className='flex flex-col gap-8'>
             <div

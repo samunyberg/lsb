@@ -1,18 +1,20 @@
 import { useState } from 'react';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
-import Input from './Input';
+import CustomInput from './CustomInput';
 
 interface Props extends React.InputHTMLAttributes<HTMLInputElement> {
-  placeholder?: string;
+  label?: string;
+  error?: string;
 }
 
-const PasswordInput = ({ placeholder, ...rest }: Props) => {
+const PasswordInput = ({ label, error, ...rest }: Props) => {
   const [showPassword, setShowPassword] = useState(false);
 
   return (
-    <Input
+    <CustomInput
       type={showPassword ? 'text' : 'password'}
-      placeholder={placeholder}
+      label={label}
+      error={error}
       icon={
         <div onClick={() => setShowPassword(!showPassword)}>
           {showPassword ? <FaEyeSlash size={18} /> : <FaEye size={18} />}
