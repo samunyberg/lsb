@@ -4,6 +4,9 @@ import useLocale from '@/hooks/useLocale';
 import { formatDate, formatTime } from '@/lib/utils/dateAndTimeUtils';
 import { useSession } from 'next-auth/react';
 import { useContext, useState } from 'react';
+import { FaRegCalendarCheck, FaRegClock } from 'react-icons/fa';
+import { FiTool } from 'react-icons/fi';
+import { GiClawSlashes } from 'react-icons/gi';
 import Button from '../common/Button';
 import CheckBox from '../common/CheckBox';
 import FormError from '../common/forms/FormError';
@@ -63,7 +66,12 @@ const Step3 = () => {
 
   const items = [
     {
-      label: getLabel('appointment.date'),
+      label: (
+        <div className='flex items-center gap-2'>
+          <FaRegCalendarCheck size={15} />
+          {getLabel('appointment.date')}
+        </div>
+      ),
       content: formatDate(new Date(bookingData.appointment!.dateTime), locale, {
         weekday: 'long',
         month: 'long',
@@ -71,15 +79,30 @@ const Step3 = () => {
       }),
     },
     {
-      label: getLabel('appointment.time'),
+      label: (
+        <div className='flex items-center gap-2'>
+          <FaRegClock size={15} />
+          {getLabel('appointment.time')}
+        </div>
+      ),
       content: formatTime(new Date(bookingData.appointment!.dateTime), locale),
     },
     {
-      label: getLabel('appointment.style'),
+      label: (
+        <div className='flex items-center gap-2'>
+          <GiClawSlashes size={15} />
+          {getLabel('appointment.style')}
+        </div>
+      ),
       content: bookingData.style?.name,
     },
     {
-      label: getLabel('appointment.service'),
+      label: (
+        <div className='flex items-center gap-2'>
+          <FiTool size={15} />
+          {getLabel('appointment.service')}
+        </div>
+      ),
       content:
         currentLanguage === 'en'
           ? bookingData.service!.name_en
@@ -123,9 +146,9 @@ const Step3 = () => {
         <Spacer />
         <table className='mt-6 w-full'>
           <tbody>
-            {items.map((item) => (
+            {items.map((item, index) => (
               <tr
-                key={item.label}
+                key={index}
                 className='border-b border-black/10 last:border-none'
               >
                 <td className='border-r border-black/10 p-2 text-sm font-semibold'>
