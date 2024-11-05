@@ -84,7 +84,7 @@ const ClientOverview = ({ client }: Props) => {
       </ManagementPage>
       <DeleteConfirmation
         isVisible={showDeleteConfirmation}
-        endpoint={`/api/clients/${client.id}`}
+        endpoint={`/api/admin/clients/${client.id}`}
         callbackUrl='/admin/clients'
         onClose={() => setShowDeleteConfirmation(false)}
       />

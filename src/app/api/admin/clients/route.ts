@@ -7,7 +7,7 @@ interface Props {
   params: { id: string };
 }
 
-export async function PATCH(req: NextRequest, { params: { id } }: Props) {
+export async function DELETE(req: NextRequest, { params: { id } }: Props) {
   const session = await getServerSession(authOptions);
 
   if (!session)
@@ -16,25 +16,20 @@ export async function PATCH(req: NextRequest, { params: { id } }: Props) {
   if (!session.user.isAdmin)
     return NextResponse.json({ error: 'Forbidden' }, { status: 403 });
 
-  const body = await req.json();
+  const client = await prisma.user.findFirst({ where: { id } });
 
-  const appointmentId = parseInt(id);
+  if (!client)
+    return NextResponse.json({ error: 'Invalid client.' }, { status: 400 });
 
-  const appointment = await prisma.appointment.findFirst({
-    where: { id: appointmentId },
-  });
-
-  if (!appointment)
-    return NextResponse.json({ error: 'Invalid appointment' }, { status: 404 });
+  if (client.isAdmin)
+    return NextResponse.json(
+      { error: 'Admin user cannot be deleted.' },
+      { status: 400 }
+    );
 
   try {
-    const updatedAppointment = await prisma.appointment.update({
-      where: { id: appointmentId },
-      data: {
-        adminNote: body.adminNote,
-      },
-    });
-    return NextResponse.json({ data: updatedAppointment }, { status: 200 });
+    const deletedClient = await prisma.user.delete({ where: { id } });
+    return NextResponse.json({ id: deletedClient.id }, { status: 200 });
   } catch (error) {
     if (error instanceof Error)
       return NextResponse.json({ error: error.message }, { status: 500 });

@@ -1,4 +1,6 @@
+import { authOptions } from '@/lib/auth';
 import prisma from '@/prisma/client';
+import { getServerSession } from 'next-auth';
 import { NextRequest, NextResponse } from 'next/server';
 
 interface Props {
@@ -35,6 +37,14 @@ export async function PATCH(req: NextRequest, { params: { id } }: Props) {
 }
 
 export async function DELETE(req: NextRequest, { params: { id } }: Props) {
+  const session = await getServerSession(authOptions);
+
+  if (!session)
+    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+
+  if (!session.user.isAdmin)
+    return NextResponse.json({ error: 'Forbidden' }, { status: 403 });
+
   const reviewId = parseInt(id);
 
   const review = await prisma.review.findFirst({ where: { id: reviewId } });

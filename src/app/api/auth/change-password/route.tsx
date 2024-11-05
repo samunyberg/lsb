@@ -5,14 +5,14 @@ import { getServerSession } from 'next-auth';
 import { NextRequest, NextResponse } from 'next/server';
 
 export async function PATCH(req: NextRequest) {
-  const body = await req.json();
   const session = await getServerSession(authOptions);
 
   if (!session)
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
 
-  const id = session.user.id;
+  const body = await req.json();
 
+  const id = session.user.id;
   const client = await prisma.user.findFirst({
     where: { id },
   });
@@ -50,7 +50,7 @@ export async function PATCH(req: NextRequest) {
       },
       { status: 200 }
     );
-  } catch (error: unknown) {
+  } catch (error) {
     if (error instanceof Error)
       return NextResponse.json({ error: error.message }, { status: 500 });
     return NextResponse.json(

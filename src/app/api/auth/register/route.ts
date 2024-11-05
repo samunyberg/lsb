@@ -75,7 +75,7 @@ export async function POST(req: NextRequest) {
       },
     });
     return NextResponse.json(newUser.id, { status: 201 });
-  } catch (error: unknown) {
+  } catch (error) {
     if (error instanceof Error)
       return NextResponse.json({ error: error.message }, { status: 500 });
     else

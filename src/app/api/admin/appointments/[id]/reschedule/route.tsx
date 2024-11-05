@@ -1,5 +1,7 @@
 import { sendRescheduleNotificationEmail } from '@/emails/rescheduleConfirmationEmail/sendRescheduleConfirmationEmail';
+import { authOptions } from '@/lib/auth';
 import prisma from '@/prisma/client';
+import { getServerSession } from 'next-auth';
 import { NextRequest, NextResponse } from 'next/server';
 
 interface RequestBody {
@@ -33,6 +35,14 @@ const getClientData = async (clientId?: string | null) => {
 };
 
 export async function PATCH(req: NextRequest, { params: { id } }: Props) {
+  const session = await getServerSession(authOptions);
+
+  if (!session)
+    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+
+  if (!session.user.isAdmin)
+    return NextResponse.json({ error: 'Forbidden' }, { status: 403 });
+
   const body: RequestBody = await req.json();
   const currentTime = new Date();
   const oldAppointmentId = parseInt(id);
@@ -135,7 +145,7 @@ export async function PATCH(req: NextRequest, { params: { id } }: Props) {
       { id: rescheduledAppointment.id },
       { status: 200 }
     );
-  } catch (error: unknown) {
+  } catch (error) {
     if (error instanceof Error) {
       const errorMessage = error.message;
 

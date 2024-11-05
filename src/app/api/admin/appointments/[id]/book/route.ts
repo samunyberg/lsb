@@ -1,6 +1,8 @@
 import { sendBookingConfirmationEmail } from '@/emails/bookingConfirmationEmail/sendBookingConfirmationEmail';
+import { authOptions } from '@/lib/auth';
 import prisma from '@/prisma/client';
 import { Language } from '@/providers/language/LanguageProvider';
+import { getServerSession } from 'next-auth';
 import { NextRequest, NextResponse } from 'next/server';
 
 interface RequestBody {
@@ -47,6 +49,14 @@ const getStyleDetails = async (styleId: number, serviceId: number) => {
 };
 
 export async function PATCH(request: NextRequest, { params }: Props) {
+  const session = await getServerSession(authOptions);
+
+  if (!session)
+    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+
+  if (!session.user.isAdmin)
+    return NextResponse.json({ error: 'Forbidden' }, { status: 403 });
+
   const body: RequestBody = await request.json();
   const currentTime = new Date();
   const appointmentId = parseInt(params.id);
@@ -108,7 +118,7 @@ export async function PATCH(request: NextRequest, { params }: Props) {
     });
 
     return NextResponse.json({ id: bookedAppointment.id }, { status: 200 });
-  } catch (error: unknown) {
+  } catch (error) {
     if (error instanceof Error) {
       const errorMessage = error.message;
 
