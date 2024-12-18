@@ -12,6 +12,7 @@ import { useEffect, useState } from 'react';
 import Calendar from '../calendar/Calendar';
 import Container from '../common/Container';
 import Label from '../common/Label';
+import Section from '../common/Section';
 import BookingButtons from './BookingButtons';
 import BookingHeader from './BookingHeader';
 import Step2 from './Step2';
@@ -122,7 +123,7 @@ const BookingForm = ({ styles, appointments }: Props) => {
             stiffness: 260,
             damping: 22,
           }}
-          className='pt-6 text-center text-[22px] font-semibold uppercase tracking-wide'
+          className='mb-5 pt-6 text-center text-[22px] font-semibold uppercase tracking-wide'
         >
           <Label labelId='book.title' />
         </motion.h1>
@@ -130,13 +131,15 @@ const BookingForm = ({ styles, appointments }: Props) => {
         <>
           <div className='my-8'>
             {currentStep === 1 && (
-              <Calendar
-                initialData={appointments}
-                onAppointmentSelect={(app: Appointment) =>
-                  setBookingData({ ...bookingData, appointment: app })
-                }
-                selectedAppointment={bookingData.appointment}
-              />
+              <Section>
+                <Calendar
+                  initialData={appointments}
+                  onAppointmentSelect={(app: Appointment) =>
+                    setBookingData({ ...bookingData, appointment: app })
+                  }
+                  selectedAppointment={bookingData.appointment}
+                />
+              </Section>
             )}
             {currentStep === 2 && <Step2 styles={styles} />}
             {currentStep === 3 && <Step3 />}

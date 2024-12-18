@@ -48,7 +48,6 @@
   "password_strength.strong": "Strong",
 
   "pagination.page": "Page",
-  "pagination.results": "Results",
 
   "table.no_data": "No data to display",
 
@@ -191,11 +190,14 @@
   "reviews.text_placeholder": "Review text",
   "reviews.star_selector.rating": "Your rating",
   "reviews.submit_button": "Submit",
+  "reviews.latest.heading": "Latest Reviews",
+  "reviews.latest.button": "All reviews",
   "reviews.reviewList.average_rating.header_singular": "Review",
   "reviews.reviewList.average_rating.header_plural": "Reviews",
   "reviews.reviewList.average_rating.average_rating": "Average:",
+  "reviews.reviewList.show_newer_button": "Show newer",
   "reviews.reviewList.show_older_button": "Show older",
-  "reviews.reviewList.no_reviews": "No reviews yet. Can I ask you a favour? Write me a review using the form above. Thank you!",
+  "reviews.reviewList.no_reviews": "No reviews",
 
   "admin_navigation.dashboard": "Dashboard",
   "admin_navigation.appointments": "Appointments",
@@ -233,8 +235,7 @@
   "admin.styles.manage.title": "Manage style",
 
   "admin.services.title": "Services",
-  "admin.services.new_service.title": "Add New Service",
-  "admin.services.new_service.style": "For style:",
+  "admin.services.new_service.style": "New service for style:",
   "admin.services.manage.title": "Manage service",
   "admin.services.service_overview.for": "This service is for:",
 

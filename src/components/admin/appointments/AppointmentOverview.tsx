@@ -1,17 +1,18 @@
 'use client';
 
 import AppointmentStatusBadge from '@/components/common/appointments/AppointmentStatusBadge';
+import Button from '@/components/common/Button';
 import Label from '@/components/common/Label';
-import Panel from '@/components/common/Panel';
+import Section from '@/components/common/Section';
 import useLocale from '@/hooks/useLocale';
 import { AppointmentWithData } from '@/lib/types';
 import { formatDate, formatTime } from '@/lib/utils/dateAndTimeUtils';
+import { cn } from 'clsx-tailwind-merge';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
-import { FaCalendar, FaCalendarCheck, FaEdit } from 'react-icons/fa';
+import { FaCalendar, FaCalendarCheck } from 'react-icons/fa';
 import { MdOutlineCancel } from 'react-icons/md';
-import ManagementPage from '../ManagementPage';
 import AdminNoteForm from './AdminNoteForm';
 import AppointmentActionConfirmation, {
   AppointmentAction,
@@ -49,11 +50,6 @@ const AppointmentOverview = ({ appointment }: Props) => {
     switch (appointment.status) {
       case 'BOOKED':
         return [
-          {
-            label: appointment.adminNote ? 'Edit note' : 'Add note',
-            icon: <FaEdit />,
-            onClick: () => setIsNoteFormVisible(true),
-          },
           {
             label: 'Reschedule',
             icon: <FaCalendar />,
@@ -166,37 +162,62 @@ const AppointmentOverview = ({ appointment }: Props) => {
   ];
 
   return (
-    <>
-      <ManagementPage
-        title={`${formatDate(appointment.dateTime, locale, { dateStyle: 'short' })} | ${formatTime(appointment.dateTime, locale)}`}
-        actions={getActions()}
+    <div className='flex flex-col gap-5 pb-14'>
+      <Section
+        title={`${formatDate(appointment.dateTime, locale, { dateStyle: 'short' })} • ${formatTime(appointment.dateTime, locale)}`}
       >
-        <div>
-          <Panel className='overflow-hidden'>
-            <table className='w-full border-collapse'>
-              <tbody>
-                {rows.map((row) => (
-                  <tr key={row.label} className='border border-black/20'>
-                    <td className='border-r border-black/20 p-2 text-sm font-semibold'>
-                      {row.label}
-                    </td>
-                    <td className='p-2'>{row.content}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </Panel>
-          {appointment.adminNote && (
-            <Panel className='my-5 flex flex-col gap-1 p-4'>
-              <span className='font-semibold'>
-                <Label labelId='admin.appointments.note.title' />
-                {':'}
-              </span>
-              <p>{appointment.adminNote}</p>
-            </Panel>
-          )}
+        <table className='w-full'>
+          <tbody>
+            {rows.map((row) => (
+              <tr key={row.label} className=''>
+                <td className='p-2 text-sm font-semibold uppercase'>
+                  {row.label}
+                </td>
+                <td className='p-2'>{row.content}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </Section>
+      <Section
+        title={
+          <div className='flex items-center justify-between'>
+            <Label labelId='admin.appointments.note.title' />
+            <span
+              className='text-sm'
+              onClick={() => setIsNoteFormVisible(true)}
+            >
+              {appointment.adminNote ? 'Edit' : 'Add'}
+            </span>
+          </div>
+        }
+      >
+        {appointment.adminNote ? (
+          <p className='px-2'>{appointment.adminNote}</p>
+        ) : (
+          <p className='px-2'>
+            Click Add to write a note for this appointment.
+          </p>
+        )}
+      </Section>
+      <Section title='Actions'>
+        <div className='flex flex-col gap-4'>
+          {getActions()?.map((action, index) => (
+            <Button
+              key={index}
+              className={cn('flex items-center gap-2 border-accent', {
+                'border-accentGreen': action.label === 'Make available',
+                'border-accentOrange': action.label === 'Make unavailable',
+                'border-accentRed': action.label === 'Cancel',
+              })}
+              onClick={() => action.onClick()}
+            >
+              <span>{action.label}</span>
+              {action.icon}
+            </Button>
+          ))}
         </div>
-      </ManagementPage>
+      </Section>
       <AdminNoteForm
         isVisible={isNoteFormVisible}
         appointment={appointment}
@@ -208,7 +229,7 @@ const AppointmentOverview = ({ appointment }: Props) => {
         action={action}
         onClose={() => setShowActionConfirmation(false)}
       />
-    </>
+    </div>
   );
 };
 

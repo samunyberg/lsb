@@ -3,7 +3,7 @@
 import { AppointmentWithData } from '@/lib/types';
 import AppointmentPanel from '../common/appointments/AppointmentPanel';
 import Label from '../common/Label';
-import Panel from '../common/Panel';
+import Section from '../common/Section';
 
 interface Props {
   appointments: AppointmentWithData[];
@@ -11,14 +11,11 @@ interface Props {
 
 const ClientAppointments = ({ appointments }: Props) => {
   return (
-    <div>
-      <h2 className='mb-5 text-lg uppercase tracking-wide'>
-        <Label labelId='account.client_appointments.title' />
-      </h2>
+    <Section title={<Label labelId='account.client_appointments.title' />}>
       {appointments.length === 0 ? (
-        <Panel className='p-4'>
+        <div className='p-4'>
           <Label labelId='account.client_appointments.no_upcoming_appointments' />
-        </Panel>
+        </div>
       ) : (
         <div className='flex flex-col gap-3'>
           {appointments.map((app) => (
@@ -26,7 +23,7 @@ const ClientAppointments = ({ appointments }: Props) => {
           ))}
         </div>
       )}
-    </div>
+    </Section>
   );
 };
 

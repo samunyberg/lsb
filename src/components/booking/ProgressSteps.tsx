@@ -2,6 +2,7 @@ import { Step } from '@/lib/types';
 import { cn } from 'clsx-tailwind-merge';
 import { FaCheck } from 'react-icons/fa';
 import Label from '../common/Label';
+import Panel from '../common/Panel';
 
 interface Props {
   currentStep: number;
@@ -14,7 +15,7 @@ const ProgressSteps = ({ currentStep, steps }: Props) => {
   };
 
   return (
-    <>
+    <Panel className='px-4 py-2'>
       <div className='mx-auto flex h-14 w-[90%] justify-center'>
         <div className='relative flex w-full items-center justify-between'>
           <div className='absolute z-0 h-1 w-full bg-black/10' />
@@ -51,7 +52,7 @@ const ProgressSteps = ({ currentStep, steps }: Props) => {
       >
         <Label labelId={steps[currentStep - 1].label} />
       </div>
-    </>
+    </Panel>
   );
 };
 

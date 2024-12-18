@@ -1,11 +1,12 @@
 import Label from '@/components/common/Label';
 import useLocale from '@/hooks/useLocale';
+import { formatTime } from '@/lib/utils/dateAndTimeUtils';
 import { Appointment } from '@prisma/client';
-import { cn } from 'clsx-tailwind-merge';
 import { motion } from 'framer-motion';
 import { useEffect, useRef } from 'react';
-import { FaCheck, FaChevronRight } from 'react-icons/fa';
+import { FaCheck, FaChevronRight, FaRegClock } from 'react-icons/fa';
 import { toast } from 'react-toastify';
+import AppointmentStatusBadge from '../common/appointments/AppointmentStatusBadge';
 
 interface Props {
   appointments: Appointment[];
@@ -60,7 +61,7 @@ const AppointmentTimePicker = ({
       onKeyDown={(event) => {
         if (event.key === 'Enter') handleAppointmentSelect(app);
       }}
-      className='flex items-center justify-center gap-3 whitespace-nowrap rounded-full border border-accent px-4 py-1 shadow'
+      className='flex items-center justify-center gap-2 whitespace-nowrap rounded-full border-2 border-accent px-4 py-1'
     >
       {isSelectedAppointment(app) ? (
         <p className='font-semibold'>
@@ -89,35 +90,25 @@ const AppointmentTimePicker = ({
   );
 
   return (
-    <div className='ml-auto flex w-[90%] lg:w-[95%]'>
-      <div className='relative flex h-[350px] w-full flex-col border-l-4  border-l-accent'>
-        <div className='absolute inset-y-0 -left-7 flex flex-col justify-around'>
-          {appointments.map((app) => (
-            <div
-              key={app.id}
-              className={cn(
-                'flex w-14 items-center justify-center rounded-sm border-2 border-accent bg-white/60 py-1 text-lg  shadow backdrop-blur-md',
-                {
-                  'border-accentRed': app.status !== 'AVAILABLE',
-                  'border-accentGreen': app.status === 'AVAILABLE',
-                }
-              )}
-            >
-              {new Date(app.dateTime).toLocaleTimeString(locale, {
-                timeStyle: 'short',
-              })}
+    <div className='flex flex-col gap-5'>
+      {appointments.map((app, index) => (
+        <div
+          key={app.id}
+          className='flex cursor-pointer flex-col gap-5 rounded-md border border-black/10 p-4 transition-all active:bg-white/20 lg:hover:bg-white/10'
+        >
+          <div className='flex items-center gap-2'>
+            <div className='flex items-center gap-1'>
+              <FaRegClock />
+              <span className='text-lg'>
+                {formatTime(new Date(app.dateTime), locale)}
+              </span>
             </div>
-          ))}
-        </div>
-        {appointments.map((app, index) => (
-          <div
-            key={app.id}
-            className='relative flex flex-1 cursor-pointer items-center justify-center border-b border-dashed border-black/10 transition-all last:border-b-0 active:bg-white/20 lg:hover:bg-white/10'
-          >
-            {app.status === 'AVAILABLE' && selectAppointmentButton(app, index)}
+            <span>•</span>
+            <AppointmentStatusBadge status={app.status} />
           </div>
-        ))}
-      </div>
+          {isBookable(app) && selectAppointmentButton(app, index)}
+        </div>
+      ))}
     </div>
   );
 };

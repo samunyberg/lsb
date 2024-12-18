@@ -1,69 +1,68 @@
-import useLanguage from '@/hooks/useLanguage';
-import { usePathname, useRouter, useSearchParams } from 'next/navigation';
-import Button from './common/Button';
-import Label from './common/Label';
+'use client';
 
-export interface PaginationData {
-  pageNumber: number;
-  pageSize: number;
-}
+import useLanguage from '@/hooks/useLanguage';
+import { useRouter, useSearchParams } from 'next/navigation';
+import {
+  MdKeyboardArrowLeft,
+  MdKeyboardArrowRight,
+  MdKeyboardDoubleArrowLeft,
+  MdKeyboardDoubleArrowRight,
+} from 'react-icons/md';
+import Button from './common/Button';
 
 interface Props {
-  className?: string;
-  itemsCount: number;
+  itemCount: number;
+  pageSize: number;
+  currentPage: number;
 }
 
-const Pagination = ({ className = '', itemsCount }: Props) => {
-  const router = useRouter();
+const Pagination = ({ itemCount, pageSize, currentPage }: Props) => {
   const { getLabel } = useLanguage();
+  const router = useRouter();
   const searchParams = useSearchParams();
-  const pathName = usePathname();
 
-  const currentPage = parseInt(searchParams.get('pageNumber') || '1');
-  const pageSize = parseInt(searchParams.get('pageSize') || '10');
-  const totalPages = Math.ceil(itemsCount / pageSize);
-
-  const params = new URLSearchParams(searchParams.toString());
-
-  const handlePreviousPage = () => {
-    if (currentPage > 1) {
-      params.set('pageNumber', (currentPage - 1).toString());
-      params.set('pageSize', pageSize.toString());
-      router.replace(`${pathName}?${params.toString()}`);
-    }
+  const changePage = (page: number) => {
+    const params = new URLSearchParams(searchParams.toString());
+    params.set('page', page.toString());
+    router.push('?' + params.toString());
   };
 
-  const handleNextPage = () => {
-    if (currentPage < totalPages) {
-      params.set('pageNumber', (currentPage + 1).toString());
-      params.set('pageSize', pageSize.toString());
-      router.replace(`${pathName}?${params.toString()}`);
-    }
-  };
-
-  if (itemsCount <= pageSize) return null;
+  const pageCount = Math.ceil(itemCount / pageSize);
+  if (pageCount <= 1) return null;
 
   return (
-    <div className={`flex items-center justify-between ${className}`}>
-      <Button
-        className='w-fit'
-        onClick={handlePreviousPage}
-        disabled={currentPage === 1}
-      >
-        <Label labelId='general.previous' />
-      </Button>
-      <div className='flex gap-2 text-sm '>
-        <span>{`${getLabel('pagination.results')}: ${itemsCount}`}</span>
-        <span>|</span>
-        <span>{`${getLabel('pagination.page')} ${currentPage} / ${totalPages}`}</span>
+    <div className='flex h-8 justify-center'>
+      <div className='flex items-center justify-between gap-1 md:gap-3'>
+        <Button
+          small
+          disabled={currentPage === 1}
+          onClick={() => changePage(1)}
+        >
+          <MdKeyboardDoubleArrowLeft size={20} />
+        </Button>
+        <Button
+          small
+          disabled={currentPage === 1}
+          onClick={() => changePage(currentPage - 1)}
+        >
+          <MdKeyboardArrowLeft size={20} />
+        </Button>
+        <span className='whitespace-nowrap px-1 text-sm'>{`${getLabel('pagination.page')} ${currentPage} / ${pageCount}`}</span>
+        <Button
+          small
+          disabled={currentPage === pageCount}
+          onClick={() => changePage(currentPage + 1)}
+        >
+          <MdKeyboardArrowRight size={20} />
+        </Button>
+        <Button
+          small
+          disabled={currentPage === pageCount}
+          onClick={() => changePage(pageCount)}
+        >
+          <MdKeyboardDoubleArrowRight size={20} />
+        </Button>
       </div>
-      <Button
-        className='w-fit'
-        onClick={handleNextPage}
-        disabled={currentPage === totalPages}
-      >
-        <Label labelId='general.next' />
-      </Button>
     </div>
   );
 };

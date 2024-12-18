@@ -7,9 +7,9 @@ import Label from '../common/Label';
 
 const links = [
   { href: '/admin', label: 'admin_navigation.dashboard' },
-  { href: '/admin/appointments', label: 'admin_navigation.appointments' },
-  { href: '/admin/clients', label: 'admin_navigation.clients' },
-  { href: '/admin/styles', label: 'admin_navigation.styles' },
+  { href: '/admin/appointments/list', label: 'admin_navigation.appointments' },
+  { href: '/admin/clients/list', label: 'admin_navigation.clients' },
+  { href: '/admin/styles/list', label: 'admin_navigation.styles' },
   { href: '/admin/pending-reviews', label: 'admin_navigation.reviews' },
 ];
 
@@ -24,16 +24,15 @@ const Navigation = () => {
   };
 
   return (
-    <div className='flex h-[55px] items-center justify-evenly gap-5 overflow-x-scroll md:justify-start md:overflow-x-hidden'>
+    <div className='flex h-full w-full gap-3 overflow-x-scroll rounded-md bg-bgSoft p-2 shadow lg:flex-col lg:overflow-hidden'>
       {links.map((link) => (
         <Link
           key={link.href}
           href={link.href}
           className={cn(
-            'transition-all active:text-accent lg:hover:text-accent',
+            'flex-shrink-0 p-2 text-sm uppercase tracking-wide transition-all',
             {
-              'font-bold uppercase hover:cursor-default lg:hover:text-primary':
-                isActive(link),
+              'font-bold hover:cursor-default': isActive(link),
             }
           )}
         >

@@ -1,30 +1,20 @@
 import Label from '../common/Label';
-import Panel from '../common/Panel';
-import AvailabilityIndicator from './AvailabilityIndicator';
 
 const Legend = () => {
   return (
-    <Panel className='mt-4 flex flex-col gap-2 px-4 py-2 text-sm'>
-      <div>
-        <div className='mb-3'>
-          <Label labelId='calendar.legend.times' />
-        </div>
-        <div className='ml-4 flex items-center gap-2'>
-          <AvailabilityIndicator
-            dayHasAvailableAppointments={true}
-            isPassedDay={false}
-          />
-          <Label labelId='calendar.legend.available' />
-        </div>
-        <div className='ml-4 flex items-center gap-2'>
-          <AvailabilityIndicator
-            dayHasAvailableAppointments={false}
-            isPassedDay={false}
-          />
-          <Label labelId='calendar.legend.not_available' />
-        </div>
+    <div className='mt-3 p-4 text-sm'>
+      <div className='mb-3'>
+        <Label labelId='calendar.legend.times' />
       </div>
-    </Panel>
+      <div className='ml-2 flex items-center gap-2'>
+        <div className='size-3 rounded-full border border-black/10 bg-green-200' />
+        <Label labelId='calendar.legend.available' />
+      </div>
+      <div className='ml-2 flex items-center gap-2'>
+        <div className='size-3 rounded-full border border-black/10 bg-red-100' />
+        <Label labelId='calendar.legend.not_available' />
+      </div>
+    </div>
   );
 };
 

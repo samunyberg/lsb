@@ -157,7 +157,7 @@ const ServiceForm = ({ service, styleId }: Props) => {
       <Button
         type='submit'
         variant='accent'
-        className='mt-5'
+        className='py-3 md:w-fit md:self-end'
         isLoading={isSubmitting}
       >
         {service ? (

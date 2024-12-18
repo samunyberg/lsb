@@ -1,48 +1,37 @@
 import Container from '@/components/common/Container';
 import Hero from '@/components/common/Hero';
 import Label from '@/components/common/Label';
-import Spacer from '@/components/common/Spacer';
+import Section from '@/components/common/Section';
 import heroImg from '../../../public/images/lashes-bg.jpg';
 
 const AboutPage = async () => {
-  const subtitle = (labelId: string) => (
-    <h3 className='mb-5 text-lg font-semibold uppercase tracking-wide'>
-      <Label labelId={labelId} />
-    </h3>
-  );
-
   const location = (
-    <div>
-      {subtitle('about.location.title')}
-      <div className='flex flex-col gap-6 lg:flex-row lg:gap-8'>
-        <ul className='flex flex-col gap-3 lg:mt-8'>
-          <li>
-            <Label labelId='about.location.address_line_1' />
-          </li>
-          <li>
-            <Label labelId='about.location.address_line_2' />
-          </li>
-          <li>
-            <Label labelId='about.location.address_line_3' />
-          </li>
-        </ul>
-      </div>
-    </div>
+    <Section title={<Label labelId='about.location.title' />}>
+      <ul className='flex flex-col gap-2'>
+        <li>
+          <Label labelId='about.location.address_line_1' />
+        </li>
+        <li>
+          <Label labelId='about.location.address_line_2' />
+        </li>
+        <li>
+          <Label labelId='about.location.address_line_3' />
+        </li>
+      </ul>
+    </Section>
   );
 
   const terms = (
-    <div>
-      {subtitle('terms_of_service.title')}
+    <Section title={<Label labelId='terms_of_service.title' />}>
       <p className=''>
         <Label labelId='terms_of_service.content' />
       </p>
-    </div>
+    </Section>
   );
 
   const legal = (
-    <div>
-      {subtitle('about.legal_information.title')}
-      <ul className=''>
+    <Section title={<Label labelId='about.legal_information.title' />}>
+      <ul>
         <li className='mb-2'>
           <Label labelId='about.legal.registered_name' />
           {': '}Lashes Studio by Boochita
@@ -79,17 +68,15 @@ const AboutPage = async () => {
         </p>
       </div>
       <p className='mt-8'>© Lashes Studio by Boochita</p>
-    </div>
+    </Section>
   );
 
   return (
     <Container className='max-w-4xl'>
       <Hero title='about.title' imgData={heroImg} imgAlt='lashes image' />
-      <div className='py-10'>
+      <div className='flex flex-col gap-5 py-10'>
         {location}
-        <Spacer className='my-8' />
         {terms}
-        <Spacer className='my-8' />
         {legal}
       </div>
     </Container>

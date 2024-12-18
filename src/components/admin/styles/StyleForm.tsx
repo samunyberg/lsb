@@ -8,7 +8,6 @@ import useLanguage from '@/hooks/useLanguage';
 import useLocalisedFormSchema from '@/hooks/useLocalisedFormSchema';
 import { Style } from '@prisma/client';
 import axios, { AxiosError } from 'axios';
-import { CldImage } from 'next-cloudinary';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { toast } from 'react-toastify';
@@ -102,7 +101,10 @@ const StyleForm = ({ style }: Props) => {
   };
 
   return (
-    <form className='flex flex-col gap-5' onSubmit={handleSubmit}>
+    <form
+      className='flex max-w-[600px] flex-col gap-5 md:rounded-md md:bg-bgSoft md:px-4 md:py-6 md:shadow'
+      onSubmit={handleSubmit}
+    >
       <FormError>{error}</FormError>
       <CustomInput
         id='name'
@@ -111,35 +113,14 @@ const StyleForm = ({ style }: Props) => {
         onChange={handleInputChange}
         error={validationErrors?.name?.at(0)}
       />
-      <div className='flex flex-col'>
-        <p className='mb-2 text-lg font-semibold'>
-          <Label labelId='style_form.image_preview' />
-        </p>
-        <div className='relative mb-5 h-[200px] w-full self-center overflow-hidden rounded-sm'>
-          <CldImage
-            key={formData.imageId}
-            src={formData.imageId || 'fallback-image_mllokb'}
-            alt='service image'
-            fill
-            priority
-            className='z-10 object-cover'
-          />
-        </div>
-        <UploadImage
-          onImageSelect={handleImageSelect}
-          buttonLabel={
-            style ? (
-              <Label labelId='style_form.change_image' />
-            ) : (
-              <Label labelId='style_form.upload_image' />
-            )
-          }
-        />
-      </div>
+      <UploadImage
+        imageId={formData.imageId}
+        onImageSelect={handleImageSelect}
+      />
       <Button
         type='submit'
         variant='accent'
-        className='mt-2'
+        className='mt-2 py-3 md:w-fit'
         isLoading={isSubmitting}
       >
         {style ? (

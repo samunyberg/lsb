@@ -48,7 +48,6 @@
   "password_strength.strong": "Vahva",
 
   "pagination.page": "Sivu",
-  "pagination.results": "Tulokset",
 
   "table.no_data": "Ei näytettävää dataa.",
 
@@ -191,11 +190,14 @@
   "reviews.text_placeholder": "Arvostelun teksti",
   "reviews.star_selector.rating": "Arviosi",
   "reviews.submit_button": "Lähetä",
+  "reviews.latest.heading": "Uusimmat arvostelut",
+  "reviews.latest.button": "Kaikki arvostelut",
   "reviews.reviewList.average_rating.header_singular": "Arvostelu",
   "reviews.reviewList.average_rating.header_plural": "Arvostelua",
   "reviews.reviewList.average_rating.average_rating": "Keskiarvo:",
+  "reviews.reviewList.show_newer_button": "Näytä uudemmat",
   "reviews.reviewList.show_older_button": "Näytä vanhemmat",
-  "reviews.reviewList.no_reviews": "Ei arvosteluja. Voinko pyytää sinulta palvelusta? Kirjoita minulle arvostelu ylläolevalla lomakkeella. Kiitos!",
+  "reviews.reviewList.no_reviews": "Ei arvosteluja",
 
   "admin_navigation.dashboard": "Etusivu",
   "admin_navigation.appointments": "Varaukset",
@@ -233,8 +235,7 @@
   "admin.styles.manage.title": "Hallitse tyyliä",
 
   "admin.services.title": "Palvelut",
-  "admin.services.new_service.title": "Lisää uusi palvelu",
-  "admin.services.new_service.style": "Tyylille:",
+  "admin.services.new_service.style": "Uusi palvelu tyylille:",
   "admin.services.manage.title": "Hallitse palvelua",
   "admin.services.service_overview.for": "Tämä palvelu on tyylille:",
 

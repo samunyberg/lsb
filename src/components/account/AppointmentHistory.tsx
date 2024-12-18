@@ -9,6 +9,7 @@ import {
 import AppointmentPanel from '../common/appointments/AppointmentPanel';
 import Label from '../common/Label';
 import Panel from '../common/Panel';
+import Section from '../common/Section';
 
 interface Props {
   appointments: AppointmentWithData[];
@@ -27,20 +28,9 @@ const AppointmentHistory = ({ appointments, onAppointmentClick }: Props) => {
 
   const groupedAppointments = groupAppointmentsByMonth(appointments);
 
-  const renderGroupHeader = (month: string) => {
-    return (
-      <span className='text-lg font-semibold'>
-        {formatDate(new Date(month), locale, {
-          month: 'long',
-          year: 'numeric',
-        })}
-      </span>
-    );
-  };
-
   const renderGroupAppointments = (month: string) => {
     return (
-      <div className='mb-8 mt-2 flex flex-col gap-4'>
+      <div className='flex flex-col gap-4'>
         {groupedAppointments[month].map((app) => (
           <div
             key={app.id}
@@ -54,13 +44,18 @@ const AppointmentHistory = ({ appointments, onAppointmentClick }: Props) => {
   };
 
   return (
-    <div className='w-full'>
+    <div className='flex flex-col gap-5 pb-14'>
       {Object.keys(groupedAppointments).map((month, index) => {
         return (
-          <div key={index}>
-            {renderGroupHeader(month)}
+          <Section
+            key={index}
+            title={formatDate(new Date(month), locale, {
+              month: 'long',
+              year: 'numeric',
+            })}
+          >
             {renderGroupAppointments(month)}
-          </div>
+          </Section>
         );
       })}
     </div>

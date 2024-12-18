@@ -15,9 +15,9 @@ const Intro = () => {
           priority
           width={500}
           height={300}
-          className='object-contain'
+          className='size-auto object-contain'
         />
-        <div className='flex flex-col items-center gap-12 text-center'>
+        <div className='flex flex-col items-center gap-8 text-center'>
           <h1 className='text-4xl uppercase tracking-wide md:text-6xl'>
             Lashes Studio by Boochita
           </h1>
@@ -34,7 +34,7 @@ const Intro = () => {
             <Link
               aria-label='Book an appointment'
               href='/book'
-              className='rounded-sm border-2 border-primary bg-accent px-6 py-3 text-[18px] uppercase tracking-wide text-white transition-all hover:bg-accentButtonHover active:bg-accentButtonHover'
+              className='rounded-md bg-accent px-6 py-3 text-[18px] uppercase tracking-wide text-white transition-all hover:bg-accentButtonHover active:bg-accentButtonHover'
             >
               <Label labelId='intro.book_button' />
             </Link>

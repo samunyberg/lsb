@@ -10,12 +10,12 @@ const AppointmentStatusBadge = ({ status }: Props) => {
   return (
     <div
       className={cn(
-        'min-w-[105px] max-w-[150px] whitespace-nowrap rounded-sm border-2 bg-white px-1 text-center',
+        'w-fit whitespace-nowrap rounded-md px-2 py-1 tracking-wide',
         {
-          'border-accentRed': status === 'BOOKED',
-          'border-accentGreen': status === 'AVAILABLE',
-          'border-accentOrange': status === 'UNAVAILABLE',
-          'border-accent': status === 'PASSED',
+          'bg-red-100 text-red-800': status === 'BOOKED',
+          'bg-green-100 text-green-800': status === 'AVAILABLE',
+          'bg-orange-100 text-orange-800': status === 'UNAVAILABLE',
+          'border-accent bg-white': status === 'PASSED',
         }
       )}
     >

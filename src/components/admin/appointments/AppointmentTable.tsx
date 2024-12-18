@@ -5,15 +5,13 @@ import useLanguage from '@/hooks/useLanguage';
 import { AppointmentWithData } from '@/lib/types';
 import { formatDate, formatTime } from '@/lib/utils/dateAndTimeUtils';
 import Link from 'next/link';
-import PaginatedTable from '../PaginatedTable';
-import { Config } from '../Table';
+import Table, { Config } from '../Table';
 
 interface Props {
   appointments: AppointmentWithData[];
-  itemsCount: number;
 }
 
-const AppointmentTable = ({ appointments, itemsCount }: Props) => {
+const AppointmentTable = ({ appointments }: Props) => {
   const { currentLanguage, getLabel } = useLanguage();
 
   const config: Config<AppointmentWithData> = {
@@ -68,14 +66,7 @@ const AppointmentTable = ({ appointments, itemsCount }: Props) => {
 
   const keyFn = (app: AppointmentWithData) => app.id;
 
-  return (
-    <PaginatedTable
-      data={appointments}
-      itemsCount={itemsCount}
-      config={config}
-      keyFn={keyFn}
-    />
-  );
+  return <Table data={appointments} config={config} keyFn={keyFn} />;
 };
 
 export default AppointmentTable;

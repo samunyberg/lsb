@@ -1,9 +1,7 @@
-import Label from '@/components/common/Label';
 import useLanguage from '@/hooks/useLanguage';
 import { Service } from '@prisma/client';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { FaPlus } from 'react-icons/fa';
 import Table, { Config } from '../Table';
 
 interface Props {
@@ -43,16 +41,6 @@ const ServiceTable = ({ styleId, services }: Props) => {
 
   return (
     <div>
-      <div className='mb-5 flex items-center justify-between px-2'>
-        <h2 className='text-lg font-semibold'>
-          <Label labelId='admin.services.title' />
-        </h2>
-        <FaPlus
-          size={17}
-          className='cursor-pointer'
-          onClick={() => router.push(`/admin/styles/${styleId}/new-service`)}
-        />
-      </div>
       <Table data={services} config={config} keyFn={keyFn} />
     </div>
   );

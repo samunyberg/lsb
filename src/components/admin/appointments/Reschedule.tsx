@@ -7,8 +7,9 @@ import CheckBox from '@/components/common/CheckBox';
 import FormError from '@/components/common/forms/FormError';
 import Label from '@/components/common/Label';
 import Modal from '@/components/common/Modal';
+import Section from '@/components/common/Section';
 import Spacer from '@/components/common/Spacer';
-import useLanguage from '@/hooks/useLanguage';
+import StrikeThroughText from '@/components/common/StrikeThroughText';
 import useLocale from '@/hooks/useLocale';
 import { AppointmentWithData } from '@/lib/types';
 import { Appointment } from '@prisma/client';
@@ -17,7 +18,6 @@ import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { FaArrowRight } from 'react-icons/fa';
 import { toast } from 'react-toastify';
-import ManagementPage from '../ManagementPage';
 
 interface Props {
   oldAppointment: AppointmentWithData;
@@ -27,7 +27,6 @@ interface Props {
 const Reschedule = ({ oldAppointment, upcomingAppointments }: Props) => {
   const router = useRouter();
   const locale = useLocale();
-  const { getLabel } = useLanguage();
   const [newAppointment, setNewAppointment] = useState<Appointment | null>(
     null
   );
@@ -91,7 +90,7 @@ const Reschedule = ({ oldAppointment, upcomingAppointments }: Props) => {
             <Label labelId='admin.appointments.reschedule.confirmation.content' />
           </h2>
           <div className='mb-5 flex items-center justify-center gap-3'>
-            <span className='rounded-sm border border-black/20 px-2 py-1 shadow'>
+            <span className='rounded-md border border-black/20 px-2 py-1'>
               {oldAppointment.dateTime.toLocaleString(locale, {
                 dateStyle: 'short',
                 timeStyle: 'short',
@@ -99,7 +98,7 @@ const Reschedule = ({ oldAppointment, upcomingAppointments }: Props) => {
             </span>
             <FaArrowRight className='self-center' size={12} />
             {newAppointment && (
-              <span className='rounded-sm border border-black/20 px-2 py-1 shadow'>
+              <span className='rounded-md border border-black/20 px-2 py-1'>
                 {new Date(newAppointment.dateTime).toLocaleString(locale, {
                   dateStyle: 'short',
                   timeStyle: 'short',
@@ -135,33 +134,33 @@ const Reschedule = ({ oldAppointment, upcomingAppointments }: Props) => {
   );
 
   return (
-    <ManagementPage
-      title={getLabel('admin.appointments.reschedule.title')}
-      className='pb-10'
-    >
-      <div className='mt-8 flex flex-col gap-8 lg:flex-row'>
-        <div className='lg:w-1/3'>
-          <p className='mb-3 font-semibold'>
-            <Label labelId='admin.appointments.reschedule.original_appointment_time' />
-          </p>
-          <AppointmentPanel appointment={oldAppointment} showClient showStyle />
-        </div>
-        <div className='flex-1'>
-          <p className='mb-3 font-semibold'>
-            <Label labelId='admin.appointments.reschedule.select_new_appointment_time' />
-          </p>
-          <Calendar
-            initialData={upcomingAppointments}
-            onAppointmentSelect={handleAppointmentSelect}
-            selectedAppointment={newAppointment}
-          />
-        </div>
-        {confirmationModal}
-      </div>
-      <Button className='mt-5 lg:w-fit' onClick={() => router.back()}>
+    <div className='flex flex-col gap-5 pb-14'>
+      <StrikeThroughText className='my-3'>
+        Reschedule Appointment
+      </StrikeThroughText>
+      <Section
+        title={
+          <Label labelId='admin.appointments.reschedule.original_appointment_time' />
+        }
+      >
+        <AppointmentPanel appointment={oldAppointment} showClient showStyle />
+      </Section>
+      <Section
+        title={
+          <Label labelId='admin.appointments.reschedule.select_new_appointment_time' />
+        }
+      >
+        <Calendar
+          initialData={upcomingAppointments}
+          onAppointmentSelect={handleAppointmentSelect}
+          selectedAppointment={newAppointment}
+        />
+      </Section>
+      {confirmationModal}
+      <Button onClick={() => router.back()}>
         <Label labelId='general.cancel' />
       </Button>
-    </ManagementPage>
+    </div>
   );
 };
 

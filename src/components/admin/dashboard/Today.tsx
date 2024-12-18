@@ -1,8 +1,8 @@
+import Section from '@/components/common/Section';
 import useLocale from '@/hooks/useLocale';
 import { AppointmentWithData } from '@/lib/types';
 import { formatDate } from '@/lib/utils/dateAndTimeUtils';
 import Label from '../../common/Label';
-import DashboardHeader from './DashboardHeader';
 import DaySchedule from './DaySchedule';
 
 interface Props {
@@ -13,16 +13,19 @@ const Today = ({ appointments }: Props) => {
   const locale = useLocale();
 
   return (
-    <div>
-      <DashboardHeader>
-        <Label labelId='admin.dashboard.today.title' />,{' '}
-        {formatDate(new Date(), locale, {
-          day: '2-digit',
-          month: 'long',
-        })}
-      </DashboardHeader>
+    <Section
+      title={
+        <>
+          <Label labelId='admin.dashboard.today.title' />,{' '}
+          {formatDate(new Date(), locale, {
+            day: '2-digit',
+            month: 'long',
+          })}
+        </>
+      }
+    >
       <DaySchedule appointments={appointments} />
-    </div>
+    </Section>
   );
 };
 

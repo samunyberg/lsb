@@ -25,7 +25,7 @@ const ClientExpandedDayContent = ({
   return (
     <div>
       {appointmentsByDate?.length > 0 ? (
-        <div className='pr-4'>
+        <div>
           <p className='mb-8 '>
             <Label labelId='calendar.expanded_day.content' />
           </p>
@@ -37,8 +37,10 @@ const ClientExpandedDayContent = ({
           />
         </div>
       ) : (
-        <div className='flex h-48 items-center justify-center '>
-          <Label labelId='calendar.expanded_day.no_appointments' />
+        <div className='flex h-64 items-center justify-center '>
+          <div className='rounded-md bg-red-100 px-4 py-2 text-red-800'>
+            <Label labelId='calendar.expanded_day.no_appointments' />
+          </div>
         </div>
       )}
     </div>

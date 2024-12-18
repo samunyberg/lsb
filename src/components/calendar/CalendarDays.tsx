@@ -25,7 +25,7 @@ const CalendarDays = ({
   selectedMonth,
   onSelectDate: onSelectedDate,
   onAppointmentSelect,
-  selectedAppointment
+  selectedAppointment,
 }: Props) => {
   const [showExpandedDay, setShowExpandedDay] = useState(false);
 

@@ -1,73 +1,76 @@
 import AppointmentStatusBadge from '@/components/common/appointments/AppointmentStatusBadge';
 import Label from '@/components/common/Label';
+import Panel from '@/components/common/Panel';
 import useLanguage from '@/hooks/useLanguage';
 import useLocale from '@/hooks/useLocale';
+import { AppointmentWithData } from '@/lib/types';
 import { formatTime } from '@/lib/utils/dateAndTimeUtils';
 import { Appointment } from '@prisma/client';
-import { useRouter } from 'next/navigation';
+import Link from 'next/link';
+import { FaRegClock } from 'react-icons/fa';
 
 interface Props {
   appointments: Appointment[];
 }
 
 const DaySchedule = ({ appointments }: Props) => {
-  const locale = useLocale();
-  const { currentLanguage } = useLanguage();
-  const router = useRouter();
-
   if (appointments.length === 0)
-    return (
-      <div className='flex h-48 items-center justify-center px-4 text-center'>
-        <Label labelId='calendar.expanded_day.no_appointments' />
-      </div>
-    );
+    return <Label labelId='calendar.expanded_day.no_appointments' />;
 
   return (
-    <div className='ml-auto flex w-[90%] lg:w-[95%]'>
-      <div className='relative flex h-[350px] w-full flex-col border border-l-4 border-black/20 border-l-accent'>
-        <div className='absolute inset-y-0 -left-7 flex flex-col justify-around'>
-          {appointments.map((app) => (
-            <div
-              key={app.id}
-              className='flex w-14 items-center justify-center rounded-sm border border-accent bg-white/60 py-1 text-lg  shadow backdrop-blur-md'
-            >
-              {formatTime(new Date(app.dateTime), locale)}
+    <div className='flex w-full flex-col gap-3'>
+      {appointments.map((app) => (
+        <TodayScheduleItem
+          key={app.id}
+          appointment={app as AppointmentWithData}
+        />
+      ))}
+    </div>
+  );
+};
+
+const TodayScheduleItem = ({
+  appointment,
+}: {
+  appointment: AppointmentWithData;
+}) => {
+  const { currentLanguage } = useLanguage();
+  const locale = useLocale();
+
+  return (
+    <Link href={`/admin/appointments/${appointment.id}`}>
+      <Panel className='relative cursor-pointer border border-black/10 px-3 shadow-none transition-all active:bg-white/20 lg:hover:bg-white/10'>
+        <div className='flex flex-col py-4'>
+          <div className='flex items-center gap-2'>
+            <div className='flex items-center gap-1'>
+              <FaRegClock />
+              <span>{formatTime(new Date(appointment.dateTime), locale)}</span>
             </div>
-          ))}
-        </div>
-        {appointments.map((app) => (
-          <div
-            key={app.id}
-            className='relative flex-1 cursor-pointer border-b border-dashed border-black/20 transition-all last:border-none active:bg-white/20 lg:hover:bg-white/10'
-            onClick={() => router.push(`/admin/appointments/${app.id}`)}
-          >
-            <span className='absolute -top-2 right-3'>
-              <AppointmentStatusBadge status={app.status} />
-            </span>
-            <div className='flex flex-col py-4 pl-12 '>
-              {app.status === 'AVAILABLE' ? (
-                <p>Free</p>
-              ) : (
-                <>
-                  <p className='mb-1 font-semibold'>{app.clientName}</p>
-                  <p className='text-sm'>{app.styleName}</p>
-                  <p className='text-sm'>
-                    {currentLanguage === 'en'
-                      ? app.serviceNameEn
-                      : app.serviceNameFi}
-                  </p>
-                </>
+            <span>•</span>
+            <AppointmentStatusBadge status={appointment.status} />
+          </div>
+          {appointment.status === 'BOOKED' && (
+            <div className='mt-2 pl-2'>
+              <p className='text-sm'>{appointment.clientName}</p>
+              <div className='flex gap-1'>
+                <span className='text-sm'>{appointment.styleName}</span>
+                <span>•</span>
+                <span className='text-sm'>
+                  {currentLanguage === 'en'
+                    ? appointment.serviceNameEn
+                    : appointment.serviceNameFi}
+                </span>
+              </div>
+              {appointment.adminNote && (
+                <div className='absolute bottom-6 right-3 flex size-6 items-center justify-center rounded-full bg-accent text-sm text-white shadow'>
+                  n
+                </div>
               )}
             </div>
-            {app.adminNote && (
-              <div className='absolute bottom-6 right-3 flex size-6 items-center justify-center rounded-full bg-accent text-sm  text-white shadow'>
-                n
-              </div>
-            )}
-          </div>
-        ))}
-      </div>
-    </div>
+          )}
+        </div>
+      </Panel>
+    </Link>
   );
 };
 

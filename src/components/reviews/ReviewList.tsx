@@ -37,13 +37,28 @@ const ReviewList = ({ reviews }: Props) => {
         </div>
       )}
       {reviews.length > visibleItems && (
-        <Button
-          variant='primary'
-          onClick={() => setPage(page + 1)}
-          disabled={page === totalPages - 1}
-        >
-          <Label labelId='reviews.reviewList.show_older_button' />
-        </Button>
+        <div className='flex gap-3'>
+          {page > 0 && (
+            <Button
+              variant='primary'
+              className='text-sm'
+              onClick={() => setPage(page - 1)}
+              disabled={page === 0}
+            >
+              <Label labelId='reviews.reviewList.show_newer_button' />
+            </Button>
+          )}
+          {page < totalPages - 1 && (
+            <Button
+              variant='primary'
+              className='text-sm'
+              onClick={() => setPage(page + 1)}
+              disabled={page === totalPages - 1}
+            >
+              <Label labelId='reviews.reviewList.show_older_button' />
+            </Button>
+          )}
+        </div>
       )}
     </div>
   );

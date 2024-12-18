@@ -6,6 +6,7 @@ import { ThreeDots } from 'react-loader-spinner';
 
 interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: 'primary' | 'accent';
+  small?: boolean;
   children: ReactNode | string;
   className?: string;
   isLoading?: boolean;
@@ -13,6 +14,7 @@ interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 
 const Button = ({
   variant = 'primary',
+  small = false,
   children,
   className = '',
   isLoading,
@@ -21,12 +23,13 @@ const Button = ({
   return (
     <button
       className={cn(
-        `flex h-11 w-full min-w-[80px] items-center justify-center whitespace-nowrap rounded-sm border-2 border-primary px-4 text-base  tracking-wide transition-all disabled:cursor-not-allowed disabled:text-opacity-50 lg:h-10 lg:text-sm`,
+        `flex h-12 w-full items-center justify-center whitespace-nowrap rounded-md px-4 text-sm tracking-wide transition-all disabled:cursor-not-allowed disabled:text-opacity-50 md:w-fit`,
         {
-          'bg-transparent active:bg-primaryButtonHover disabled:border-opacity-50 lg:hover:bg-primaryButtonHover':
+          'border-2 border-primary bg-transparent active:bg-primaryButtonHover disabled:border-opacity-50 lg:hover:bg-primaryButtonHover':
             variant === 'primary',
           'bg-accent text-white active:bg-accentButtonHover disabled:bg-opacity-50 lg:hover:bg-accentButtonHover':
             variant === 'accent',
+          'h-8 px-2': small,
         },
         className
       )}

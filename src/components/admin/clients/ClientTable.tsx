@@ -3,15 +3,13 @@
 import useLanguage from '@/hooks/useLanguage';
 import { Client } from '@/lib/types';
 import Link from 'next/link';
-import PaginatedTable from '../PaginatedTable';
-import { Config } from '../Table';
+import Table, { Config } from '../Table';
 
 interface Props {
   clients: Client[];
-  itemsCount: number;
 }
 
-const ClientTable = ({ clients, itemsCount }: Props) => {
+const ClientTable = ({ clients }: Props) => {
   const { getLabel } = useLanguage();
 
   const config: Config<Client> = {
@@ -40,14 +38,7 @@ const ClientTable = ({ clients, itemsCount }: Props) => {
 
   const keyFn = (client: Client) => client.id;
 
-  return (
-    <PaginatedTable
-      data={clients}
-      config={config}
-      keyFn={keyFn}
-      itemsCount={itemsCount}
-    />
-  );
+  return <Table data={clients} config={config} keyFn={keyFn} />;
 };
 
 export default ClientTable;

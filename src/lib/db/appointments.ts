@@ -1,5 +1,3 @@
-import { AppointmentSearchQuery } from '@/app/admin/appointments/search/page';
-import { PaginationData } from '@/components/Pagination';
 import prisma from '@/prisma/client';
 import { AppointmentWithData } from '../types';
 import {
@@ -26,40 +24,6 @@ todayStart.setHours(0, 0, 0, 0);
 
 const todayEnd = new Date();
 todayEnd.setHours(23, 59, 59, 999);
-
-export async function getPaginatedAppointmentsBySearchTerm(
-  { clientName, startDate, endDate }: AppointmentSearchQuery,
-  { pageNumber, pageSize }: PaginationData
-): Promise<{ appointments: AppointmentWithData[]; count: number }> {
-  const where = {
-    dateTime: {
-      gte: new Date(startDate! + 'T00:00:00Z'),
-      lte: new Date(endDate! + 'T23:59:59Z'),
-    },
-    client: clientName
-      ? {
-          OR: [
-            { firstName: { contains: clientName } },
-            { lastName: { contains: clientName } },
-          ],
-        }
-      : undefined,
-  };
-
-  const [appointments, count] = await Promise.all([
-    prisma.appointment.findMany({
-      skip: (pageNumber - 1) * pageSize,
-      take: pageSize,
-      include: appointmentIncludeOptions,
-      where,
-    }),
-    prisma.appointment.count({
-      where,
-    }),
-  ]);
-
-  return { appointments, count };
-}
 
 export async function getUpcomingAppointments(): Promise<
   AppointmentWithData[]

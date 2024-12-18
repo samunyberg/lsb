@@ -20,7 +20,7 @@ const LanguageSwitcher = () => {
 
   return (
     <div
-      className='relative flex w-full rounded-sm border border-primary py-1 text-sm'
+      className='relative flex w-full rounded-sm border border-primary py-1 text-xs'
       role='group'
       aria-label='Language Switcher'
     >
