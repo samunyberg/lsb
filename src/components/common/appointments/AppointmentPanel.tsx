@@ -8,7 +8,6 @@ import { formatDate, formatTime } from '@/lib/utils/dateAndTimeUtils';
 import { FaCheck, FaRegCalendarCheck, FaRegClock } from 'react-icons/fa';
 import { IoPerson } from 'react-icons/io5';
 import Label from '../Label';
-import Panel from '../Panel';
 import AppointmentStatusBadge from './AppointmentStatusBadge';
 
 interface Props {
@@ -51,7 +50,7 @@ const AppointmentPanel = ({
 
   const clientInfo = (
     <div>
-      <span className='flex items-center gap-2 font-semibold'>
+      <span className='flex items-center gap-2'>
         <IoPerson size={12} />
         {appointment.clientName!}
         {!appointment.isRegisteredClient && <UnregisteredBadge />}
@@ -70,9 +69,9 @@ const AppointmentPanel = ({
 
   const styleInfo = (
     <div>
-      <span className='flex items-center gap-2 text-sm'>
+      <span className='flex items-center gap-2'>
         <FaCheck size={12} />
-        {`${appointment.styleName} - ${
+        {`${appointment.styleName} • ${
           currentLanguage === 'en'
             ? appointment.serviceNameEn
             : appointment.service?.name_fi
@@ -82,25 +81,24 @@ const AppointmentPanel = ({
   );
 
   return (
-    <Panel
-      border
-      className={`relative flex cursor-pointer flex-col gap-2 px-2 py-3 transition-all active:bg-bgSofter lg:py-2 lg:hover:bg-bgSofter ${className}`}
+    <div
+      className={`relative flex cursor-pointer flex-col gap-2 rounded-md border border-black/10 bg-white px-2 py-3 transition-all active:bg-bgSofter lg:py-2 lg:hover:bg-bgSofter ${className}`}
     >
-      <div className='ml-5 flex gap-5 text-lg'>
+      <div className='flex gap-5'>
         {showDate && dateDisplay}
         {showTime && timeDisplay}
       </div>
-      <div className='flex flex-col p-2'>
+      <div className='flex flex-col gap-1 text-sm'>
         {showClient && clientInfo}
         {showStyle && styleInfo}
         {showPrice && priceInfo}
       </div>
       {showStatusBadge && (
-        <span className='absolute -top-2 right-2 shadow-md'>
+        <span className='absolute -top-2 right-2'>
           <AppointmentStatusBadge status={appointment.status} />
         </span>
       )}
-    </Panel>
+    </div>
   );
 };
 

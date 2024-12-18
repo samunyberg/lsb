@@ -2,6 +2,7 @@ import BookingContext from '@/contexts/BookingContext';
 import { BookingData, StyleWithServices } from '@/lib/types';
 import type { Service, Style } from '@prisma/client';
 import { useContext, useState } from 'react';
+import Section from '../common/Section';
 import ServiceSelect from './ServiceSelect';
 
 interface Props {
@@ -37,18 +38,20 @@ const Step2 = ({ styles }: Props) => {
   };
 
   return (
-    <div className='flex max-w-[600px] flex-col gap-3 md:mx-auto'>
-      {styles.map((style) => (
-        <ServiceSelect
-          key={style.id}
-          style={style}
-          selectedStyle={bookingData.style}
-          selectedService={selectedService}
-          onStyleSelect={handleStyleSelect}
-          onServiceSelect={handleServiceSelect}
-        />
-      ))}
-    </div>
+    <Section>
+      <div className='flex flex-col gap-2'>
+        {styles.map((style) => (
+          <ServiceSelect
+            key={style.id}
+            style={style}
+            selectedStyle={bookingData.style}
+            selectedService={selectedService}
+            onStyleSelect={handleStyleSelect}
+            onServiceSelect={handleServiceSelect}
+          />
+        ))}
+      </div>
+    </Section>
   );
 };
 

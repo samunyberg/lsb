@@ -3,7 +3,6 @@ import EditPersonalInformation from '@/components/account/EditPersonalInformatio
 import AppointmentHistoryLink from '@/components/common/AppointmentHistoryLink';
 import Container from '@/components/common/Container';
 import Label from '@/components/common/Label';
-import Spacer from '@/components/common/Spacer';
 import StrikeThroughText from '@/components/common/StrikeThroughText';
 import { getClientWithUpcomingAppointments } from '@/lib/db/clients';
 import { AppointmentWithData } from '@/lib/types';
@@ -19,26 +18,29 @@ const AccountPage = async ({ params: { id } }: Props) => {
   if (!client) notFound();
 
   return (
-    <Container className='max-w-4xl pb-10'>
+    <Container className='max-w-4xl pb-14'>
       <StrikeThroughText className='my-6 w-full md:my-12'>
         <Label labelId='account.title' />
       </StrikeThroughText>
-      <div className='lg:gap-18 flex flex-col gap-3 md:flex-row-reverse md:gap-12'>
-        <div className='flex-1'>
+      <div className='flex flex-col gap-5 lg:grid lg:grid-cols-4 lg:grid-rows-4 lg:gap-3'>
+        <div className='lg:col-span-2 lg:col-start-3 lg:row-span-2 lg:row-start-1'>
           <ClientAppointments
             appointments={client.appointments as AppointmentWithData[]}
           />
-          <div className='mt-8'>
-            <AppointmentHistoryLink clientId={id} />
-          </div>
-          <Spacer className='md:hidden' />
         </div>
-        <div className='md:flex-1'>
+        <div className='lg:col-span-2 lg:col-start-3 lg:row-span-1 lg:row-start-3'>
+          <AppointmentHistoryLink
+            href={`/account/${client.id}/appointment-history`}
+          />
+        </div>
+        <div className='lg:col-span-2 lg:col-start-1 lg:row-span-full lg:row-start-1'>
           <EditPersonalInformation user={client} />
         </div>
       </div>
     </Container>
   );
 };
+
+export const dynamic = 'force-dynamic';
 
 export default AccountPage;

@@ -3,11 +3,11 @@ import { PropsWithChildren } from 'react';
 
 const AdminLayout = ({ children }: PropsWithChildren) => {
   return (
-    <div>
-      <div className='z-20 lg:sticky lg:inset-x-0 lg:top-[55px] lg:bg-bgMain'>
+    <div className='mt-5 flex flex-col gap-5 lg:flex-row'>
+      <div className='lg:sticky lg:top-[75px] lg:h-fit lg:w-[150px]'>
         <Navigation />
       </div>
-      <div>{children}</div>
+      <div className='flex-1'>{children}</div>
     </div>
   );
 };

@@ -10,6 +10,7 @@ import Button from '../common/Button';
 import CustomInput from '../common/forms/CustomInput';
 import FormError from '../common/forms/FormError';
 import Label from '../common/Label';
+import Section from '../common/Section';
 
 interface FieldErrors {
   firstName?: string[];
@@ -79,10 +80,7 @@ const EditPersonalInformation = ({ user }: Props) => {
   };
 
   return (
-    <>
-      <h2 className='mb-5 text-lg uppercase tracking-wide'>
-        <Label labelId='edit_information_form.title' />
-      </h2>
+    <Section title={<Label labelId='edit_information_form.title' />}>
       <form onSubmit={handleSubmit} className='flex flex-col gap-4'>
         <FormError>{serverError}</FormError>
         <CustomInput
@@ -134,7 +132,7 @@ const EditPersonalInformation = ({ user }: Props) => {
           <Label labelId='edit_personal_information.change_password_button' />
         </Button>
       </form>
-    </>
+    </Section>
   );
 };
 

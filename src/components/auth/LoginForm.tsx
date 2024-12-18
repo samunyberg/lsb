@@ -4,7 +4,7 @@ import useLanguage from '@/hooks/useLanguage';
 import { signIn } from 'next-auth/react';
 import Link from 'next/link';
 import { useRouter, useSearchParams } from 'next/navigation';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 import Button from '../common/Button';
 import CustomInput from '../common/forms/CustomInput';
@@ -14,6 +14,7 @@ import Label from '../common/Label';
 import Spacer from '../common/Spacer';
 import AuthFormContainer from './AuthFormContainer';
 import AuthFormHeader from './AuthFormHeader';
+import Panel from '../common/Panel';
 
 const LoginForm = () => {
   const router = useRouter();
@@ -22,6 +23,11 @@ const LoginForm = () => {
   const [credentials, setCredentials] = useState({ email: '', password: '' });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState('');
+  const [callbackUrl, setCallbackUrl] = useState<string | null>(null);
+
+  useEffect(() => {
+    setCallbackUrl(searchParams.get('callbackUrl'));
+  }, [searchParams]);
 
   const login = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -38,7 +44,7 @@ const LoginForm = () => {
       }
       if (signInResult?.ok) {
         toast.success(`Signed in as ${credentials.email}`);
-        router.push(searchParams.get('callbackUrl') || '/');
+        router.push(callbackUrl || '/');
       }
     } catch (error) {
       setError('Something went wrong. Please try again.');
@@ -54,6 +60,11 @@ const LoginForm = () => {
 
   return (
     <AuthFormContainer>
+      {callbackUrl === '/book' && (
+        <Panel className='mb-12 p-4'>
+          Hi, please login before booking an appointment.
+        </Panel>
+      )}
       <AuthFormHeader subtitle={<Label labelId='login_form.title' />} />
       <FormError className='mb-4'>{error}</FormError>
       <form className='mb-8 flex flex-col gap-6' onSubmit={login}>

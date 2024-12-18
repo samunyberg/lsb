@@ -1,6 +1,5 @@
 import { Appointment } from '@prisma/client';
 import { cn } from 'clsx-tailwind-merge';
-import AvailabilityIndicator from './AvailabilityIndicator';
 
 interface Props {
   index: number;
@@ -47,10 +46,13 @@ const CalendarDay = ({
       role='button'
       tabIndex={isPassedDay ? -1 : 0}
       className={cn(
-        'flex h-[70px] cursor-pointer flex-col items-center justify-between rounded-sm border border-black/5 bg-bgSoft p-4 text-sm  transition-all active:bg-bgSofter lg:h-full lg:flex-row lg:justify-center lg:gap-4 lg:hover:bg-bgSofter',
+        'flex h-full w-full cursor-pointer items-center justify-center rounded-md border border-black/10 p-4 text-sm transition-all active:bg-bgSofter lg:hover:bg-bgSofter',
         {
-          'border-2 border-accent': isCurrentDay,
+          'font-bold ring ring-accent': isCurrentDay,
           'pointer-events-none text-gray-400': isPassedDay,
+          'bg-green-100 text-green-800': dayHasAvailableAppointments(),
+          'bg-red-50 text-red-800': !dayHasAvailableAppointments(),
+          'bg-white text-gray-400': isPassedDay,
         }
       )}
       onClick={() => {
@@ -65,10 +67,6 @@ const CalendarDay = ({
       }}
     >
       <span>{index}</span>
-      <AvailabilityIndicator
-        dayHasAvailableAppointments={dayHasAvailableAppointments()}
-        isPassedDay={isPassedDay}
-      />
     </div>
   );
 };

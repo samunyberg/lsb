@@ -3,6 +3,7 @@
 import { ReactNode, useState } from 'react';
 import { FiMenu } from 'react-icons/fi';
 import Label from '../common/Label';
+import ResponsiveContainer from '../common/ResponsiveContainer';
 import LanguageSwitcher from './LanguageSwitcher';
 import NavAuth from './NavAuth';
 import NavbarLinks from './NavbarLinks';
@@ -51,8 +52,8 @@ const Navbar = () => {
         isOpen={sidebarOpened}
         onClose={handleSidebarClose}
       />
-      <nav className='sticky inset-x-0 top-0 z-40 flex h-[55px] items-center bg-bgMain px-5 py-3 xl:px-0'>
-        <div className='container mx-auto flex items-center justify-between'>
+      <nav className='sticky top-0 z-40 h-[55px] bg-bgMain'>
+        <ResponsiveContainer className='flex items-center justify-between'>
           <FiMenu
             role='button'
             tabIndex={0}
@@ -66,12 +67,12 @@ const Navbar = () => {
           <NavLogo />
           <div className='flex flex-row items-center gap-5'>
             <NavbarLinks links={links} />
-            <div className='hidden lg:inline lg:w-[90px]'>
+            <div className='hidden lg:inline lg:w-[70px]'>
               <LanguageSwitcher />
             </div>
             <NavAuth />
           </div>
-        </div>
+        </ResponsiveContainer>
       </nav>
     </>
   );

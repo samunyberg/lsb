@@ -26,7 +26,7 @@ const NavAuth = () => {
 
   if (status === 'unauthenticated')
     return (
-      <div className='flex cursor-pointer gap-1 bg-bgSofter px-2 py-1 text-sm  shadow'>
+      <div className='flex cursor-pointer gap-1 rounded-md bg-white px-3 py-1 text-sm shadow'>
         <Link href={'/auth/login'} aria-label='Login'>
           <Label labelId='nav_auth.login' />
         </Link>

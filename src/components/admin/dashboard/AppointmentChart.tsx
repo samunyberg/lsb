@@ -1,5 +1,5 @@
 import Label from '@/components/common/Label';
-import Panel from '@/components/common/Panel';
+import Section from '@/components/common/Section';
 import useLocale from '@/hooks/useLocale';
 import { formatDate } from '@/lib/utils/dateAndTimeUtils';
 import {
@@ -11,7 +11,6 @@ import {
   XAxis,
   YAxis,
 } from 'recharts';
-import DashboardHeader from './DashboardHeader';
 
 interface Props {
   data: { month: string; count: number }[];
@@ -21,16 +20,19 @@ const AppointmentLineChart = ({ data }: Props) => {
   const locale = useLocale();
 
   return (
-    <div className='h-full overflow-hidden'>
-      <DashboardHeader>
-        <Label labelId='admin.dashboard.chart.title' />{' '}
-        {formatDate(new Date(), locale, { year: 'numeric' })}
-      </DashboardHeader>
-      <Panel className='h-full'>
+    <Section
+      title={
+        <>
+          <Label labelId='admin.dashboard.chart.title' />{' '}
+          {formatDate(new Date(), locale, { year: 'numeric' })}
+        </>
+      }
+    >
+      <div className='h-[250px] w-full overflow-hidden border border-red-300 lg:h-[300px]'>
         <ResponsiveContainer width='100%' height='100%'>
           <LineChart
             data={data}
-            margin={{ top: 20, right: 50, bottom: 50, left: 0 }}
+            margin={{ top: 5, right: 20, bottom: 0, left: 0 }}
           >
             <CartesianGrid strokeDasharray='3 3' stroke='rgba(0, 0, 0, 0.2)' />
             <XAxis dataKey='month' stroke='#524237' />
@@ -45,8 +47,8 @@ const AppointmentLineChart = ({ data }: Props) => {
             />
           </LineChart>
         </ResponsiveContainer>
-      </Panel>
-    </div>
+      </div>
+    </Section>
   );
 };
 

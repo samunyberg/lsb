@@ -1,4 +1,5 @@
 import Providers from '@/components/Providers';
+import ResponsiveContainer from '@/components/common/ResponsiveContainer';
 import Navbar from '@/components/navbar/Navbar';
 import type { Metadata } from 'next';
 import { Raleway } from 'next/font/google';
@@ -24,9 +25,7 @@ export default function RootLayout({
       <body className={raleway.className}>
         <Providers>
           <Navbar />
-          <div className='container mx-auto px-4 md:px-6 lg:px-8 xl:px-0'>
-            {children}
-          </div>
+          <ResponsiveContainer>{children}</ResponsiveContainer>
         </Providers>
         <div id='portal-root'></div>
         <ToastContainer

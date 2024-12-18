@@ -9,6 +9,7 @@ import Button from '../common/Button';
 import CustomInput from '../common/forms/CustomInput';
 import FormError from '../common/forms/FormError';
 import Label from '../common/Label';
+import Section from '../common/Section';
 
 interface FormData {
   name: string;
@@ -72,46 +73,51 @@ const ContactForm = ({ name, email }: Props) => {
   };
 
   return (
-    <form
-      className='flex w-full flex-col gap-5 md:w-[400px] lg:w-[500px]'
-      onSubmit={handleSubmit}
-    >
-      <FormError>{error}</FormError>
-      <CustomInput
-        id='name'
-        aria-label='Name'
-        label='Your name'
-        value={formData.name}
-        onChange={handleInputChange}
-        error={validationErrors.name?.at(0)}
-      />
-      <CustomInput
-        id='email'
-        aria-label='Email'
-        label='Your email'
-        value={formData.email}
-        onChange={handleInputChange}
-        error={validationErrors.email?.at(0)}
-      />
-      <CustomInput
-        as='textarea'
-        id='message'
-        aria-label='Message'
-        label='Message'
-        value={formData.message}
-        onChange={handleInputChange}
-        error={validationErrors.message?.at(0)}
-      />
-      <Button
-        variant='accent'
-        className='mt-3 flex items-center gap-2'
-        isLoading={isSending}
-        disabled={isSending}
+    <Section>
+      <p className='mb-5'>
+        <Label labelId='contact.contact_header.text' />
+      </p>
+      <form
+        className='mx-auto flex w-full flex-col gap-5 md:w-[400px] md:rounded-sm md:bg-bgSoft md:px-5 md:py-8 md:shadow lg:w-[500px]'
+        onSubmit={handleSubmit}
       >
-        <Label labelId='general.send' />
-        <IoSend size={15} />
-      </Button>
-    </form>
+        <FormError>{error}</FormError>
+        <CustomInput
+          id='name'
+          aria-label='Name'
+          label='Your name'
+          value={formData.name}
+          onChange={handleInputChange}
+          error={validationErrors.name?.at(0)}
+        />
+        <CustomInput
+          id='email'
+          aria-label='Email'
+          label='Your email'
+          value={formData.email}
+          onChange={handleInputChange}
+          error={validationErrors.email?.at(0)}
+        />
+        <CustomInput
+          as='textarea'
+          id='message'
+          aria-label='Message'
+          label='Message'
+          value={formData.message}
+          onChange={handleInputChange}
+          error={validationErrors.message?.at(0)}
+        />
+        <Button
+          variant='accent'
+          className='flex items-center gap-2'
+          isLoading={isSending}
+          disabled={isSending}
+        >
+          <Label labelId='general.send' />
+          <IoSend size={15} />
+        </Button>
+      </form>
+    </Section>
   );
 };
 

@@ -10,6 +10,7 @@ import Button from '../common/Button';
 import CustomInput from '../common/forms/CustomInput';
 import FormError from '../common/forms/FormError';
 import Label from '../common/Label';
+import Section from '../common/Section';
 import Spacer from '../common/Spacer';
 import StarsSelector from './StarsSelector';
 
@@ -67,61 +68,63 @@ const ReviewForm = () => {
   };
 
   return (
-    <div>
-      <h2 className='mt-8'>
-        <Label labelId='reviews.header' />
-      </h2>
-      <ul className='mt-6 flex flex-col gap-2 px-4'>
-        <li className='flex items-center gap-2'>
-          <GiClawSlashes size={15} />
-          <Label labelId='reviews.li1' />
-        </li>
-        <li className='flex items-center gap-2'>
-          <GiClawSlashes size={15} />
-          <Label labelId='reviews.li2' />
-        </li>
-      </ul>
-      <Spacer className='!my-8' />
-      <form className='my-5 flex flex-col gap-5' onSubmit={handleSubmit}>
-        <div className='relative mx-auto mb-2 w-[70%]'>
-          {validationErrors.stars?.at(0) && (
-            <span className='absolute -right-4 -top-5 rounded-sm bg-red-300 px-2 py-1 text-white shadow'>
-              Please give your rating
-            </span>
-          )}
-          <StarsSelector
-            selected={formData.stars}
-            onSelect={handleStarsSelect}
+    <div className='mt-5'>
+      <Section>
+        <h2>
+          <Label labelId='reviews.header' />
+        </h2>
+        <ul className='mt-6 flex flex-col gap-2 px-4'>
+          <li className='flex items-center gap-2'>
+            <GiClawSlashes size={15} />
+            <Label labelId='reviews.li1' />
+          </li>
+          <li className='flex items-center gap-2'>
+            <GiClawSlashes size={15} />
+            <Label labelId='reviews.li2' />
+          </li>
+        </ul>
+        <Spacer className='!my-8' />
+        <form className='my-5 flex flex-col gap-5' onSubmit={handleSubmit}>
+          <div className='relative mb-2'>
+            {validationErrors.stars?.at(0) && (
+              <span className='absolute -right-4 -top-5 rounded-sm bg-red-300 px-2 py-1 text-white shadow'>
+                Please give your rating
+              </span>
+            )}
+            <StarsSelector
+              selected={formData.stars}
+              onSelect={handleStarsSelect}
+            />
+          </div>
+          <CustomInput
+            id='name'
+            value={formData.name}
+            label={getLabel('reviews.name_placeholder')}
+            onChange={(event) =>
+              setFormData({ ...formData, name: event.target.value })
+            }
+            error={validationErrors.name?.at(0)}
           />
-        </div>
-        <CustomInput
-          id='name'
-          value={formData.name}
-          label={getLabel('reviews.name_placeholder')}
-          onChange={(event) =>
-            setFormData({ ...formData, name: event.target.value })
-          }
-          error={validationErrors.name?.at(0)}
-        />
-        <CustomInput
-          as='textarea'
-          id='text'
-          value={formData.text}
-          label={getLabel('reviews.text_placeholder')}
-          onChange={(event) =>
-            setFormData({ ...formData, text: event.target.value })
-          }
-          error={validationErrors.text?.at(0)}
-        />
-        <FormError>{error}</FormError>
-        <Button
-          variant='accent'
-          isLoading={isSubmitting}
-          disabled={isSubmitting}
-        >
-          <Label labelId='reviews.submit_button' />
-        </Button>
-      </form>
+          <CustomInput
+            as='textarea'
+            id='text'
+            value={formData.text}
+            label={getLabel('reviews.text_placeholder')}
+            onChange={(event) =>
+              setFormData({ ...formData, text: event.target.value })
+            }
+            error={validationErrors.text?.at(0)}
+          />
+          <FormError>{error}</FormError>
+          <Button
+            variant='accent'
+            isLoading={isSubmitting}
+            disabled={isSubmitting}
+          >
+            <Label labelId='reviews.submit_button' />
+          </Button>
+        </form>
+      </Section>
     </div>
   );
 };

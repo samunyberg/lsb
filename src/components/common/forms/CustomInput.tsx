@@ -17,13 +17,12 @@ const CustomInput = ({ as = 'input', label, error, icon, ...rest }: Props) => {
 
   return (
     <div
-      className={`transition-all duration-300 ${isFocused || rest.value ? 'pt-6' : ''}`}
+      className={`transition-all duration-300 ${isFocused || rest.value ? 'pt-4' : ''}`}
     >
-      <div className='relative w-full'>
+      <div className='relative w-full rounded-md border border-black/10 bg-white'>
         <Component
-          type='text'
           className={cn(
-            'peer h-12 w-full rounded-sm border-2 border-transparent bg-bgSoft p-2 caret-accent shadow outline-none transition-all duration-300 focus:border-accent focus:bg-white focus:shadow-none',
+            'peer h-full w-full rounded-md px-2 py-3 caret-accent outline-none transition-all duration-300 focus:border-2 focus:border-accent focus:bg-white focus:shadow-none',
             {
               'border-red-300 shadow-none': error,
               'h-28 resize-none': as === 'textarea',
@@ -35,7 +34,7 @@ const CustomInput = ({ as = 'input', label, error, icon, ...rest }: Props) => {
         />
         <label
           className={cn(
-            'pointer-events-none absolute left-2 top-3 text-sm text-gray-400 transition-all duration-300',
+            'pointer-events-none absolute left-2 top-[12px] text-sm text-gray-400 transition-all duration-300',
             {
               '-top-5 text-xs text-primary': isFocused || rest.value,
             }

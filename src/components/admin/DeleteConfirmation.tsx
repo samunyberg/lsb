@@ -59,7 +59,7 @@ const DeleteConfirmation = ({
       }
       content={
         <div className='flex flex-col gap-5'>
-          <div className='flex flex-col gap-4 rounded-sm border-2 border-accentRed px-4 py-3'>
+          <div className='flex flex-col gap-4 rounded-md border-2 border-accentRed px-4 py-5'>
             <div className='flex items-center gap-1'>
               <RiErrorWarningLine size={25} />
               <p className='text-lg font-semibold'>

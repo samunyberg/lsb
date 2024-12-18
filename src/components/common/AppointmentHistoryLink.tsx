@@ -1,30 +1,29 @@
 'use client';
 
-import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 import { FaHistory } from 'react-icons/fa';
 import Label from './Label';
+import Section from './Section';
 
 interface Props {
-  clientId: string;
+  href: string;
 }
 
-const AppointmentHistoryLink = ({ clientId }: Props) => {
-  const router = useRouter();
-
+const AppointmentHistoryLink = ({ href }: Props) => {
   return (
-    <div
-      className='flex cursor-pointer items-center gap-2'
-      role='link'
-      aria-label='View appointment history'
-    >
-      <FaHistory />
-      <span
-        className='transition-all hover:text-accent active:text-accent'
-        onClick={() => router.push(`/account/${clientId}/appointment-history`)}
+    <Section>
+      <Link
+        href={href}
+        className='ml-3 flex cursor-pointer items-center gap-2'
+        role='link'
+        aria-label='View appointment history'
       >
-        <Label labelId='account.client_appointments.appointment_history_button' />
-      </span>
-    </div>
+        <FaHistory />
+        <span className='underline transition-all hover:text-accent active:text-accent'>
+          <Label labelId='account.client_appointments.appointment_history_button' />
+        </span>
+      </Link>
+    </Section>
   );
 };
 

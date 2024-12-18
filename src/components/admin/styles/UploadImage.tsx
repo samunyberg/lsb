@@ -1,22 +1,22 @@
 'use client';
 
-import Button from '@/components/common/Button';
 import {
+  CldImage,
   CldUploadWidget,
   CloudinaryUploadWidgetResults,
 } from 'next-cloudinary';
-import { ReactNode } from 'react';
+import { MdAddPhotoAlternate } from 'react-icons/md';
 
 interface CloudinaryResult {
   public_id: string;
 }
 
 interface Props {
+  imageId?: string;
   onImageSelect: (imageId: string) => void;
-  buttonLabel: ReactNode;
 }
 
-const UploadImage = ({ onImageSelect, buttonLabel }: Props) => {
+const UploadImage = ({ imageId, onImageSelect }: Props) => {
   const uploadImage = (result: CloudinaryUploadWidgetResults) => {
     if (result.event !== 'success') return;
 
@@ -25,23 +25,33 @@ const UploadImage = ({ onImageSelect, buttonLabel }: Props) => {
   };
 
   return (
-    <div className='flex flex-col'>
-      <CldUploadWidget
-        uploadPreset='mvvia4vl'
-        options={{
-          sources: ['local'],
-          multiple: false,
-          showAdvancedOptions: false,
-        }}
-        onSuccess={(result) => uploadImage(result)}
-      >
-        {({ open }) => (
-          <Button type='button' onClick={() => open()}>
-            {buttonLabel}
-          </Button>
-        )}
-      </CldUploadWidget>
-    </div>
+    <CldUploadWidget
+      uploadPreset='mvvia4vl'
+      options={{
+        sources: ['local'],
+        multiple: false,
+        showAdvancedOptions: false,
+      }}
+      onSuccess={(result) => uploadImage(result)}
+    >
+      {({ open }) => (
+        <div
+          className='relative flex size-28 cursor-pointer items-center justify-center overflow-hidden rounded-md border border-black/10 bg-white'
+          onClick={() => open()}
+        >
+          {imageId ? (
+            <CldImage
+              src={imageId}
+              alt='Style image'
+              className='object-cover'
+              fill
+            />
+          ) : (
+            <MdAddPhotoAlternate size={40} />
+          )}
+        </div>
+      )}
+    </CldUploadWidget>
   );
 };
 

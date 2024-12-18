@@ -4,7 +4,7 @@ import { formatDate, formatTime } from '@/lib/utils/dateAndTimeUtils';
 import { motion } from 'framer-motion';
 import { useContext } from 'react';
 import { FaRegCalendarCheck, FaRegClock } from 'react-icons/fa';
-import Spacer from '../common/Spacer';
+import Panel from '../common/Panel';
 
 const BookingTime = () => {
   const {
@@ -24,18 +24,18 @@ const BookingTime = () => {
           stiffness: 260,
           damping: 22,
         }}
-        className='mt-5 flex items-center justify-between rounded-sm bg-bgSoft px-6 py-3 shadow-md'
       >
-        <span className='flex items-center gap-2'>
-          <FaRegCalendarCheck className='size-5' />
-          {formatDate(new Date(appointment.dateTime), locale)}
-        </span>
-        <span className='flex items-center gap-2'>
-          <FaRegClock className='size-5' />
-          {formatTime(new Date(appointment.dateTime), locale)}
-        </span>
+        <Panel className='mb-3 flex items-center justify-between px-4 py-2'>
+          <span className='flex items-center gap-2'>
+            <FaRegCalendarCheck className='size-5' />
+            {formatDate(new Date(appointment.dateTime), locale)}
+          </span>
+          <span className='flex items-center gap-2'>
+            <FaRegClock className='size-5' />
+            {formatTime(new Date(appointment.dateTime), locale)}
+          </span>
+        </Panel>
       </motion.div>
-      <Spacer />
     </>
   );
 };

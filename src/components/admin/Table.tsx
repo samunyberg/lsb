@@ -32,7 +32,7 @@ const Table = <T,>({ data, config, keyFn }: Props<T>) => {
     );
 
   return (
-    <div className='w-full overflow-x-auto'>
+    <div className='w-full overflow-x-auto rounded-lg bg-bgSoft shadow'>
       <table className='min-w-full table-auto'>
         {showHeader && (
           <thead>

@@ -1,12 +1,13 @@
 'use client';
 
-import Spacer from '@/components/common/Spacer';
+import Button from '@/components/common/Button';
+import Label from '@/components/common/Label';
+import Section from '@/components/common/Section';
 import { StyleWithServices } from '@/lib/types';
+import Link from 'next/link';
 import { useState } from 'react';
-import { MdDelete } from 'react-icons/md';
-import { Action } from '../ActionMenu';
+import { FaPlus } from 'react-icons/fa';
 import DeleteConfirmation from '../DeleteConfirmation';
-import ManagementPage from '../ManagementPage';
 import ServiceTable from './ServiceTable';
 import StyleForm from './StyleForm';
 
@@ -17,34 +18,38 @@ interface Props {
 const StyleOverview = ({ style }: Props) => {
   const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false);
 
-  const actions: Action[] = [
-    {
-      label: 'Delete style',
-      icon: <MdDelete size={20} className='text-accentRed' />,
-      onClick: () => setShowDeleteConfirmation(true),
-    },
-  ];
-
   return (
-    <>
-      <ManagementPage title={style.name} actions={actions} className='pb-14'>
-        <div className='flex flex-col lg:flex-row lg:gap-8'>
-          <div className='lg:w-2/5'>
-            <StyleForm style={style} />
+    <div className='flex flex-col gap-5 pb-14'>
+      <Section title={style.name}>
+        <StyleForm style={style} />
+      </Section>
+      <Section
+        title={
+          <div className='flex items-center justify-between'>
+            <Label labelId='admin.services.title' />
+            <Link href={`/admin/styles/${style.id}/new-service`}>
+              <FaPlus size={17} />
+            </Link>
           </div>
-          <Spacer className='!my-10 lg:hidden' />
-          <div className='rounded-sm bg-bgSoft p-3 shadow lg:h-fit lg:flex-1'>
-            <ServiceTable styleId={style.id} services={style.services} />
-          </div>
-        </div>
-      </ManagementPage>
+        }
+      >
+        <ServiceTable styleId={style.id} services={style.services} />
+      </Section>
+      <Section title='Actions'>
+        <Button
+          className='border-accentRed'
+          onClick={() => setShowDeleteConfirmation(true)}
+        >
+          Delete Style
+        </Button>
+      </Section>
       <DeleteConfirmation
         isVisible={showDeleteConfirmation}
         endpoint={`/api/admin/styles/${style.id}`}
         callbackUrl='/admin/styles'
         onClose={() => setShowDeleteConfirmation(false)}
       />
-    </>
+    </div>
   );
 };
 

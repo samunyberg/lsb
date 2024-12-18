@@ -100,10 +100,9 @@ const ServiceSelect = ({
       aria-expanded={showServices}
       aria-haspopup='listbox'
       className={cn(
-        'relative cursor-pointer rounded-sm border-2 border-transparent bg-bgSofter px-4 py-3 shadow transition-all duration-300',
+        'relative cursor-pointer rounded-md border border-black/10 bg-white px-4 py-3 transition-all duration-300',
         {
-          'border-accent bg-bgSoft':
-            selectedStyle?.id === style.id && selectedService,
+          'border-accent': selectedStyle?.id === style.id && selectedService,
         }
       )}
       onClick={handleStyleSelect}

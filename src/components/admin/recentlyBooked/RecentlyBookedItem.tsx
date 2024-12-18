@@ -8,7 +8,6 @@ import {
 } from '@/lib/utils/dateAndTimeUtils';
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
-import { GoDot } from 'react-icons/go';
 
 interface Props {
   appointment: AppointmentWithData;
@@ -41,8 +40,8 @@ const RecentlyBookedItem = ({ appointment }: Props) => {
     if (!timeAgo.label) return null;
 
     return (
-      <div className='flex items-center'>
-        <GoDot />
+      <div className='flex items-center gap-1 pl-2 text-sm'>
+        <span>•</span>
         <span>{`${timeAgo.interval} ${getLabel(timeAgo.label)}`}</span>
       </div>
     );
@@ -64,7 +63,7 @@ const RecentlyBookedItem = ({ appointment }: Props) => {
       </div>
       <div className='relative'>
         {isBookedLessThanOneHourAgo(appointment.bookedAt!) && (
-          <span className='absolute -top-3 right-2 z-20 rounded-sm bg-accent px-2 py-[2px] text-sm tracking-wide text-white shadow-lg'>
+          <span className='absolute -top-4 right-2 z-20 rounded-sm bg-accent p-1 text-sm tracking-wide text-white shadow-lg'>
             <Label labelId='general.new' />
           </span>
         )}
