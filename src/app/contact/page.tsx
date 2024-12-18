@@ -1,7 +1,6 @@
 import FAQ from '@/components/FAQ';
 import Container from '@/components/common/Container';
 import Hero from '@/components/common/Hero';
-import Spacer from '@/components/common/Spacer';
 import ContactForm from '@/components/contact/ContactForm';
 import { authOptions } from '@/lib/auth';
 import { getServerSession } from 'next-auth';
