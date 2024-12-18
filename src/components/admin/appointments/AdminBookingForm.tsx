@@ -3,8 +3,7 @@
 import ServiceSelect from '@/components/booking/ServiceSelect';
 import Button from '@/components/common/Button';
 import Label from '@/components/common/Label';
-import Panel from '@/components/common/Panel';
-import Spacer from '@/components/common/Spacer';
+import Section from '@/components/common/Section';
 import AppointmentPanel from '@/components/common/appointments/AppointmentPanel';
 import CustomInput from '@/components/common/forms/CustomInput';
 import FormError from '@/components/common/forms/FormError';
@@ -22,7 +21,6 @@ import axios, { AxiosError } from 'axios';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { toast } from 'react-toastify';
-import ManagementPage from '../ManagementPage';
 import BookingModeSelector from './BookingModeSelector';
 import ClientSelector from './ClientSelector';
 import LanguageSelector from './LanguageSelector';
@@ -148,19 +146,17 @@ const AdminBookingForm = ({ appointment, styles, clients }: Props) => {
   };
 
   return (
-    <ManagementPage
-      title={<Label labelId='admin.appointments.book_for_client' />}
-      className='max-w-xl pb-10'
-    >
-      <h2 className='mb-2 '>Appointment time:</h2>
-      <AppointmentPanel appointment={appointment} showDate showTime />
-      <Spacer className='my-8' />
+    <form className='flex flex-col gap-5 pb-14' onSubmit={handleSubmit}>
+      <Section title={<Label labelId='admin.appointments.book_for_client' />}>
+        <AppointmentPanel appointment={appointment} showDate showTime />
+      </Section>
       <BookingModeSelector onModeChange={handleModeChange} />
-      <h2 className='mb-4 mt-8 text-lg font-semibold'>
-        {mode === 'unregisteredClient' ? 'Client information' : 'Select client'}
-      </h2>
-      <FormError className='mb-4'>{error}</FormError>
-      <form onSubmit={handleSubmit}>
+      <Section
+        title={
+          mode === 'unregisteredClient' ? 'Client information' : 'Select client'
+        }
+      >
+        <FormError className='mb-4'>{error}</FormError>
         {mode === 'unregisteredClient' ? (
           <div className='flex flex-col gap-4'>
             <CustomInput
@@ -195,17 +191,17 @@ const AdminBookingForm = ({ appointment, styles, clients }: Props) => {
         ) : (
           <div>
             {client && (
-              <Panel className='mb-5 flex flex-col p-3'>
+              <div className='mb-4 flex flex-col px-2'>
                 <p className='font-semibold'>{formatName(client)}</p>
                 <p className=''>{client.email}</p>
-              </Panel>
+              </div>
             )}
             <ClientSelector clients={clients} onSelect={handleClientSelect} />
           </div>
         )}
-        <Spacer className='my-8' />
+      </Section>
+      <Section title='Style and service'>
         <div>
-          <h3 className='mb-4 text-lg font-semibold'>Style and service</h3>
           <div className='flex flex-col gap-3'>
             {styles.map((style) => (
               <ServiceSelect
@@ -219,8 +215,8 @@ const AdminBookingForm = ({ appointment, styles, clients }: Props) => {
             ))}
           </div>
         </div>
-        <Spacer className='my-8' />
-        <h4 className='mb-4 text-lg font-semibold'>Note</h4>
+      </Section>
+      <Section title='Note'>
         <CustomInput
           as='textarea'
           id='note'
@@ -228,15 +224,20 @@ const AdminBookingForm = ({ appointment, styles, clients }: Props) => {
           value={formData.note}
           onChange={handleInputChange}
         />
-        <div className='my-10'>
-          <p className='mb-2 '>Send confirmation email in:</p>
-          <LanguageSelector onChange={handleClientLanguageChange} />
-        </div>
-        <Button type='submit' variant='accent' isLoading={isSubmitting}>
-          Book
-        </Button>
-      </form>
-    </ManagementPage>
+      </Section>
+      <div>
+        <p className='mb-2'>Send confirmation email in:</p>
+        <LanguageSelector onChange={handleClientLanguageChange} />
+      </div>
+      <Button
+        type='submit'
+        className='mt-5'
+        variant='accent'
+        isLoading={isSubmitting}
+      >
+        Book
+      </Button>
+    </form>
   );
 };
 

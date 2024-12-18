@@ -16,9 +16,9 @@ const BookingModeSelector = ({ onModeChange }: Props) => {
   };
 
   return (
-    <div className='relative flex w-full rounded-sm border border-primary py-1'>
+    <div className='relative flex w-full overflow-hidden rounded-md border border-black/10 bg-bgSoft py-1'>
       <div
-        className={`absolute inset-y-0 w-1/2 rounded-sm bg-accent transition-transform duration-300 ease-in-out ${
+        className={`absolute inset-y-0 w-1/2 rounded-md bg-accent transition-transform duration-300 ease-in-out ${
           isRegisteredMode
             ? 'translate-x-0 transform'
             : 'translate-x-full transform'

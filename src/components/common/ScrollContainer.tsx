@@ -6,7 +6,7 @@ interface Props<T> {
   renderItem: (item: T) => ReactNode;
 }
 
-const ScrollContainer = <T, _>({ data, renderItem }: Props<T>) => {
+const ScrollContainer = <T,>({ data, renderItem }: Props<T>) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
 

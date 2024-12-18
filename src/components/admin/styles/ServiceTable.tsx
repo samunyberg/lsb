@@ -1,17 +1,14 @@
 import useLanguage from '@/hooks/useLanguage';
 import { Service } from '@prisma/client';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
 import Table, { Config } from '../Table';
 
 interface Props {
-  styleId: number;
   services: Service[];
 }
 
-const ServiceTable = ({ styleId, services }: Props) => {
+const ServiceTable = ({ services }: Props) => {
   const { getLabel, currentLanguage } = useLanguage();
-  const router = useRouter();
 
   const config: Config<Service> = {
     columns: [

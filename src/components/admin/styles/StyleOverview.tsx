@@ -33,7 +33,7 @@ const StyleOverview = ({ style }: Props) => {
           </div>
         }
       >
-        <ServiceTable styleId={style.id} services={style.services} />
+        <ServiceTable services={style.services} />
       </Section>
       <Section title='Actions'>
         <Button
