@@ -6,7 +6,6 @@ import Button from '@/components/common/Button';
 import Section from '@/components/common/Section';
 import { AppointmentWithData, ClientWithAppointments } from '@/lib/types';
 import { formatName } from '@/lib/utils/stringUtils';
-import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import DeleteConfirmation from '../DeleteConfirmation';
 
@@ -15,7 +14,6 @@ interface Props {
 }
 
 const ClientOverview = ({ client }: Props) => {
-  const router = useRouter();
   const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false);
 
   const items = [

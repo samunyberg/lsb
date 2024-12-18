@@ -32,12 +32,12 @@ const ClientSelector = ({ clients, onSelect }: Props) => {
         onChange={handleChange}
       />
       {email && (
-        <div className='flex flex-col shadow'>
+        <div className='flex flex-col'>
           {filteredClients.length > 0 ? (
             filteredClients.map((client) => (
               <div
                 key={client.id}
-                className='flex cursor-pointer flex-col border border-black/10 bg-bgSoft p-3'
+                className='flex cursor-pointer flex-col rounded-md border border-black/10 bg-bgSoft p-3'
                 onClick={() => {
                   onSelect(client);
                   setEmail('');

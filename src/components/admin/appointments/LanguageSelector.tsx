@@ -16,9 +16,9 @@ const LanguageSelector = ({ onChange }: Props) => {
   };
 
   return (
-    <div className='relative flex w-full rounded-sm border border-primary py-1 text-sm'>
+    <div className='relative flex w-full rounded-md border border-black/10 bg-bgSoft py-1 text-sm'>
       <div
-        className={`absolute inset-y-0 w-1/2 rounded-sm bg-accent transition-transform duration-300 ease-in-out ${
+        className={`absolute inset-y-0 w-1/2 rounded-md bg-accent transition-transform duration-300 ease-in-out ${
           selectedLanguage === 'fi'
             ? 'translate-x-0 transform'
             : 'translate-x-full transform'

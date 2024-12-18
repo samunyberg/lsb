@@ -1,10 +1,10 @@
 'use client';
 
 import Label from '@/components/common/Label';
-import { Review } from '@prisma/client';
-import ManagementPage from '../ManagementPage';
-import PendingReviewListItem from './PendingReviewListItem';
 import Panel from '@/components/common/Panel';
+import Section from '@/components/common/Section';
+import { Review } from '@prisma/client';
+import PendingReviewListItem from './PendingReviewListItem';
 
 interface Props {
   reviews: Review[];
@@ -19,13 +19,13 @@ const PendingReviewList = ({ reviews }: Props) => {
     );
 
   return (
-    <ManagementPage title='Pending Reviews' className='pb-12'>
+    <Section title='Pending Reviews'>
       <div className='flex flex-col gap-8 lg:mx-auto lg:max-w-[500px]'>
         {reviews.map((review) => (
           <PendingReviewListItem key={review.id} review={review} />
         ))}
       </div>
-    </ManagementPage>
+    </Section>
   );
 };
 
