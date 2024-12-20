@@ -46,7 +46,7 @@ const StyleOverview = ({ style }: Props) => {
       <DeleteConfirmation
         isVisible={showDeleteConfirmation}
         endpoint={`/api/admin/styles/${style.id}`}
-        callbackUrl='/admin/styles'
+        callbackUrl='/admin/styles/list'
         onClose={() => setShowDeleteConfirmation(false)}
       />
     </div>

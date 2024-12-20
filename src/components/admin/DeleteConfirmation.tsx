@@ -29,7 +29,7 @@ const DeleteConfirmation = ({
   const [error, setError] = useState('');
   const [text, setText] = useState('');
 
-  const textsMatch = () => text === 'Delete';
+  const textsMatch = text === 'Delete';
 
   const handleDelete = async () => {
     try {
@@ -59,14 +59,14 @@ const DeleteConfirmation = ({
       }
       content={
         <div className='flex flex-col gap-5'>
-          <div className='flex flex-col gap-4 rounded-md border-2 border-accentRed px-4 py-5'>
-            <div className='flex items-center gap-1'>
-              <RiErrorWarningLine size={25} />
+          <div>
+            <div className='mb-3 flex items-center gap-2'>
+              <RiErrorWarningLine size={25} className='text-red-500' />
               <p className='text-lg font-semibold'>
                 <Label labelId='confirmation_dialog.header' />
               </p>
             </div>
-            <p className=''>
+            <p className='px-3'>
               <Label labelId='confirmation_dialog.content' />
             </p>
           </div>
@@ -81,7 +81,7 @@ const DeleteConfirmation = ({
             <Button
               variant='accent'
               onClick={handleDelete}
-              disabled={!textsMatch()}
+              disabled={!textsMatch}
               isLoading={isSubmitting}
             >
               <Label labelId='general.delete' />

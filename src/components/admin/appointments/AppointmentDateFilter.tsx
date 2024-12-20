@@ -5,7 +5,7 @@ const AppointmentDateFilter = () => {
   const searchParams = useSearchParams();
 
   return (
-    <div className='h-8 rounded-md bg-bgSoft px-3 py-1 shadow'>
+    <div className='h-10 w-full rounded-md bg-bgSoft px-3 py-1 shadow'>
       <input
         type='date'
         defaultValue={searchParams.get('date') || undefined}

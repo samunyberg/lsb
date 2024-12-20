@@ -17,7 +17,7 @@ const AppointmentStatusFilter = () => {
 
   return (
     <select
-      className='h-8 w-full cursor-pointer rounded-md bg-bgSoft px-2 shadow outline-none'
+      className='h-10 w-full cursor-pointer rounded-md bg-bgSoft px-2 shadow outline-none'
       onChange={(event) => {
         const params = new URLSearchParams(searchParams.toString());
         const status = event.target.value;
