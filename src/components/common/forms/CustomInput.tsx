@@ -19,13 +19,20 @@ const CustomInput = ({ as = 'input', label, error, icon, ...rest }: Props) => {
     <div
       className={`transition-all duration-300 ${isFocused || rest.value ? 'pt-4' : ''}`}
     >
-      <div className='relative w-full rounded-md border border-black/10 bg-white'>
+      <div
+        className={cn(
+          'relative h-12 w-full rounded-md border border-black/10 bg-white',
+          {
+            'h-28': as === 'textarea',
+          }
+        )}
+      >
         <Component
           className={cn(
-            'peer h-full w-full rounded-md px-2 py-3 caret-accent outline-none transition-all duration-300 focus:border-2 focus:border-accent focus:bg-white focus:shadow-none',
+            'peer h-full w-full rounded-md p-2 caret-accent outline-none transition-all duration-300 focus:border-2 focus:border-accent focus:bg-white focus:shadow-none',
             {
               'border-red-300 shadow-none': error,
-              'h-28 resize-none': as === 'textarea',
+              'resize-none': as === 'textarea',
             }
           )}
           onFocus={() => setIsFocused(true)}

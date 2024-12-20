@@ -1,5 +1,6 @@
 import AppointmentFilters from '@/components/admin/appointments/AppointmentFilters';
 import AppointmentTable from '@/components/admin/appointments/AppointmentTable';
+import SectionList from '@/components/common/SectionList';
 import Pagination from '@/components/Pagination';
 import prisma from '@/prisma/client';
 import { Status } from '@prisma/client';
@@ -48,11 +49,11 @@ const AdminAppointmentListPage = async ({ searchParams }: Props) => {
   });
 
   return (
-    <div className='flex flex-col gap-5 pb-10'>
+    <SectionList>
       <AppointmentFilters />
       <AppointmentTable appointments={appointments} />
       <Pagination currentPage={page} pageSize={pageSize} itemCount={count} />
-    </div>
+    </SectionList>
   );
 };
 

@@ -13,9 +13,7 @@ const ClientAppointments = ({ appointments }: Props) => {
   return (
     <Section title={<Label labelId='account.client_appointments.title' />}>
       {appointments.length === 0 ? (
-        <div className='p-4'>
-          <Label labelId='account.client_appointments.no_upcoming_appointments' />
-        </div>
+        <Label labelId='account.client_appointments.no_upcoming_appointments' />
       ) : (
         <div className='flex flex-col gap-3'>
           {appointments.map((app) => (

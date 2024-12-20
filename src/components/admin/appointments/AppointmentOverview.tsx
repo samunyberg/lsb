@@ -4,6 +4,7 @@ import AppointmentStatusBadge from '@/components/common/appointments/Appointment
 import Button from '@/components/common/Button';
 import Label from '@/components/common/Label';
 import Section from '@/components/common/Section';
+import SectionList from '@/components/common/SectionList';
 import useLocale from '@/hooks/useLocale';
 import { AppointmentWithData } from '@/lib/types';
 import { formatDate, formatTime } from '@/lib/utils/dateAndTimeUtils';
@@ -11,8 +12,6 @@ import { cn } from 'clsx-tailwind-merge';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
-import { FaCalendar, FaCalendarCheck } from 'react-icons/fa';
-import { MdOutlineCancel } from 'react-icons/md';
 import AdminNoteForm from './AdminNoteForm';
 import AppointmentActionConfirmation, {
   AppointmentAction,
@@ -52,13 +51,11 @@ const AppointmentOverview = ({ appointment }: Props) => {
         return [
           {
             label: 'Reschedule',
-            icon: <FaCalendar />,
             onClick: () =>
               router.push(`/admin/appointments/${appointment.id}/reschedule`),
           },
           {
             label: 'Cancel',
-            icon: <MdOutlineCancel size={20} />,
             onClick: () => {
               setAction(() => 'cancel');
               setShowActionConfirmation(true);
@@ -69,7 +66,6 @@ const AppointmentOverview = ({ appointment }: Props) => {
         return [
           {
             label: 'Book for client',
-            icon: <FaCalendar />,
             onClick: () =>
               router.push(
                 `/admin/appointments/${appointment.id}/book-for-client`
@@ -77,7 +73,6 @@ const AppointmentOverview = ({ appointment }: Props) => {
           },
           {
             label: 'Make unavailable',
-            icon: <MdOutlineCancel size={20} />,
             onClick: () => {
               setAction('make-unavailable');
               setShowActionConfirmation(true);
@@ -88,7 +83,6 @@ const AppointmentOverview = ({ appointment }: Props) => {
         return [
           {
             label: 'Make available',
-            icon: <FaCalendarCheck />,
             onClick: () => {
               setAction('make-available');
               setShowActionConfirmation(true);
@@ -162,7 +156,7 @@ const AppointmentOverview = ({ appointment }: Props) => {
   ];
 
   return (
-    <div className='flex flex-col gap-5 pb-14'>
+    <SectionList>
       <Section
         title={`${formatDate(appointment.dateTime, locale, { dateStyle: 'short' })} • ${formatTime(appointment.dateTime, locale)}`}
       >
@@ -192,20 +186,18 @@ const AppointmentOverview = ({ appointment }: Props) => {
           </div>
         }
       >
-        {appointment.adminNote ? (
-          <p className='px-2'>{appointment.adminNote}</p>
-        ) : (
-          <p className='px-2'>
-            Click Add to write a note for this appointment.
-          </p>
-        )}
+        <p className='text-sm'>
+          {appointment.adminNote
+            ? appointment.adminNote
+            : 'Click Add to write a note for this appointment.'}
+        </p>
       </Section>
       <Section title='Actions'>
         <div className='flex flex-col gap-4'>
           {getActions()?.map((action, index) => (
             <Button
               key={index}
-              className={cn('flex items-center gap-2 border-accent', {
+              className={cn('border-accent', {
                 'border-accentGreen': action.label === 'Make available',
                 'border-accentOrange': action.label === 'Make unavailable',
                 'border-accentRed': action.label === 'Cancel',
@@ -213,7 +205,6 @@ const AppointmentOverview = ({ appointment }: Props) => {
               onClick={() => action.onClick()}
             >
               <span>{action.label}</span>
-              {action.icon}
             </Button>
           ))}
         </div>
@@ -229,7 +220,7 @@ const AppointmentOverview = ({ appointment }: Props) => {
         action={action}
         onClose={() => setShowActionConfirmation(false)}
       />
-    </div>
+    </SectionList>
   );
 };
 

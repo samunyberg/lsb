@@ -142,7 +142,7 @@
 
   "account.title": "My Account",
   "account.client_appointments.title": "Upcoming appointments",
-  "account.client_appointments.no_upcoming_appointments": "No upcoming appointments",
+  "account.client_appointments.no_upcoming_appointments": "No upcoming appointments.",
   "account.client_appointments.appointment_history_button": "Show appointment history",
 
   "account.appointment_history.title": "Appointment history",
@@ -157,8 +157,7 @@
   "edit_personal_information.change_password_button": "Change password",
 
   "styles.title": "Styles",
-  "styles.show_pricing": "Show pricing",
-  "styles.hide_pricing": "Hide pricing",
+  "styles.show_pricing": "Pricing",
 
   "about.title": "About",
   "about.location.title": "Studio Location",
@@ -261,7 +260,7 @@
   "login_form.links.register_here": "Register here",
   "login_form.links.forgot_password": "Forgot your password?",
   "login_form.links.click_here": "Click here",
-  "login_form.invalid_email_or_password": "Invalid email or password",
+  "login_form.invalid_email_or_password": "Invalid email or password.",
 
   "register_form.title": "Register",
   "register_form.welcome": "Welcome! Please continue by signing in to your new account.",

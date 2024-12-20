@@ -30,7 +30,14 @@ const StyleTable = ({ styles }: Props) => {
 
   const keyFn = (style: Style) => style.id;
 
-  return <Table data={styles} config={config} keyFn={keyFn} />;
+  return (
+    <Table
+      data={styles}
+      config={config}
+      keyFn={keyFn}
+      containerClassName='rounded-md shadow bg-bgSoft'
+    />
+  );
 };
 
 export default StyleTable;

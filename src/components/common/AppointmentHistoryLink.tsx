@@ -14,7 +14,7 @@ const AppointmentHistoryLink = ({ href }: Props) => {
     <Section>
       <Link
         href={href}
-        className='ml-3 flex cursor-pointer items-center gap-2'
+        className='flex cursor-pointer items-center gap-2'
         role='link'
         aria-label='View appointment history'
       >

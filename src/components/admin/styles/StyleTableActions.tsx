@@ -2,22 +2,15 @@
 
 import Button from '@/components/common/Button';
 import Label from '@/components/common/Label';
-import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 
 const StyleTableActions = () => {
-  const router = useRouter();
-
   return (
-    <div className='h-8'>
-      <Button
-        small
-        variant='accent'
-        className='float-right w-fit'
-        onClick={() => router.push('/admin/styles/new')}
-      >
+    <Link href={'/admin/styles/new'}>
+      <Button small variant='accent' className='float-right w-fit'>
         <Label labelId='admin.style_table.add_button' />
       </Button>
-    </div>
+    </Link>
   );
 };
 

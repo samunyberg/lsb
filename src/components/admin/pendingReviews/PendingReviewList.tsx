@@ -13,7 +13,7 @@ interface Props {
 const PendingReviewList = ({ reviews }: Props) => {
   if (reviews.length === 0)
     return (
-      <Panel className='p-5'>
+      <Panel className='p-4'>
         <Label labelId='admin.pending_reviews.no_reviews' />
       </Panel>
     );

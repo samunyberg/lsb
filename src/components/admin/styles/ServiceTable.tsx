@@ -36,11 +36,7 @@ const ServiceTable = ({ services }: Props) => {
 
   const keyFn = (service: Service) => service.id;
 
-  return (
-    <div>
-      <Table data={services} config={config} keyFn={keyFn} />
-    </div>
-  );
+  return <Table data={services} config={config} keyFn={keyFn} />;
 };
 
 export default ServiceTable;

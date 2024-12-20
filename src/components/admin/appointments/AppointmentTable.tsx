@@ -66,7 +66,14 @@ const AppointmentTable = ({ appointments }: Props) => {
 
   const keyFn = (app: AppointmentWithData) => app.id;
 
-  return <Table data={appointments} config={config} keyFn={keyFn} />;
+  return (
+    <Table
+      data={appointments}
+      config={config}
+      keyFn={keyFn}
+      containerClassName='bg-bgSoft rounded-md shadow'
+    />
+  );
 };
 
 export default AppointmentTable;

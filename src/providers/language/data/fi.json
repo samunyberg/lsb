@@ -157,8 +157,7 @@
   "edit_personal_information.change_password_button": "Vaihda salasana",
 
   "styles.title": "Palvelut",
-  "styles.show_pricing": "Näytä hinnasto",
-  "styles.hide_pricing": "Piilota hinnasto",
+  "styles.show_pricing": "Hinnasto",
 
   "about.title": "Tietoja",
   "about.location.title": "Studion Sijainti",
@@ -261,7 +260,7 @@
   "login_form.links.register_here": "Rekisteröidy täällä",
   "login_form.links.forgot_password": "Unohditko salasanasi?",
   "login_form.links.click_here": "Klikkaa tästä",
-  "login_form.invalid_email_or_password": "Virheellinen sähköposti tai salasana",
+  "login_form.invalid_email_or_password": "Virheellinen sähköposti tai salasana.",
 
   "register_form.title": "Rekisteröidy",
   "register_form.welcome": "Tervetuloa! Jatka kirjautumalla uuteen tiliisi.",

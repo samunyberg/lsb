@@ -7,7 +7,7 @@ interface Props extends React.InputHTMLAttributes<HTMLInputElement> {
 
 const SearchInput = ({ id, placeholder = 'Search', ...rest }: Props) => {
   return (
-    <div className='flex h-8 w-full items-center gap-2 rounded-md bg-bgSoft px-3 text-sm shadow'>
+    <div className='flex h-10 w-full items-center gap-2 rounded-md bg-bgSoft px-3 text-sm shadow'>
       <input
         id={id}
         className='h-full w-full bg-transparent outline-none'

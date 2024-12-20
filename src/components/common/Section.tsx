@@ -16,7 +16,7 @@ const Section = ({ title, children }: Props) => {
           </h1>
         </div>
       )}
-      <div className='h-full px-2 py-6'>{children}</div>
+      <div className='h-full p-4'>{children}</div>
     </Panel>
   );
 };

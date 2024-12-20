@@ -1,5 +1,6 @@
 import ClientFilters from '@/components/admin/clients/ClientFilters';
 import ClientTable from '@/components/admin/clients/ClientTable';
+import SectionList from '@/components/common/SectionList';
 import Pagination from '@/components/Pagination';
 import prisma from '@/prisma/client';
 
@@ -32,11 +33,11 @@ const AdminClientListPage = async ({ searchParams }: Props) => {
   const count = await prisma.user.count({ where });
 
   return (
-    <div className='flex flex-col gap-5 pb-10'>
+    <SectionList>
       <ClientFilters />
       <ClientTable clients={clients} />
       <Pagination currentPage={page} pageSize={pageSize} itemCount={count} />
-    </div>
+    </SectionList>
   );
 };
 
