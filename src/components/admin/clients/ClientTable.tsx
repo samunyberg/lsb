@@ -38,7 +38,14 @@ const ClientTable = ({ clients }: Props) => {
 
   const keyFn = (client: Client) => client.id;
 
-  return <Table data={clients} config={config} keyFn={keyFn} />;
+  return (
+    <Table
+      data={clients}
+      config={config}
+      keyFn={keyFn}
+      containerClassName='rounded-md shadow bg-bgSoft'
+    />
+  );
 };
 
 export default ClientTable;

@@ -19,9 +19,15 @@ interface Props<T> {
   data: T[];
   config: Config<T>;
   keyFn: (item: T) => string | number;
+  containerClassName?: string;
 }
 
-const Table = <T,>({ data, config, keyFn }: Props<T>) => {
+const Table = <T,>({
+  data,
+  config,
+  keyFn,
+  containerClassName = '',
+}: Props<T>) => {
   const showHeader = config.showHeaderRow ?? true;
 
   if (data.length === 0)
@@ -32,7 +38,7 @@ const Table = <T,>({ data, config, keyFn }: Props<T>) => {
     );
 
   return (
-    <div className='w-full overflow-x-auto rounded-lg bg-bgSoft shadow'>
+    <div className={`w-full overflow-x-auto ${containerClassName}`}>
       <table className='min-w-full table-auto'>
         {showHeader && (
           <thead>
@@ -40,7 +46,7 @@ const Table = <T,>({ data, config, keyFn }: Props<T>) => {
               {config.columns.map((column) => (
                 <th
                   key={column.label}
-                  className='border-b border-black/10 py-2 pl-3 text-start uppercase tracking-wide'
+                  className='border-b border-black/10 p-3 text-start uppercase tracking-wide'
                 >
                   {column.label}
                 </th>
@@ -55,7 +61,7 @@ const Table = <T,>({ data, config, keyFn }: Props<T>) => {
               className='border-b border-black/10 last:border-none'
             >
               {config.columns.map((column) => (
-                <td key={column.label} className='whitespace-nowrap px-3 py-3 '>
+                <td key={column.label} className='whitespace-nowrap p-3'>
                   {column.render(rowData)}
                 </td>
               ))}

@@ -10,6 +10,7 @@ import AppointmentPanel from '../common/appointments/AppointmentPanel';
 import Label from '../common/Label';
 import Panel from '../common/Panel';
 import Section from '../common/Section';
+import SectionList from '../common/SectionList';
 
 interface Props {
   appointments: AppointmentWithData[];
@@ -44,7 +45,7 @@ const AppointmentHistory = ({ appointments, onAppointmentClick }: Props) => {
   };
 
   return (
-    <div className='flex flex-col gap-5 pb-14'>
+    <SectionList>
       {Object.keys(groupedAppointments).map((month, index) => {
         return (
           <Section
@@ -58,7 +59,7 @@ const AppointmentHistory = ({ appointments, onAppointmentClick }: Props) => {
           </Section>
         );
       })}
-    </div>
+    </SectionList>
   );
 };
 

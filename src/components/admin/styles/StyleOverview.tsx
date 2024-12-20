@@ -3,6 +3,7 @@
 import Button from '@/components/common/Button';
 import Label from '@/components/common/Label';
 import Section from '@/components/common/Section';
+import SectionList from '@/components/common/SectionList';
 import { StyleWithServices } from '@/lib/types';
 import Link from 'next/link';
 import { useState } from 'react';
@@ -19,7 +20,7 @@ const StyleOverview = ({ style }: Props) => {
   const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false);
 
   return (
-    <div className='flex flex-col gap-5 pb-14'>
+    <SectionList>
       <Section title={style.name}>
         <StyleForm style={style} />
       </Section>
@@ -49,7 +50,7 @@ const StyleOverview = ({ style }: Props) => {
         callbackUrl='/admin/styles/list'
         onClose={() => setShowDeleteConfirmation(false)}
       />
-    </div>
+    </SectionList>
   );
 };
 

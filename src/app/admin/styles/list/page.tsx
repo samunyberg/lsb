@@ -1,5 +1,6 @@
 import StyleTable from '@/components/admin/styles/StyleTable';
 import StyleTableActions from '@/components/admin/styles/StyleTableActions';
+import SectionList from '@/components/common/SectionList';
 import prisma from '@/prisma/client';
 
 interface Props {
@@ -17,10 +18,10 @@ const AdminStyleListPage = async ({ searchParams }: Props) => {
   });
 
   return (
-    <div className='flex flex-col gap-5'>
+    <SectionList>
       <StyleTableActions />
       <StyleTable styles={styles} />
-    </div>
+    </SectionList>
   );
 };
 
