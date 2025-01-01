@@ -1,6 +1,7 @@
 import { Appointment } from '@prisma/client';
 import Label from '../common/Label';
 import AppointmentTimePicker from './AppointmentTimePicker';
+import NoAppointmentsBadge from './NoAppointmentsBadge';
 
 interface Props {
   selectedDate: Date;
@@ -37,11 +38,7 @@ const ClientExpandedDayContent = ({
           />
         </div>
       ) : (
-        <div className='flex h-64 items-center justify-center '>
-          <div className='rounded-md bg-red-100 px-4 py-2 text-red-800'>
-            <Label labelId='calendar.expanded_day.no_appointments' />
-          </div>
-        </div>
+        <NoAppointmentsBadge />
       )}
     </div>
   );

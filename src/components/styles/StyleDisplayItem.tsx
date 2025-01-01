@@ -38,7 +38,10 @@ const StyleDisplayItem = ({ style }: Props) => {
 
   return (
     <>
-      <div key={style.id} className='relative rounded-md bg-bgSoft shadow'>
+      <div
+        key={style.id}
+        className='relative overflow-hidden rounded-md bg-bgSoft shadow'
+      >
         <h2 className='overflow-hidden text-ellipsis whitespace-nowrap p-2 text-[16px] uppercase tracking-wide'>
           {style.name}
         </h2>
@@ -60,7 +63,7 @@ const StyleDisplayItem = ({ style }: Props) => {
         </div>
       </div>
       <Modal
-        header='Pricing'
+        header={<div className='text-lg font-semibold'>{style.name}</div>}
         content={<Table data={style.services} config={config} keyFn={keyFn} />}
         isVisible={showPrices}
         onClose={() => setShowPrices(false)}
