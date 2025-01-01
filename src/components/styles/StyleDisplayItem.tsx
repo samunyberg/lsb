@@ -64,7 +64,11 @@ const StyleDisplayItem = ({ style }: Props) => {
       </div>
       <Modal
         header={<div className='text-lg font-semibold'>{style.name}</div>}
-        content={<Table data={style.services} config={config} keyFn={keyFn} />}
+        content={
+          <div className='pb-8'>
+            <Table data={style.services} config={config} keyFn={keyFn} />
+          </div>
+        }
         isVisible={showPrices}
         onClose={() => setShowPrices(false)}
       ></Modal>
