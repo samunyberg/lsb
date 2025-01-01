@@ -8,7 +8,6 @@ const AppointmentDateFilter = () => {
     <div className='h-8 rounded-md bg-bgSoft px-3 py-1 shadow'>
       <input
         type='date'
-        placeholder='Date'
         defaultValue={searchParams.get('date') || undefined}
         onChange={(event) => {
           const params = new URLSearchParams(searchParams.toString());

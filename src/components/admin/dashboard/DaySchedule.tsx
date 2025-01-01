@@ -1,5 +1,5 @@
+import NoAppointmentsBadge from '@/components/calendar/NoAppointmentsBadge';
 import AppointmentStatusBadge from '@/components/common/appointments/AppointmentStatusBadge';
-import Label from '@/components/common/Label';
 import Panel from '@/components/common/Panel';
 import useLanguage from '@/hooks/useLanguage';
 import useLocale from '@/hooks/useLocale';
@@ -14,14 +14,7 @@ interface Props {
 }
 
 const DaySchedule = ({ appointments }: Props) => {
-  if (appointments.length === 0)
-    return (
-      <div className='flex h-64 items-center justify-center '>
-        <div className='rounded-md bg-red-100 px-4 py-2 text-red-800'>
-          <Label labelId='calendar.expanded_day.no_appointments' />
-        </div>
-      </div>
-    );
+  if (appointments.length === 0) return <NoAppointmentsBadge />;
 
   return (
     <div className='flex w-full flex-col gap-3'>
