@@ -3,7 +3,6 @@
 import { StyleWithServices } from '@/lib/types';
 import { Fragment } from 'react';
 import Container from '../common/Container';
-import Spacer from '../common/Spacer';
 import StyleDisplayItem from './StyleDisplayItem';
 
 interface Props {
@@ -12,11 +11,10 @@ interface Props {
 
 const StyleDisplay = ({ styles }: Props) => {
   return (
-    <Container className='flex flex-col gap-2 pb-16 pt-10 md:max-w-xl'>
-      {styles.map((style, index) => (
+    <Container className='grid grid-cols-2 gap-3 pb-14 pt-10 md:grid-cols-3 md:gap-6'>
+      {styles.map((style) => (
         <Fragment key={style.id}>
           <StyleDisplayItem style={style} />
-          {index < styles.length - 1 && <Spacer className='mb-12' />}
         </Fragment>
       ))}
     </Container>

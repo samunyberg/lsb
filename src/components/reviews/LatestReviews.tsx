@@ -16,7 +16,14 @@ const LatestReviews = ({ reviews }: Props) => {
   if (reviews.length === 0) return null;
 
   return (
-    <Section title={<Label labelId='reviews.latest.heading' />}>
+    <Section
+      title={
+        <div className='ic flex justify-between'>
+          <Label labelId='reviews.latest.heading' />
+          {'< >'}
+        </div>
+      }
+    >
       <ScrollContainer
         data={reviews}
         renderItem={(review) => <ReviewListItem review={review} />}

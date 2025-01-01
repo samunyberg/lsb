@@ -1,12 +1,12 @@
 import useLanguage from '@/hooks/useLanguage';
 import { StyleWithServices } from '@/lib/types';
 import { Service } from '@prisma/client';
-import { cn } from 'clsx-tailwind-merge';
 import { CldImage } from 'next-cloudinary';
 import { useState } from 'react';
-import { FaChevronDown, FaChevronUp } from 'react-icons/fa';
+import { FaChevronRight } from 'react-icons/fa';
 import Table, { Config } from '../admin/Table';
 import Label from '../common/Label';
+import Modal from '../common/Modal';
 
 interface Props {
   style: StyleWithServices;
@@ -38,11 +38,11 @@ const StyleDisplayItem = ({ style }: Props) => {
 
   return (
     <>
-      <div key={style.id}>
-        <h2 className='mb-2 text-[18px] uppercase tracking-wide lg:text-[20px]'>
+      <div key={style.id} className='relative rounded-md bg-bgSoft shadow'>
+        <h2 className='overflow-hidden text-ellipsis whitespace-nowrap p-2 text-[16px] uppercase tracking-wide'>
           {style.name}
         </h2>
-        <div className='relative mx-auto mb-5 h-[200px] rounded-sm border-2 border-transparent shadow-2xl md:w-[80%]'>
+        <div className='relative h-40 w-full'>
           <CldImage
             src={style.imageUrl || 'fallback-image_mllokb'}
             alt='style image'
@@ -52,27 +52,19 @@ const StyleDisplayItem = ({ style }: Props) => {
           />
         </div>
         <div
-          className='flex w-fit cursor-pointer items-center justify-center gap-2 rounded-sm border border-primary p-2 text-[16px] tracking-wide'
+          className='absolute inset-x-2 bottom-2 flex cursor-pointer items-center justify-center gap-1 rounded-full bg-bgSofter px-2 py-1 text-sm tracking-wide'
           onClick={() => setShowPrices(!showPrices)}
         >
-          {showPrices ? (
-            <Label labelId='styles.hide_pricing' />
-          ) : (
-            <Label labelId='styles.show_pricing' />
-          )}
-          {showPrices ? <FaChevronUp /> : <FaChevronDown />}
+          <Label labelId='styles.show_pricing' />
+          <FaChevronRight size={10} />
         </div>
       </div>
-      <div
-        className={cn(
-          'mt-3 max-h-0 w-full overflow-hidden rounded-sm bg-white/60 opacity-0 shadow-lg transition-all duration-500',
-          {
-            'max-h-[500px] opacity-100': showPrices,
-          }
-        )}
-      >
-        <Table data={style.services} config={config} keyFn={keyFn} />
-      </div>
+      <Modal
+        header='Pricing'
+        content={<Table data={style.services} config={config} keyFn={keyFn} />}
+        isVisible={showPrices}
+        onClose={() => setShowPrices(false)}
+      ></Modal>
     </>
   );
 };
