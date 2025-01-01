@@ -37,7 +37,7 @@ const ScrollContainer = <T,>({ data, renderItem }: Props<T>) => {
         {data.map((item, index) => (
           <div
             key={index}
-            className='hide-scrollbar h-full w-full flex-shrink-0 snap-center'
+            className='hide-scrollbar h-full w-[90%] flex-shrink-0 snap-center'
           >
             {renderItem(item)}
           </div>
