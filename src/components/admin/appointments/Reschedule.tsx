@@ -4,12 +4,12 @@ import Calendar from '@/components/calendar/Calendar';
 import AppointmentPanel from '@/components/common/appointments/AppointmentPanel';
 import Button from '@/components/common/Button';
 import CheckBox from '@/components/common/CheckBox';
-import FormError from '@/components/common/forms/FormError';
 import Label from '@/components/common/Label';
 import Modal from '@/components/common/Modal';
 import Section from '@/components/common/Section';
 import Spacer from '@/components/common/Spacer';
 import StrikeThroughText from '@/components/common/StrikeThroughText';
+import Warning from '@/components/common/Warning';
 import useLocale from '@/hooks/useLocale';
 import { AppointmentWithData } from '@/lib/types';
 import { Appointment } from '@prisma/client';
@@ -114,7 +114,7 @@ const Reschedule = ({ oldAppointment, upcomingAppointments }: Props) => {
             <Label labelId='admin.appointments.reschedule.confirmation.send_notification_to_client' />
           </div>
           <Spacer />
-          <FormError className='mb-4'>{error}</FormError>
+          <Warning className='mb-4'>{error}</Warning>
           <div className='flex flex-col gap-4 lg:flex-row-reverse lg:justify-between'>
             <Button
               variant='accent'

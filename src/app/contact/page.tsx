@@ -1,7 +1,7 @@
-import FAQ from '@/components/FAQ';
 import Container from '@/components/common/Container';
 import Hero from '@/components/common/Hero';
 import ContactForm from '@/components/contact/ContactForm';
+import FAQ from '@/components/contact/FAQ';
 import { authOptions } from '@/lib/auth';
 import { getServerSession } from 'next-auth';
 import heroImg from '../../../public/images/lashes-bg.jpg';

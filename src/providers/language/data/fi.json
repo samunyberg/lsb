@@ -210,13 +210,14 @@
   "admin.appointments.appointment_is_unavailable": "Tämä varaus on merkitty ei saatavilla olevaksi.",
   "admin.appointments.make_available": "Salli varaaminen",
   "admin.appointments.make_unavailable": "Estä varaaminen",
-  "admin.appointments.note.title": "Muistiinpano",
-  "admin.appointments.note_form.add_button": "Lisää muistiinpano",
-  "admin.appointments.note_form.edit_button": "Muokkaa muistiinpanoa",
   "admin.appointments.book_for_client": "Varaa asiakkaalle",
   "admin.appointments.cancel": "Peruuta ajanvaraus",
   "admin.appointments.reschedule": "Siirrä",
-  "admin.appointments.note_form_placeholder": "Kirjoita muistiinpano tähän...",
+
+  "admin.note.title": "Muistiinpano",
+  "admin.note_form.add_button": "Lisää muistiinpano",
+  "admin.note_form.edit_button": "Muokkaa muistiinpanoa",
+  "admin.note_form_placeholder": "Kirjoita muistiinpano tähän...",
 
   "admin.appointments.reschedule.title": "Siirrä ajanvaraus",
   "admin.appointments.reschedule.original_appointment_time": "Alkuperäinen varaus:",

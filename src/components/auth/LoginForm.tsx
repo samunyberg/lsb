@@ -8,11 +8,11 @@ import { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 import Button from '../common/Button';
 import CustomInput from '../common/forms/CustomInput';
-import FormError from '../common/forms/FormError';
 import PasswordInput from '../common/forms/PasswordInput';
 import Label from '../common/Label';
 import Panel from '../common/Panel';
 import Spacer from '../common/Spacer';
+import Warning from '../common/Warning';
 import AuthFormContainer from './AuthFormContainer';
 import AuthFormHeader from './AuthFormHeader';
 
@@ -66,7 +66,7 @@ const LoginForm = () => {
         </Panel>
       )}
       <AuthFormHeader subtitle={<Label labelId='login_form.title' />} />
-      <FormError className='mb-4'>{error}</FormError>
+      <Warning className='mb-4'>{error}</Warning>
       <form className='mb-8 flex flex-col gap-6' onSubmit={login}>
         <CustomInput
           id='email'

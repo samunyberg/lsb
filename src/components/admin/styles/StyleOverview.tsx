@@ -8,7 +8,7 @@ import { StyleWithServices } from '@/lib/types';
 import Link from 'next/link';
 import { useState } from 'react';
 import { FaPlus } from 'react-icons/fa';
-import DeleteConfirmation from '../DeleteConfirmation';
+import DeleteAction from '../DeleteAction';
 import ServiceTable from './ServiceTable';
 import StyleForm from './StyleForm';
 
@@ -44,7 +44,7 @@ const StyleOverview = ({ style }: Props) => {
           Delete Style
         </Button>
       </Section>
-      <DeleteConfirmation
+      <DeleteAction
         isVisible={showDeleteConfirmation}
         endpoint={`/api/admin/styles/${style.id}`}
         callbackUrl='/admin/styles'

@@ -8,9 +8,9 @@ import { useState } from 'react';
 import { toast } from 'react-toastify';
 import Button from '../common/Button';
 import CustomInput from '../common/forms/CustomInput';
-import FormError from '../common/forms/FormError';
 import Label from '../common/Label';
 import Spacer from '../common/Spacer';
+import Warning from '../common/Warning';
 import AuthFormContainer from './AuthFormContainer';
 import AuthFormHeader from './AuthFormHeader';
 
@@ -57,7 +57,7 @@ const ForgottenPasswordForm = () => {
       <AuthFormHeader
         subtitle={<Label labelId='forgotten_password_form.title' />}
       />
-      <FormError className='mb-4'>{error}</FormError>
+      <Warning className='mb-4'>{error}</Warning>
       <p className='px-2'>
         <Label labelId='forgotten_password_form.content' />
       </p>

@@ -7,10 +7,10 @@ import { signOut } from 'next-auth/react';
 import { useState } from 'react';
 import { toast } from 'react-toastify';
 import Button from '../common/Button';
-import FormError from '../common/forms/FormError';
 import PasswordInput from '../common/forms/PasswordInput';
 import GoBackLink from '../common/GoBackLink';
 import Label from '../common/Label';
+import Warning from '../common/Warning';
 import AuthFormContainer from './AuthFormContainer';
 import AuthFormHeader from './AuthFormHeader';
 import PasswordStrength from './PasswordStrength';
@@ -80,7 +80,7 @@ const ChangePasswordForm = () => {
         subtitle={<Label labelId='change_password_form.title' />}
       />
       <form className='flex w-full flex-col gap-4' onSubmit={handleSubmit}>
-        <FormError className='mb-4'>{error}</FormError>
+        <Warning className='mb-4'>{error}</Warning>
         <PasswordInput
           id='oldPassword'
           label={getLabel('change_password_form.old_password')}

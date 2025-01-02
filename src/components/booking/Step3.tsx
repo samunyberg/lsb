@@ -9,11 +9,11 @@ import { FiTool } from 'react-icons/fi';
 import { GiClawSlashes } from 'react-icons/gi';
 import Button from '../common/Button';
 import CheckBox from '../common/CheckBox';
-import FormError from '../common/forms/FormError';
 import Label from '../common/Label';
 import Modal from '../common/Modal';
 import Panel from '../common/Panel';
 import Spacer from '../common/Spacer';
+import Warning from '../common/Warning';
 
 const Step3 = () => {
   const { data: session } = useSession();
@@ -161,7 +161,7 @@ const Step3 = () => {
         </table>
       </Panel>
       {acceptTerms}
-      <FormError className='text-left'>{bookingError}</FormError>
+      <Warning className='text-left'>{bookingError}</Warning>
       {termsModal}
     </div>
   );

@@ -1,9 +1,9 @@
 'use client';
 
 import Button from '@/components/common/Button';
-import FormError from '@/components/common/forms/FormError';
 import Label from '@/components/common/Label';
 import Modal from '@/components/common/Modal';
+import Warning from '@/components/common/Warning';
 import axios, { AxiosError } from 'axios';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
@@ -80,7 +80,7 @@ const AppointmentActionConfirmation = ({
           <h2 className='mb-12 px-4 text-lg'>
             <Label labelId='confirmation_dialog.content' />
           </h2>
-          <FormError className='mb-4'>{error}</FormError>
+          <Warning className='mb-4'>{error}</Warning>
           <div className='flex flex-col gap-4 lg:flex-row-reverse lg:justify-between'>
             <Button
               variant='accent'

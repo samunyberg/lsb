@@ -210,13 +210,14 @@
   "admin.appointments.appointment_is_unavailable": "This appointment has been marked unavailable.",
   "admin.appointments.make_available": "Make available",
   "admin.appointments.make_unavailable": "Make unavailable",
-  "admin.appointments.note.title": "Note",
-  "admin.appointments.note_form.add_button": "Add note",
-  "admin.appointments.note_form.edit_button": "Edit note",
   "admin.appointments.book_for_client": "Book for a client",
   "admin.appointments.cancel": "Cancel appointment",
   "admin.appointments.reschedule": "Reschedule",
-  "admin.appointments.note_form_placeholder": "Write a note here...",
+
+  "admin.note.title": "Note",
+  "admin.note_form.add_button": "Add note",
+  "admin.note_form.edit_button": "Edit note",
+  "admin.note_form_placeholder": "Write a note here...",
 
   "admin.appointments.reschedule.title": "Reschedule Appointment",
   "admin.appointments.reschedule.original_appointment_time": "Original appointment:",

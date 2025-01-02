@@ -16,6 +16,7 @@ export interface Client {
   lastName: string;
   email: string;
   phone: string;
+  adminNote: string | null;
 }
 
 // Represents a user with their associated appointments

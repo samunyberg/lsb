@@ -1,7 +1,7 @@
 'use client';
 
 import useLanguage from '@/hooks/useLanguage';
-import Section from './common/Section';
+import Section from '../common/Section';
 import FAQItem from './FAQItem';
 
 const FAQ = () => {

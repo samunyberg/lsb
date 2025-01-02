@@ -14,4 +14,6 @@ const AdminAppointmentPage = async ({ params: { id } }: Props) => {
   return <AppointmentOverview appointment={appointment} />;
 };
 
+export const dynamic = 'force-dynamic';
+
 export default AdminAppointmentPage;

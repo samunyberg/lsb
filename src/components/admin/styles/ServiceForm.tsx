@@ -2,8 +2,8 @@
 
 import Button from '@/components/common/Button';
 import CustomInput from '@/components/common/forms/CustomInput';
-import FormError from '@/components/common/forms/FormError';
 import Label from '@/components/common/Label';
+import Warning from '@/components/common/Warning';
 import useLanguage from '@/hooks/useLanguage';
 import useLocalisedFormSchema from '@/hooks/useLocalisedFormSchema';
 import { Service } from '@prisma/client';
@@ -114,7 +114,7 @@ const ServiceForm = ({ service, styleId }: Props) => {
 
   return (
     <form className='flex flex-col gap-5' onSubmit={handleSubmit}>
-      <FormError>{error}</FormError>
+      <Warning>{error}</Warning>
       <CustomInput
         id='name_en'
         label={getLabel('service_form.name_en')}

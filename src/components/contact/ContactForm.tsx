@@ -8,9 +8,9 @@ import { IoSend } from 'react-icons/io5';
 import { toast } from 'react-toastify';
 import Button from '../common/Button';
 import CustomInput from '../common/forms/CustomInput';
-import FormError from '../common/forms/FormError';
 import Label from '../common/Label';
 import Section from '../common/Section';
+import Warning from '../common/Warning';
 
 interface FormData {
   name: string;
@@ -83,7 +83,7 @@ const ContactForm = ({ name, email }: Props) => {
         className='mx-auto flex w-full flex-col gap-5 md:w-[400px] md:rounded-sm md:bg-bgSoft md:px-5 md:py-8 md:shadow lg:w-[500px]'
         onSubmit={handleSubmit}
       >
-        <FormError>{error}</FormError>
+        <Warning>{error}</Warning>
         <CustomInput
           id='name'
           aria-label='Name'
