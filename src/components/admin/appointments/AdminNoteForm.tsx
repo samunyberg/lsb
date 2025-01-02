@@ -1,35 +1,35 @@
+'use client';
+
+import Button from '@/components/common/Button';
+import CustomInput from '@/components/common/forms/CustomInput';
 import Label from '@/components/common/Label';
 import Modal from '@/components/common/Modal';
-import useLocalisedFormSchema from '@/hooks/useLocalisedFormSchema';
-import { Appointment } from '@prisma/client';
+import Warning from '@/components/common/Warning';
+import useLanguage from '@/hooks/useLanguage';
 import axios, { AxiosError } from 'axios';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { toast } from 'react-toastify';
-import NoteForm from './NoteForm';
-
-export interface FormData {
-  adminNote: string;
-}
 
 interface Props {
   isVisible: boolean;
-  appointment: Appointment;
+  endpoint: string;
+  initialValue: string;
   onClose: () => void;
 }
 
-const AdminNoteForm = ({ isVisible, appointment, onClose }: Props) => {
+const AdminNoteForm = ({
+  isVisible,
+  endpoint,
+  initialValue,
+  onClose,
+}: Props) => {
   const router = useRouter();
-  const { adminNoteSchema } = useLocalisedFormSchema();
-
-  const initialFormData: FormData = {
-    adminNote: appointment.adminNote || '',
-  };
-
-  const [formData, setFormData] = useState(initialFormData);
+  const { getLabel } = useLanguage();
+  const [note, setNote] = useState(initialValue);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [validationError, setValidationError] = useState('');
   const [error, setError] = useState('');
-  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const closeNoteForm = () => {
     onClose();
@@ -38,20 +38,14 @@ const AdminNoteForm = ({ isVisible, appointment, onClose }: Props) => {
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    const validationResult = adminNoteSchema.safeParse(formData);
-    if (!validationResult.success) {
-      setValidationError(
-        validationResult.error.flatten().fieldErrors.adminNote?.at(0) || ''
-      );
+    if (!note) {
+      setValidationError('This field is required.');
       return;
     }
 
     try {
       setIsSubmitting(true);
-      await axios.patch(
-        `/api/admin/appointments/${appointment.id}/update`,
-        formData
-      );
+      await axios.patch(endpoint, { note });
       handleSubmitSuccess();
     } catch (error: unknown) {
       if (error instanceof AxiosError) setError(error.response?.data.error);
@@ -61,14 +55,9 @@ const AdminNoteForm = ({ isVisible, appointment, onClose }: Props) => {
     }
   };
 
-  const initializeFormData = () => {
-    setFormData(initialFormData);
-  };
-
   const handleCancel = () => {
     setValidationError('');
     setError('');
-    initializeFormData();
     onClose();
   };
 
@@ -79,39 +68,43 @@ const AdminNoteForm = ({ isVisible, appointment, onClose }: Props) => {
 
   const handleSubmitSuccess = () => {
     clearErrors();
-    initializeFormData();
     closeNoteForm();
-    toast.success(appointment.adminNote ? 'Note edited' : 'Note added');
+    toast.success(initialValue ? 'Note edited' : 'Note added');
     router.refresh();
   };
 
-  const handleInputChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
-    setFormData({ ...formData, adminNote: event.target.value });
-  };
-
-  const getLabel = () => {
-    return appointment.adminNote ? (
-      <Label labelId='admin.appointments.note_form.edit_button' />
+  const getButtonLabel = () => {
+    return initialValue ? (
+      <Label labelId='admin.note_form.edit_button' />
     ) : (
-      <Label labelId='admin.appointments.note_form.add_button' />
+      <Label labelId='admin.note_form.add_button' />
     );
   };
 
   return (
     <Modal
       isVisible={isVisible}
-      header={<h1 className='text-lg font-semibold'>{getLabel()}</h1>}
+      header={<h1 className='text-lg font-semibold'>{getButtonLabel()}</h1>}
       content={
-        <NoteForm
-          formData={formData}
-          onInputChange={handleInputChange}
-          onSubmit={handleSubmit}
-          onCancel={handleCancel}
-          error={error}
-          validationError={validationError}
-          isSubmitting={isSubmitting}
-          getLabels={getLabel}
-        />
+        <form className='flex flex-col gap-2' onSubmit={handleSubmit}>
+          <Warning>{error}</Warning>
+          <CustomInput
+            as='textarea'
+            id='adminNote'
+            label={getLabel('admin.note_form_placeholder')}
+            value={note}
+            onChange={(e) => setNote(e.target.value)}
+            error={validationError}
+          />
+          <div className='mt-5 flex flex-col gap-4'>
+            <Button type='submit' variant='accent' isLoading={isSubmitting}>
+              {getButtonLabel()}
+            </Button>
+            <Button type='button' onClick={handleCancel}>
+              <Label labelId='general.cancel' />
+            </Button>
+          </div>
+        </form>
       }
       onClose={onClose}
     />

@@ -1,12 +1,12 @@
 'use client';
 
 import ServiceSelect from '@/components/booking/ServiceSelect';
+import AppointmentPanel from '@/components/common/appointments/AppointmentPanel';
 import Button from '@/components/common/Button';
+import CustomInput from '@/components/common/forms/CustomInput';
 import Label from '@/components/common/Label';
 import Section from '@/components/common/Section';
-import AppointmentPanel from '@/components/common/appointments/AppointmentPanel';
-import CustomInput from '@/components/common/forms/CustomInput';
-import FormError from '@/components/common/forms/FormError';
+import Warning from '@/components/common/Warning';
 import useLanguage from '@/hooks/useLanguage';
 import useLocalisedFormSchema from '@/hooks/useLocalisedFormSchema';
 import type {
@@ -156,7 +156,7 @@ const AdminBookingForm = ({ appointment, styles, clients }: Props) => {
           mode === 'unregisteredClient' ? 'Client information' : 'Select client'
         }
       >
-        <FormError className='mb-4'>{error}</FormError>
+        <Warning className='mb-4'>{error}</Warning>
         {mode === 'unregisteredClient' ? (
           <div className='flex flex-col gap-4'>
             <CustomInput

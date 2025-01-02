@@ -5,7 +5,7 @@ import Label from '@/components/common/Label';
 import Section from '@/components/common/Section';
 import { Service } from '@prisma/client';
 import { useState } from 'react';
-import DeleteConfirmation from '../DeleteConfirmation';
+import DeleteAction from '../DeleteAction';
 import ServiceForm from './ServiceForm';
 
 interface Props {
@@ -33,7 +33,7 @@ const ServiceOverview = ({ service, associatedStyleName }: Props) => {
           Delete Style
         </Button>
       </Section>
-      <DeleteConfirmation
+      <DeleteAction
         isVisible={showDeleteConfirmation}
         endpoint={`/api/services/${service.styleId}/service-options/${service.id}`}
         callbackUrl={`/admin/services/${service.styleId}`}

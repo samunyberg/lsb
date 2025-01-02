@@ -11,6 +11,7 @@ const clientSelectClause = {
   lastName: true,
   email: true,
   phone: true,
+  adminNote: true,
 };
 
 const appointmentIncludeOptions = {

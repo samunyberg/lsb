@@ -1,13 +1,16 @@
 import Container from '@/components/common/Container';
 import ReviewList from '@/components/reviews/ReviewList';
-import { getApprovedReviews } from '@/lib/db/reviews';
+import prisma from '@/prisma/client';
 
 const AllReviewsPage = async () => {
-  const reviews = await getApprovedReviews();
+  const approvedReviews = await prisma.review.findMany({
+    where: { status: 'APPROVED' },
+    orderBy: { createdAt: 'desc' },
+  });
 
   return (
     <Container className='max-w-lg pb-16 pt-8'>
-      <ReviewList reviews={reviews} />
+      <ReviewList reviews={approvedReviews} />
     </Container>
   );
 };

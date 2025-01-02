@@ -2,8 +2,8 @@
 
 import Button from '@/components/common/Button';
 import CustomInput from '@/components/common/forms/CustomInput';
-import FormError from '@/components/common/forms/FormError';
 import Label from '@/components/common/Label';
+import Warning from '@/components/common/Warning';
 import useLanguage from '@/hooks/useLanguage';
 import useLocalisedFormSchema from '@/hooks/useLocalisedFormSchema';
 import { Style } from '@prisma/client';
@@ -105,7 +105,7 @@ const StyleForm = ({ style }: Props) => {
       className='flex max-w-[600px] flex-col gap-5 md:rounded-md md:bg-bgSoft md:px-4 md:py-6 md:shadow'
       onSubmit={handleSubmit}
     >
-      <FormError>{error}</FormError>
+      <Warning>{error}</Warning>
       <CustomInput
         id='name'
         label={getLabel('style_form.name')}

@@ -8,9 +8,9 @@ import { useState } from 'react';
 import { toast } from 'react-toastify';
 import Button from '../common/Button';
 import CustomInput from '../common/forms/CustomInput';
-import FormError from '../common/forms/FormError';
 import Label from '../common/Label';
 import Section from '../common/Section';
+import Warning from '../common/Warning';
 
 interface FieldErrors {
   firstName?: string[];
@@ -82,7 +82,7 @@ const EditPersonalInformation = ({ user }: Props) => {
   return (
     <Section title={<Label labelId='edit_information_form.title' />}>
       <form onSubmit={handleSubmit} className='flex flex-col gap-4'>
-        <FormError>{serverError}</FormError>
+        <Warning>{serverError}</Warning>
         <CustomInput
           id='firstName'
           label={<Label labelId='edit_information_form.first_name' />}

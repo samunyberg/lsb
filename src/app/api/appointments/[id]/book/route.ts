@@ -1,4 +1,5 @@
 import { sendBookingConfirmationEmail } from '@/emails/bookingConfirmationEmail/sendBookingConfirmationEmail';
+import { sendNotifyAdminEmail } from '@/emails/notifyAdminEmail/sendNotifyAdminEmail';
 import { authOptions } from '@/lib/auth';
 import { startsInLessThanOneHour } from '@/lib/utils/dateAndTimeUtils';
 import prisma from '@/prisma/client';
@@ -117,6 +118,13 @@ export async function PATCH(request: NextRequest, { params }: Props) {
         body.clientLanguage === 'en'
           ? bookedAppointment.serviceNameEn!
           : bookedAppointment.serviceNameFi!,
+    });
+
+    await sendNotifyAdminEmail({
+      clientName: `${client.firstName} ${client.lastName}`,
+      dateTime: bookedAppointment.dateTime,
+      style: bookedAppointment.styleName!,
+      service: bookedAppointment.serviceNameEn!,
     });
 
     return NextResponse.json({ id: bookedAppointment.id }, { status: 200 });

@@ -14,6 +14,7 @@ export async function getClientById(id: string) {
       lastName: true,
       email: true,
       phone: true,
+      adminNote: true,
       appointments: {
         include: { style: true, service: true },
       },
@@ -32,6 +33,7 @@ export async function getClientWithUpcomingAppointments(id: string) {
       lastName: true,
       email: true,
       phone: true,
+      adminNote: true,
       appointments: {
         where: {
           dateTime: { gt: new Date() },

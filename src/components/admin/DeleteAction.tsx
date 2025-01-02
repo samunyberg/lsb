@@ -1,6 +1,6 @@
 import Button from '@/components/common/Button';
-import FormError from '@/components/common/forms/FormError';
 import Modal from '@/components/common/Modal';
+import Warning from '@/components/common/Warning';
 import useLanguage from '@/hooks/useLanguage';
 import axios, { AxiosError } from 'axios';
 import { useRouter } from 'next/navigation';
@@ -17,12 +17,7 @@ interface Props {
   onClose: () => void;
 }
 
-const DeleteConfirmation = ({
-  isVisible,
-  endpoint,
-  callbackUrl,
-  onClose,
-}: Props) => {
+const DeleteAction = ({ isVisible, endpoint, callbackUrl, onClose }: Props) => {
   const router = useRouter();
   const { getLabel } = useLanguage();
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -59,24 +54,22 @@ const DeleteConfirmation = ({
       }
       content={
         <div className='flex flex-col gap-5'>
-          <div>
-            <div className='mb-3 flex items-center gap-2'>
-              <RiErrorWarningLine size={25} className='text-red-500' />
-              <p className='text-lg font-semibold'>
+          <Warning className='p-5'>
+            <div className='flex items-center gap-1'>
+              <RiErrorWarningLine size={25} />
+              <p className='mr-2 text-lg font-semibold'>
                 <Label labelId='confirmation_dialog.header' />
               </p>
-            </div>
-            <p className='px-3'>
               <Label labelId='confirmation_dialog.content' />
-            </p>
-          </div>
+            </div>
+          </Warning>
           <CustomInput
             id='name'
             label={getLabel('confirmation_dialog.confirm')}
             value={text}
             onChange={(event) => setText(event.target.value)}
           />
-          <FormError>{error}</FormError>
+          <Warning>{error}</Warning>
           <div className='mt-5 flex flex-col gap-4'>
             <Button
               variant='accent'
@@ -97,4 +90,4 @@ const DeleteConfirmation = ({
   );
 };
 
-export default DeleteConfirmation;
+export default DeleteAction;

@@ -8,10 +8,10 @@ import { GiClawSlashes } from 'react-icons/gi';
 import { toast } from 'react-toastify';
 import Button from '../common/Button';
 import CustomInput from '../common/forms/CustomInput';
-import FormError from '../common/forms/FormError';
 import Label from '../common/Label';
 import Section from '../common/Section';
 import Spacer from '../common/Spacer';
+import Warning from '../common/Warning';
 import StarsSelector from './StarsSelector';
 
 interface FormData {
@@ -115,7 +115,7 @@ const ReviewForm = () => {
             }
             error={validationErrors.text?.at(0)}
           />
-          <FormError>{error}</FormError>
+          <Warning>{error}</Warning>
           <Button
             variant='accent'
             isLoading={isSubmitting}

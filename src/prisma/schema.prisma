@@ -72,6 +72,7 @@ model User {
   firstName      String
   lastName       String
   phone          String
+  adminNote      String?       @db.VarChar(500)
   isAdmin        Boolean       @default(false)
   appointments   Appointment[]
 }

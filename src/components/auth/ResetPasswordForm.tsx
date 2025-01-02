@@ -7,9 +7,9 @@ import { useRouter, useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 import Button from '../common/Button';
-import FormError from '../common/forms/FormError';
 import PasswordInput from '../common/forms/PasswordInput';
 import Label from '../common/Label';
+import Warning from '../common/Warning';
 import AuthFormContainer from './AuthFormContainer';
 import AuthFormHeader from './AuthFormHeader';
 import PasswordStrength from './PasswordStrength';
@@ -71,7 +71,7 @@ const ResetPasswordForm = () => {
       <AuthFormHeader
         subtitle={<Label labelId='reset_password_form.title' />}
       />
-      <FormError className='mb-4'>{error}</FormError>
+      <Warning className='mb-4'>{error}</Warning>
       <form className='mb-8 mt-5 flex flex-col gap-6' onSubmit={handleSubmit}>
         <PasswordInput
           name='password'
