@@ -261,6 +261,7 @@
   "login_form.links.forgot_password": "Forgot your password?",
   "login_form.links.click_here": "Click here",
   "login_form.invalid_email_or_password": "Invalid email or password.",
+  "login_form.login_callout": "Hi, please login before booking an appointment.",
 
   "register_form.title": "Register",
   "register_form.welcome": "Welcome! Please continue by signing in to your new account.",
@@ -290,6 +291,10 @@
   "reset_password_form.confirm_password": "Confirm your new password",
   "reset_password_form.submit": "Reset password",
 
+  "contact_form.name": "Your name",
+  "contact_form.email": "Your email",
+  "contact_form.message": "Your message",
+
   "style_form.name": "Name",
   "style_form.image_preview": "Image preview",
   "style_form.change_image": "Change image",
@@ -303,5 +308,13 @@
   "service_form.description_fi": "Finnish description",
   "service_form.price": "Price",
   "service_form.add_button": "Create service",
-  "service_form.edit_button": "Edit service"
+  "service_form.edit_button": "Edit service",
+
+  "FAQ.title": "Frequently asked questions",
+  "FAQ.q1": "How do I prepare for my appointment?",
+  "FAQ.a1": "Avoid drinking coffee or other caffeinated beverages before your appointment.",
+  "FAQ.q2": "How can I cancel or reschedule my appointment?",
+  "FAQ.a2": "You can cancel or reschedule by contacting me to boochitamat@gmail.com or sending me a message via Instagram.",
+  "FAQ.q3": "What are my payment options?",
+  "FAQ.a3": "I accept card payments, Apple Pay, Google Pay, and cash (exact change)."
 }

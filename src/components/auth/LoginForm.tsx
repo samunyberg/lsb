@@ -11,10 +11,10 @@ import CustomInput from '../common/forms/CustomInput';
 import FormError from '../common/forms/FormError';
 import PasswordInput from '../common/forms/PasswordInput';
 import Label from '../common/Label';
+import Panel from '../common/Panel';
 import Spacer from '../common/Spacer';
 import AuthFormContainer from './AuthFormContainer';
 import AuthFormHeader from './AuthFormHeader';
-import Panel from '../common/Panel';
 
 const LoginForm = () => {
   const router = useRouter();
@@ -62,7 +62,7 @@ const LoginForm = () => {
     <AuthFormContainer>
       {callbackUrl === '/book' && (
         <Panel className='mb-12 p-4'>
-          Hi, please login before booking an appointment.
+          <Label labelId='login_form.login_callout' />
         </Panel>
       )}
       <AuthFormHeader subtitle={<Label labelId='login_form.title' />} />
