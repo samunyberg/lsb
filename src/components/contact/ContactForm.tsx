@@ -1,5 +1,6 @@
 'use client';
 
+import useLanguage from '@/hooks/useLanguage';
 import useLocalisedFormSchema from '@/hooks/useLocalisedFormSchema';
 import axios, { AxiosError } from 'axios';
 import { useState } from 'react';
@@ -29,6 +30,7 @@ interface Props {
 }
 
 const ContactForm = ({ name, email }: Props) => {
+  const { getLabel } = useLanguage();
   const { contactFormSchema } = useLocalisedFormSchema();
   const [formData, setFormData] = useState<FormData>({
     name: name || '',
@@ -85,7 +87,7 @@ const ContactForm = ({ name, email }: Props) => {
         <CustomInput
           id='name'
           aria-label='Name'
-          label='Your name'
+          label={getLabel('contact_form.name')}
           value={formData.name}
           onChange={handleInputChange}
           error={validationErrors.name?.at(0)}
@@ -93,7 +95,7 @@ const ContactForm = ({ name, email }: Props) => {
         <CustomInput
           id='email'
           aria-label='Email'
-          label='Your email'
+          label={getLabel('contact_form.email')}
           value={formData.email}
           onChange={handleInputChange}
           error={validationErrors.email?.at(0)}
@@ -102,7 +104,7 @@ const ContactForm = ({ name, email }: Props) => {
           as='textarea'
           id='message'
           aria-label='Message'
-          label='Message'
+          label={getLabel('contact_form.message')}
           value={formData.message}
           onChange={handleInputChange}
           error={validationErrors.message?.at(0)}

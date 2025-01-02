@@ -261,6 +261,7 @@
   "login_form.links.forgot_password": "Unohditko salasanasi?",
   "login_form.links.click_here": "Klikkaa tästä",
   "login_form.invalid_email_or_password": "Virheellinen sähköposti tai salasana.",
+  "login_form.login_callout": "Hei, kirjaudu sisään ennen ajanvarausta.",
 
   "register_form.title": "Rekisteröidy",
   "register_form.welcome": "Tervetuloa! Jatka kirjautumalla uuteen tiliisi.",
@@ -290,6 +291,10 @@
   "reset_password_form.confirm_password": "Vahvista uusi salasana",
   "reset_password_form.submit": "Vaihda salasana",
 
+  "contact_form.name": "Nimesi",
+  "contact_form.email": "Sähköpostiosoitteesi",
+  "contact_form.message": "Viesti",
+
   "style_form.name": "Nimi",
   "style_form.image_preview": "Kuvan esikatselu",
   "style_form.change_image": "Vaihda kuva",
@@ -303,5 +308,13 @@
   "service_form.description_fi": "Suom. kuvaus",
   "service_form.price": "Hinta",
   "service_form.add_button": "Luo palvelu",
-  "service_form.edit_button": "Muokkaa palvelua"
+  "service_form.edit_button": "Muokkaa palvelua",
+
+  "FAQ.title": "Usein kysytyttyä",
+  "FAQ.q1": "Kuinka valmistun ajanvaraustani varten?",
+  "FAQ.a1": "Vältä kahvin tai muiden kofeiinipitoisten juomien nauttimista ennen ripsihuoltoaikaasi.",
+  "FAQ.q2": "Kuinka voin siirtää tai perua aikani?",
+  "FAQ.a2": "Voit siirtää tai perua aikasi lähettämällä minulle sähköpostia osoitteeseen boochitamat@gmail.com, tai lähettämälle minulle viestin Instagramissa.",
+  "FAQ.q3": "Mitä maksuvaihtoehtoja minulla on?",
+  "FAQ.a3": "Voit maksaa korttimaksulla, Apple Payllä, Google Payllä, tai käteisellä (tasarahalla)."
 }

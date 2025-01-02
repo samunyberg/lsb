@@ -1,26 +1,27 @@
 'use client';
 
+import useLanguage from '@/hooks/useLanguage';
 import Section from './common/Section';
 import FAQItem from './FAQItem';
 
-const items = [
-  {
-    heading: 'How do I prepare for an appointment?',
-    content:
-      'Avoid drinking coffee or other caffeine-containing beverages before your appointment.',
-  },
-  {
-    heading: 'How do I cancel or change my appointment?',
-    content:
-      'You can cancel your appointment by sending me an email or contacting me in Messenger.',
-  },
-  {
-    heading: 'What are my payment options?',
-    content: 'I accept card payments, Apple Pay, Google Pay, and cash.',
-  },
-];
-
 const FAQ = () => {
+  const { getLabel } = useLanguage();
+
+  const items = [
+    {
+      heading: getLabel('FAQ.q1'),
+      content: getLabel('FAQ.a1'),
+    },
+    {
+      heading: getLabel('FAQ.q2'),
+      content: getLabel('FAQ.a2'),
+    },
+    {
+      heading: getLabel('FAQ.q3'),
+      content: getLabel('FAQ.a3'),
+    },
+  ];
+
   return (
     <Section title='Frequently asked questions'>
       <div className='flex flex-col gap-2'>
