@@ -32,7 +32,7 @@ const Table = <T,>({
 
   if (data.length === 0)
     return (
-      <div className='p-5'>
+      <div className={`p-2 ${containerClassName}`}>
         <Label labelId='table.no_data' />
       </div>
     );

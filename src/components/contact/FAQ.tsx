@@ -1,6 +1,7 @@
 'use client';
 
 import useLanguage from '@/hooks/useLanguage';
+import Label from '../common/Label';
 import Section from '../common/Section';
 import FAQItem from './FAQItem';
 
@@ -23,7 +24,7 @@ const FAQ = () => {
   ];
 
   return (
-    <Section title='Frequently asked questions'>
+    <Section title={<Label labelId='FAQ.title' />}>
       <div className='flex flex-col gap-2'>
         {items.map((item, index) => (
           <FAQItem key={index} item={item} />

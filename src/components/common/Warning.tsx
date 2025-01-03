@@ -9,7 +9,7 @@ const Warning = ({ children, className = 'p-2' }: Props) => {
   if (!children) return null;
 
   return (
-    <div className={`rounded-md bg-red-100 text-red-700 ${className}`}>
+    <div className={`rounded-md bg-red-100 p-2 text-red-700 ${className}`}>
       {children}
     </div>
   );

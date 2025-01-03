@@ -139,7 +139,7 @@ const Step3 = () => {
   return (
     <div className='flex flex-col gap-4'>
       <Panel className='px-4 py-6'>
-        <p className='text-center'>
+        <p>
           <Label labelId='book.step3.check_information' />
           <span className='font-semibold'> {session?.user.email}.</span>
         </p>
