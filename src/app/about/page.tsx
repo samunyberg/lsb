@@ -11,12 +11,6 @@ const AboutPage = async () => {
         <li>
           <Label labelId='about.location.address_line_1' />
         </li>
-        <li>
-          <Label labelId='about.location.address_line_2' />
-        </li>
-        <li>
-          <Label labelId='about.location.address_line_3' />
-        </li>
       </ul>
     </Section>
   );
