@@ -69,13 +69,7 @@ const ConfirmationTemplateEn = ({
                 Studio Location:
               </Text>
               <Text className='text-gray-600'>
-                Porrassalmenkatu 11, 50100 Mikkeli
-              </Text>
-              <Text className='text-gray-600'>
-                Entrance A (door code: 1952)
-              </Text>
-              <Text className='text-gray-600'>
-                5th floor, apartment 10 (building has an elevator)
+                Kotipellonpiennar 10, 50170 Mikkeli
               </Text>
 
               <Hr className='my-6 border-t border-gray-200' />

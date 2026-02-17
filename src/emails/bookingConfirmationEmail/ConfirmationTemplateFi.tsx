@@ -70,13 +70,7 @@ const ConfirmationTemplateFi = ({
                 Studion Sijainti:
               </Text>
               <Text className='text-gray-600'>
-                Porrassalmenkatu 11, 50100 Mikkeli
-              </Text>
-              <Text className='text-gray-600'>
-                Sisäänkäynti A (ovikoodi: 1952)
-              </Text>
-              <Text className='text-gray-600'>
-                5. kerros, asunto 10 (rakennuksessa on hissi)
+                Kotipellonpiennar 10, 50170 Mikkeli
               </Text>
 
               <Hr className='my-6 border-t border-gray-200' />
